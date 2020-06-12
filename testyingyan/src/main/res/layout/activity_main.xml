@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:text="鹰眼测试"
+            android:onClick="onClickCreate"
+            />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:text="查询鹰眼测试结果"
+            android:onClick="onClickLook"
+            />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

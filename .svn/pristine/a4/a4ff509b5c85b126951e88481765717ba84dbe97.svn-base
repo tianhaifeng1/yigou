@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp80"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:background="@color/color_white"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5"
+        >
+
+        <TextView
+            android:id="@+id/item_address_address"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp60"
+            android:textColor="@color/color_name"
+            android:textSize="14dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="西藏自治区拉萨市当雄县西藏自治区拉萨市当雄县西藏自治区拉萨市当雄县" />
+
+        <TextView
+            android:id="@+id/item_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/item_address_address"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            tools:text="大壮" />
+
+        <TextView
+            android:id="@+id/item_address_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@id/item_address_address"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/item_address_name"
+            android:layout_marginRight="@dimen/dp60"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp20"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            tools:text="15333611256" />
+
+        <ImageView
+            android:id="@+id/item_address_select"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp20"
+            android:gravity="center"
+            android:src="@mipmap/round_n"
+            android:text="编辑" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp5"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_bg_fa"
+        android:visibility="gone"
+        />
+</RelativeLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp90"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp90"
+        android:paddingTop="@dimen/dp15"
+        android:background="@color/color_white"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp5"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_bg_fa" />
+
+        <ImageView
+            android:id="@+id/item_address_icon"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginLeft="@dimen/dp10"
+            android:src="@mipmap/ic_address" />
+
+        <TextView
+            android:id="@+id/item_address_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/item_address_icon"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_name"
+            android:textSize="14dp"
+            tools:text="大壮" />
+
+        <TextView
+            android:id="@+id/item_address_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/item_address_name"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp20"
+            android:textColor="@color/color_name"
+            android:textSize="14dp"
+            tools:text="15333611256" />
+
+        <TextView
+            android:id="@+id/item_address_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_below="@id/item_address_name"
+            android:layout_toRightOf="@id/item_address_icon"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/textcolor_point"
+            android:textSize="12dp"
+            android:text="[默认地址]"
+            />
+
+        <TextView
+            android:id="@+id/item_address_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp5"
+            android:layout_toLeftOf="@id/item_address_editor"
+            android:layout_below="@id/item_address_name"
+            android:layout_toRightOf="@id/item_address_status"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            tools:text="西藏自治区拉萨萨市当雄县西藏自治区拉萨萨市当雄县西藏自治区拉萨萨市当雄县西藏自治区拉萨萨市当雄县" />
+
+        <TextView
+            android:id="@+id/item_address_editor"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="编辑" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/item_address_event"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp90"
+        android:background="@color/translucence"
+        android:gravity="center"
+        android:visibility="gone"
+        >
+
+        <TextView
+            android:id="@+id/item_address_event_copy"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="60dp"
+            android:text="复制\n地址"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:background="@drawable/shape_oval_r_white"
+            />
+        <TextView
+            android:id="@+id/item_address_event_default"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="60dp"
+            android:text="设为\n默认"
+            android:textColor="@color/color_white"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:background="@drawable/shape_oval_r_yellow"
+            android:layout_marginLeft="@dimen/dp20"
+            />
+        <TextView
+            android:id="@+id/item_address_event_delete"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="60dp"
+            android:text="删除\n地址"
+            android:textColor="@color/color_white"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:background="@drawable/shape_oval_r_red"
+            android:layout_marginLeft="@dimen/dp20"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

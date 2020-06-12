@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorRedBg">#E00605</color>
+    <color name="colorRedFont">#AB2B2B</color>
+    <color name="color_bg_ea">#eaeaea</color>
+    <color name="color_btn_">#ffa800</color>
+    <color name="color_btn_click">#ffd600</color>
+    <color name="filter_all_bg">#44888888</color>
+    <color name="filter_item_affirm">#fa2f49</color>
+    <color name="filter_item_bg">#ffffff</color>
+    <color name="filter_item_reset">#ffffff</color>
+    <color name="filter_item_select_bg">#eaeaea</color>
+    <color name="filter_item_select_textcolor">#333333</color>
+    <color name="filter_item_textcolor">#666666</color>
+    <color name="filter_tab_bg">#ffffff</color>
+    <color name="filter_tab_select_textcolor">#fa2f49</color>
+    <color name="filter_tab_textcolor">#333333</color>
+    <color name="page_bg_color">#fafafa</color>
+    <color name="textcolor_point">#FA2843</color>
+    <color name="yigou_color_red">#fa2f49</color>
+    <dimen name="dp210">210dp</dimen>
+    <dimen name="filter_item_item_height">40dp</dimen>
+    <dimen name="filter_tab_height">36dp</dimen>
+    <dimen name="tswitch_tab_space">2dp</dimen>
+    <string name="app_name">ResLib</string>
+</resources>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/ttitle" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/yhj_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/color_white"
+        app:tabIndicatorColor="@color/textcolor_point"
+        app:tabSelectedTextColor="@color/textcolor_point"
+        app:tabTextColor="@color/color_name"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        >
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <include layout="@layout/layout_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50">
+
+        <TextView
+            android:id="@+id/use_yhj_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="已选择0个优惠卷"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/use_yhj_affirm"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="match_parent"
+            android:text="确定"
+            android:gravity="center"
+            android:background="@color/color_red"
+            android:textColor="@color/color_white"
+            />
+
+
+    </LinearLayout>
+</LinearLayout>

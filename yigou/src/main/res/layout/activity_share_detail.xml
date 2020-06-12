@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ShareDetailActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="1400dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="50dp"
+                android:background="@mipmap/share_bg_detail">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="160dp"
+                    android:layout_gravity="center_horizontal"
+                    android:onClick="onShareEvent" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:onClick="onShareEvent"
+                    android:layout_marginBottom="20dp"
+                    />
+            </FrameLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</LinearLayout>

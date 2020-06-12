@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ttitle_and_top_h"
+    android:background="@mipmap/main_title_bg"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12">
+
+    <include layout="@layout/statetitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ttitle_h">
+
+        <ImageView
+            android:id="@+id/main_top_locationimg"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/main_frist_location"
+            android:visibility="gone"
+            />
+        <TextView
+            android:id="@+id/main_top_locationname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="@dimen/dp100"
+            android:textColor="@color/color_white"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/dp5"
+            android:paddingRight="5dp"
+            android:ellipsize="end"
+            android:layout_gravity="center_vertical"
+            android:visibility="gone"
+            />
+        <RelativeLayout
+            android:id="@+id/main_top_search"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@drawable/shape_c_white">
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="match_parent"
+                android:src="@mipmap/main_search"
+                android:padding="@dimen/dp8"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp30"
+                android:layout_marginLeft="@dimen/dp40"
+                android:gravity="center_vertical"
+                android:text="搜索商品"
+                android:textColor="@color/textcolor_tishi" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/main_top_cart"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp24"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/main_frist_cart"
+            android:paddingLeft="@dimen/dp10"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+</LinearLayout>

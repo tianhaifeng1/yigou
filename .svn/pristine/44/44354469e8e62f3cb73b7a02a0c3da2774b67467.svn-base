@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12"
+    android:id="@+id/item_city_type2_ll"
+    android:background="@color/color_white"
+    >
+
+    <TextView
+        android:id="@+id/item_city_type2_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:text="城市列表"
+        android:textSize="@dimen/dp16"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/item_city_type2_letter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp20"
+        tools:text="A"
+        android:textColor="@color/color_name"
+        android:textSize="@dimen/dp16"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/item_city_type2_cityname"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        tools:text="西安市"
+        android:textColor="@color/color_name"
+        android:gravity="center_vertical"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        />
+</LinearLayout>

@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@color/color_white"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/dialog_goodspecinfo_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp50"
+            android:text="张三张三张三张三张三张三张三张三张三张三"
+            android:textColor="@color/color_name"
+            android:layout_marginLeft="@dimen/dp110"
+            android:layout_marginRight="@dimen/dp50"
+            android:layout_marginTop="@dimen/dp10"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/dp5"
+            />
+
+        <TextView
+            android:id="@+id/dialog_goodspecinfo_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp110"
+            android:layout_marginRight="@dimen/dp50"
+            android:text="￥ 12.00"
+            android:textColor="@color/colorRedFont"
+            />
+
+        <TextView
+            android:id="@+id/dialog_goodspecinfo_guige"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="规格"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_name"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            android:textSize="14dp"
+            android:layout_marginTop="@dimen/dp10"
+            android:visibility="gone"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/dialog_goodspecinfo_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:minHeight="@dimen/dp40"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            ></androidx.recyclerview.widget.RecyclerView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dialog_line_bg"
+            android:layout_marginTop="@dimen/dp5"
+            />
+
+        <TextView
+            android:id="@+id/dialog_goodspecinfo_stock"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp10"
+            android:text="库存："
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp10"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp80"
+                android:layout_weight="1"
+                android:text="购买数量"
+                android:gravity="center_vertical"
+                />
+
+            <ImageView
+                android:id="@+id/dialog_goodspecinfo_minus"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:padding="@dimen/dp5"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/goodscart_jian"
+                android:layout_below="@id/dialog_goodspecinfo_recyclerview"
+                android:layout_marginTop="@dimen/dp1"
+                />
+
+            <EditText
+                android:id="@+id/dialog_goodspecinfo_number"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp50"
+                android:text="99"
+                android:inputType="number"
+                android:textSize="@dimen/dp14"
+                android:background="@color/transparent"
+                android:minWidth="@dimen/dp50"
+                android:gravity="center"
+                />
+            <ImageView
+                android:id="@+id/dialog_goodspecinfo_add"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="@dimen/dp30"
+                android:padding="@dimen/dp5"
+                android:layout_gravity="center_vertical"
+                android:src="@mipmap/goodscart_jia"
+                android:layout_below="@id/dialog_goodspecinfo_recyclerview"
+                android:layout_marginTop="@dimen/dp1"
+                />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/dialog_line_bg"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp60"
+            android:paddingLeft="@dimen/dp20"
+            android:paddingRight="@dimen/dp20"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dialog_goodspecinfo_addcart"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp40"
+                android:layout_weight="1"
+                android:background="@drawable/selector_shopping_cart"
+                android:text="加入购物车"
+                android:textColor="@color/color_white"
+                android:textSize="14dp"
+                android:gravity="center"
+                android:visibility="gone"
+                />
+
+            <TextView
+                android:id="@+id/dialog_goodspecinfo_affirm"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp40"
+                android:layout_weight="1"
+                android:background="@drawable/dialog_goods_specinfo_textview"
+                android:text="立即购买"
+                android:textColor="@color/color_white"
+                android:textSize="14dp"
+                android:gravity="center"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/dialog_goodspecinfo_icon"
+        android:layout_width="@dimen/dp90"
+        android:layout_height="@dimen/dp90"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginLeft="@dimen/dp10"
+        />
+
+    <ImageView
+        android:id="@+id/dialog_goodspecinfo_close"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="right"
+        android:layout_marginTop="@dimen/dp10"
+        android:src="@mipmap/ic_close"
+        android:padding="@dimen/dp10"
+        />
+
+</FrameLayout>

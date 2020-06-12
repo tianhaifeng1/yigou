@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical">
+
+    <include layout="@layout/ttitle" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:background="@color/color_white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_toLeftOf="@id/map_cancle"
+            android:layout_marginRight="@dimen/dp15"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_c_f6">
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp8"
+                android:src="@mipmap/address_dw" />
+
+            <TextView
+                android:id="@+id/map_city"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:paddingRight="@dimen/dp10"
+                tools:text="city" />
+
+            <View
+                android:layout_width="@dimen/dp2"
+                android:layout_height="@dimen/dp10"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_gray"
+
+                />
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="match_parent"
+                android:padding="@dimen/dp8"
+                android:src="@mipmap/address_search" />
+
+            <!--<TextView-->
+            <!--android:id="@+id/shaddress_search"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/dp30"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:padding="@dimen/dp2"-->
+            <!--android:text="搜索"-->
+            <!--android:textColor="@color/textcolor_tishi"-->
+            <!--android:textSize="@dimen/dp12"-->
+            <!--/>-->
+
+            <EditText
+                android:id="@+id/map_search_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/transparent"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:hint="搜索内容"
+                android:imeActionLabel="搜索"
+                android:imeOptions="actionSearch"
+                android:maxLines="1"
+                android:paddingRight="20dp"
+                android:textCursorDrawable="@null"
+                android:textSize="14sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/map_search_content_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="搜索内容"
+                android:maxLines="1"
+                android:paddingRight="20dp"
+                android:textSize="14sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/map_cancle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical|right"
+            android:paddingRight="@dimen/dp15"
+            android:visibility="gone"
+            android:text="取消"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 地图搜索内容 -->
+        <RelativeLayout
+            android:id="@+id/lbm_rl"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp240"
+            android:visibility="gone">
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/bmapView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+
+            <ImageView
+                android:id="@+id/dingwei"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="@dimen/dp20"
+                android:background="@drawable/yuandian_bg"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:src="@drawable/huidaoyuandian" />
+
+            <ImageView
+                android:id="@+id/map_search_dtz"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:paddingBottom="@dimen/dp40"
+                android:src="@drawable/datouzhen" />
+        </RelativeLayout>
+
+        <include
+            android:id="@+id/map_search_include1"
+            layout="@layout/layout_xlistview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/lbm_rl" />
+
+
+        <!-- 搜索框搜索内容 -->
+        <RelativeLayout
+            android:id="@+id/relativelayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/map_search_include2"
+                layout="@layout/layout_xlistview" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

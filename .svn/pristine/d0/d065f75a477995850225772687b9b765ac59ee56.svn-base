@@ -1,0 +1,61 @@
+package com.t.httplib.yigou.bean.resp;
+
+/**
+ * 配送费信息
+ */
+public class DistributionInfoBean {
+
+    /**
+     * id : 7
+     * isDefault : 0
+     * distribFee : 5.0
+     * distribTimeSort : 满200包邮
+     * originFee : 200.0
+     */
+
+    private int id;
+    private int isDefault;
+    private double distribFee;
+    private String distribTimeSort;
+    private double originFee;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(int isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public double getDistribFee() {
+        return distribFee;
+    }
+
+    public void setDistribFee(double distribFee) {
+        this.distribFee = distribFee;
+    }
+
+    public String getDistribTimeSort() {
+        return distribTimeSort;
+    }
+
+    public void setDistribTimeSort(String distribTimeSort) {
+        this.distribTimeSort = distribTimeSort;
+    }
+
+    public double getOriginFee() {
+        return originFee;
+    }
+
+    public void setOriginFee(double originFee) {
+        this.originFee = originFee;
+    }
+}

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_bg_fa"
+    android:focusableInTouchMode="true">
+    
+    <include layout="@layout/ttitle" />
+    <!--<ViewStub-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
+
+    <LinearLayout
+        android:id="@+id/layout_default_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@mipmap/default_wuliu"
+            android:layout_marginTop="@dimen/dp150"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_default_img"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="商品正在配送中，请耐心等待~"
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+
+
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <include layout="@layout/layout_baidumap" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            >
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp60"
+                android:background="@color/color_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:layout_marginTop="10dp"
+                android:text="订单配送信息" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_line"/>
+
+
+            <com.trjx.tlibs.views.TListView
+                android:id="@+id/dddd_tlistview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:divider="@color/transparent"
+                android:listSelector="@color/transparent"
+                android:dividerHeight="0dp"></com.trjx.tlibs.views.TListView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp60"
+                android:background="@color/color_white"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:layout_marginTop="10dp"
+                android:text="配送信息" />
+
+            <TextView
+                android:id="@+id/dddd_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:text="送达时间：尽快送达"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:background="@color/color_white"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:text="配送方式：儒龙专送"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:background="@color/color_white"
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:layout_height="@dimen/dp80">
+
+                <TextView
+                    android:layout_width="@dimen/dp80"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="配送骑手："
+
+                    />
+
+                <ImageView
+                    android:id="@+id/dddd_img"
+                    android:layout_width="@dimen/dp60"
+                    android:layout_height="@dimen/dp60"
+                    android:src="@mipmap/t_head"
+                    android:layout_marginLeft="@dimen/dp80"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:id="@+id/dddd_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="| 某某"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="@dimen/dp6"
+                    />
+                <TextView
+                    android:id="@+id/dddd_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" 联系骑手"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_toLeftOf="@id/dddd_name"
+                    android:layout_centerVertical="true"
+                    />
+                <ImageView
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="@dimen/dp20"
+                    android:src="@mipmap/t_phone"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@id/dddd_phone"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

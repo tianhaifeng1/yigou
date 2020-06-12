@@ -1,0 +1,63 @@
+package com.t.httplib.yigou.bean.resp;
+
+import java.math.BigDecimal;
+
+/**
+ * 配送费信息
+ */
+public class DistributionInfoBean {
+
+    /**
+     * id : 7
+     * isDefault : 0
+     * distribFee : 5.0
+     * distribTimeSort : 满200包邮
+     * originFee : 200.0
+     */
+
+    private int id;
+    private int isDefault;
+    private BigDecimal distribFee = BigDecimal.ZERO;
+    private String distribTimeSort;
+    private BigDecimal originFee = BigDecimal.ZERO;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getIsDefault() {
+        return isDefault;
+    }
+
+    public void setIsDefault(int isDefault) {
+        this.isDefault = isDefault;
+    }
+
+    public BigDecimal getDistribFee() {
+        return distribFee;
+    }
+
+    public void setDistribFee(BigDecimal distribFee) {
+        this.distribFee = distribFee;
+    }
+
+    public String getDistribTimeSort() {
+        return distribTimeSort;
+    }
+
+    public void setDistribTimeSort(String distribTimeSort) {
+        this.distribTimeSort = distribTimeSort;
+    }
+
+    public BigDecimal getOriginFee() {
+        return originFee;
+    }
+
+    public void setOriginFee(BigDecimal originFee) {
+        this.originFee = originFee;
+    }
+}

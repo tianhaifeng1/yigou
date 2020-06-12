@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_marginTop="@dimen/dp20"
+    android:layout_marginLeft="@dimen/dp15"
+    android:layout_marginRight="@dimen/dp15"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/signin_record_backround"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50">
+        <ImageView
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_width="@dimen/dp25"
+            android:layout_height="@dimen/dp25"
+            android:src="@mipmap/my_item_yqyj"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:id="@+id/item_record_intro"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_name"
+            android:text="旗舰店"
+            android:textSize="@dimen/dp18"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:background="@color/color_line" />
+
+    <RelativeLayout
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginBottom="@dimen/dp2"
+        android:id="@+id/item_signin_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:id="@+id/item_record_img"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="@dimen/dp80"
+            />
+
+        <TextView
+            android:id="@+id/item_record_xq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_record_img"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/dp16"
+            android:text="TextView"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/dp2"
+            android:id="@+id/item_record_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_record_img"
+            android:layout_below="@+id/item_record_xq"
+            android:textColor="@color/color_line"
+            android:text="TextView"
+            />
+        <TextView
+            android:layout_marginTop="@dimen/dp15"
+            android:id="@+id/item_record_sm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/item_record_img"
+            android:layout_below="@+id/item_record_date"
+            android:textColor="@color/color_line"
+            android:text="领取后当日生效"
+            />
+        <TextView
+            android:id="@+id/item_record_status"
+            android:layout_marginRight="@dimen/dp10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/dp16"
+            android:text="已领取"/>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

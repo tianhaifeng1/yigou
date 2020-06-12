@@ -1,0 +1,114 @@
+package com.work.doctor.fruits.activity.Goods;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+
+import com.google.android.material.tabs.TabLayout;
+import com.t.httplib.yigou.DemoModel;
+import com.t.httplib.yigou.bean.resp.GoodsTypeInfoBean;
+import com.trjx.tbase.adapter.TViewPagerStateAdapter;
+import com.trjx.tbase.fragment.TFragment;
+import com.trjx.tbase.mvp.TPresenter;
+import com.trjx.tbase.mvp.TView;
+import com.trjx.tlibs.uils.Logger;
+import com.trjx.tlibs.views.TViewPager;
+import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.activity.search.SearchGoodsActivity;
+import com.work.doctor.fruits.base.DemoMVPActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GoodsTypeAndListActivity extends DemoMVPActivity<TView, TPresenter<TView, DemoModel>> {
+
+    private ImageView mTitleBack;
+    private RelativeLayout mTitleSearch;
+    private TabLayout mGtalTablayout;
+    private TViewPager mGtalViewpager;
+
+    public static int index;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_goods_type_and_list);
+    }
+
+    @Override
+    protected TPresenter initPersenter() {
+        return null;
+    }
+
+    @Override
+    protected void initView() {
+        super.initView();
+
+        mTitleBack = findViewById(R.id.title_back);
+        mTitleSearch = findViewById(R.id.title_search);
+        mGtalTablayout = findViewById(R.id.gtal_tablayout);
+        mGtalViewpager = findViewById(R.id.gtal_viewpager);
+        mGtalViewpager.setScanScroll(false);
+
+        //返回
+        mTitleBack.setOnClickListener(v -> finish());
+        //搜索
+        mTitleSearch.setOnClickListener(v -> skipActivity(SearchGoodsActivity.class));
+
+        Intent intent = getIntent();
+        List<GoodsTypeInfoBean> infoBeanArrayList = (List<GoodsTypeInfoBean>) intent.getSerializableExtra("list");
+        index = intent.getIntExtra("index", 0);
+
+        mGtalTablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        List<GoodsTypeFragment> fragments = new ArrayList<>();
+        List<String> titlelist = new ArrayList<>();
+        if (infoBeanArrayList != null && infoBeanArrayList.size() > 0) {
+            //初始化Tab数据
+            for (int i = 0, size = infoBeanArrayList.size(); i < size; i++) {
+                GoodsTypeInfoBean goodsTypeInfoBean = infoBeanArrayList.get(i);
+                if (goodsTypeInfoBean.getId() == 1) {
+                    if (i < index) {
+                        index--;
+                    } else if (index == i) {
+                        //默认显示第一个
+                        index = 0;
+                    }
+                    continue;
+                }
+                titlelist.add(goodsTypeInfoBean.getCnname());
+                fragments.add(new GoodsTypeFragment(i > index ? i - 1 : i, goodsTypeInfoBean.getChildList()));
+                mGtalTablayout.addTab(mGtalTablayout.newTab().setText(goodsTypeInfoBean.getCnname()));
+            }
+
+            mGtalViewpager.setOffscreenPageLimit(fragments.size());
+        }
+
+        TViewPagerStateAdapter<TFragment> adapter = new TViewPagerStateAdapter(getSupportFragmentManager(), fragments, titlelist);
+        mGtalViewpager.setAdapter(adapter);
+//        mGtalTablayout.setupWithViewPager(mGtalViewpager);
+        mGtalViewpager.setCurrentItem(index,false);
+        mGtalTablayout.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                Logger.t("------------position = " + position);
+                fragments.get(position).initData();
+                mGtalViewpager.setCurrentItem(position,false);
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+    }
+
+}

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/ttitle" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="75dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp180"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@mipmap/wallet_bg"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/ame_guize"
+        android:layout_width="@dimen/dp80"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center"
+        android:text="提现规则"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp140"
+        app:layout_constraintLeft_toLeftOf="@+id/view"
+        app:layout_constraintRight_toRightOf="@id/guideline4"
+        app:layout_constraintTop_toBottomOf="@+id/ame_guize">
+
+        <TextView
+            android:id="@+id/ame_money"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp50"
+            tools:text="00.00元"
+            android:gravity="center_horizontal|bottom"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/dp26"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="当前收益"
+            android:textSize="@dimen/dp12"
+            android:textColor="@color/color_name"
+            android:layout_below="@id/ame_money"
+            />
+        <TextView
+            android:id="@+id/ame_tixian"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp36"
+            android:background="@drawable/shape_c_white"
+            android:text="提现"
+            android:textColor="@color/color_name"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp20"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp140"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline4"
+        app:layout_constraintRight_toRightOf="@id/view"
+        app:layout_constraintTop_toBottomOf="@+id/ame_guize">
+        <TextView
+            android:id="@+id/ame_money_total"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp50"
+            tools:text="00.00元"
+            android:gravity="center_horizontal|bottom"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/dp16"
+            android:paddingBottom="@dimen/dp6"
+            android:layout_centerHorizontal="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="累积收益"
+            android:textSize="@dimen/dp12"
+            android:textColor="@color/color_name"
+            android:layout_below="@id/ame_money_total"
+            />
+        <TextView
+            android:id="@+id/ame_zye"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp36"
+            android:background="@drawable/shape_c_white"
+            android:text="转余额"
+            android:textColor="@color/color_name"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp20"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/ame_shouyi"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="center"
+        android:text="收益记录"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <TextView
+        android:id="@+id/ame_zhichu"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="@dimen/dp10"
+        android:gravity="center"
+        android:text="提现记录"
+        android:textSize="@dimen/dp14"
+        android:textColor="@color/color_content"
+        app:layout_constraintLeft_toRightOf="@+id/ame_shouyi"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <View
+        android:id="@+id/ame_shouyi_line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginStart="16dp"
+        android:background="@color/color_name"
+        app:layout_constraintEnd_toEndOf="@+id/ame_shouyi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ame_shouyi" />
+
+    <View
+        android:id="@+id/ame_zhichu_line"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/color_name"
+        app:layout_constraintLeft_toLeftOf="@id/ame_zhichu"
+        app:layout_constraintRight_toRightOf="@id/ame_zhichu"
+        app:layout_constraintTop_toBottomOf="@id/ame_zhichu"
+        android:visibility="invisible"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ame_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingLeft="@dimen/item_recyclerview_space_h"
+        android:paddingRight="@dimen/item_recyclerview_space_h"
+        android:paddingTop="@dimen/item_recyclerview_space_v"
+        android:paddingBottom="@dimen/item_recyclerview_space_v"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toBottomOf="@id/ame_shouyi"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/dp2"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/ame_ll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="@id/ame_recyclerview"
+        app:layout_constraintBottom_toBottomOf="@id/ame_recyclerview"
+        android:gravity="center_horizontal"
+        android:paddingTop="@dimen/dp50"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp160"
+            android:layout_height="@dimen/dp160"
+            android:src="@mipmap/default_moneylist"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="暂无记录"
+            />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/XZTE.iml" filepath="$PROJECT_DIR$/XZTE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/databaselib/databaselib.iml" filepath="$PROJECT_DIR$/databaselib/databaselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httplib/httplib.iml" filepath="$PROJECT_DIR$/httplib/httplib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jglib/jglib.iml" filepath="$PROJECT_DIR$/jglib/jglib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/maplib/maplib.iml" filepath="$PROJECT_DIR$/maplib/maplib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reslib/reslib.iml" filepath="$PROJECT_DIR$/reslib/reslib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/suda/suda.iml" filepath="$PROJECT_DIR$/suda/suda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yigou/yigou.iml" filepath="$PROJECT_DIR$/yigou/yigou.iml" />
+    </modules>
+  </component>
+</project>

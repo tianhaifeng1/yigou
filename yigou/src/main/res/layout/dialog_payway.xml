@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/waikuang_r5_white"
+    android:paddingBottom="@dimen/dp20"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="选择支付方式"
+            android:textSize="@dimen/dp18"
+            android:textColor="@color/color_name"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/dialog_payway_delete"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:padding="@dimen/dp13"
+            android:src="@mipmap/payway_delete"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp10"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/t_wx"
+            android:layout_marginLeft="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="微信支付"
+            android:textSize="16dp"
+            android:textColor="@color/color_name"
+            android:paddingLeft="@dimen/dp10"
+            />
+
+        <ImageView
+            android:id="@+id/dialog_payway_select_wx"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp60"
+            android:src="@mipmap/payway_select_no"
+            android:padding="@dimen/dp16"
+            />
+
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_marginLeft="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp16"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_gravity="center_horizontal"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/t_yu_e"
+            android:layout_marginLeft="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="余额支付"
+            android:textSize="16dp"
+            android:textColor="@color/color_name"
+            android:paddingLeft="@dimen/dp10"
+            />
+
+        <ImageView
+            android:id="@+id/dialog_payway_select_yu_e"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp60"
+            android:src="@mipmap/payway_select_"
+            android:padding="@dimen/dp16"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dialog_payway_affirm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="确定支付"
+        android:layout_marginLeft="@dimen/dp60"
+        android:layout_marginRight="@dimen/dp60"
+        android:background="@drawable/selector_longin"
+        android:gravity="center"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_white"
+        android:layout_marginTop="@dimen/dp40"
+        android:enabled="false"
+        />
+
+</LinearLayout>

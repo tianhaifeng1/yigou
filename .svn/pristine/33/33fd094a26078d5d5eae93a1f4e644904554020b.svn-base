@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#FFD600</color>
+
+    <color name="color_zhuse">#FFD600</color>
+
+    <!-- 首页底部 tab 相关 -->
+    <color name="tab_checked">#5b9ac5</color>
+    <color name="tab_unchecked">#757575</color>
+    <color name="tab_bg">#ffffff</color>
+
+    <!-- Button按钮的颜色 -->
+    <color name="color_btn_click">#FFA800</color>
+    <color name="color_btn_">#FFD600</color>
+
+    <color name="textcolor_point">#FA2843</color>
+
+    <!--  充值列表颜色 -->
+    <color name="textcolor_cz">#0994F6</color>
+
+
+    <!-- fm2 -->
+    <color name="color_bg_fm2_left">#f4f4f4</color>
+    <color name="color_text_fm2_left_select">#333333</color>
+    <color name="color_text_fm2_left_noselect">#f4f4f4</color>
+
+</resources>

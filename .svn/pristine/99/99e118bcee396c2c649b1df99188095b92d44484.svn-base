@@ -1,0 +1,28 @@
+package com.t.httplib.yigou.bean.resp;
+
+import java.math.BigDecimal;
+
+/**
+ * 我的收益统计
+ */
+public class BalanceStatInfoBean {
+    private long fansCount;
+
+    private BigDecimal balanceTotal = BigDecimal.ZERO;
+
+    public long getFansCount() {
+        return fansCount;
+    }
+
+    public void setFansCount(long fansCount) {
+        this.fansCount = fansCount;
+    }
+
+    public BigDecimal getBalanceTotal() {
+        return balanceTotal;
+    }
+
+    public void setBalanceTotal(BigDecimal balanceTotal) {
+        this.balanceTotal = balanceTotal;
+    }
+}

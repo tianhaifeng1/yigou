@@ -1,0 +1,18 @@
+package com.work.doctor.fruits.base;
+
+import com.xzte.maplib.MapApplication;
+
+/**
+ * 需要继承MapApplication
+ */
+public class DemoApplication extends MapApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initBaidu();
+
+        setBugglyAppid("f38ee331bd");
+    }
+
+}

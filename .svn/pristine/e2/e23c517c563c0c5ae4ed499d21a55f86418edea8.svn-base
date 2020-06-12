@@ -1,0 +1,471 @@
+package com.t.httplib.yigou;
+
+import com.google.gson.Gson;
+import com.t.databaselib.bean.CartShopInfoBean;
+import com.t.databaselib.bean.ReqCartDeleteInfo;
+import com.t.databaselib.bean.ShopInfoBean;
+import com.t.httplib.Util;
+import com.t.httplib.yigou.bean.DemoRespBean;
+import com.t.httplib.yigou.bean.HeadInfoModel;
+import com.t.httplib.yigou.bean.WechatCodeBean;
+import com.t.httplib.yigou.bean.WechatUserInfo;
+import com.t.httplib.yigou.bean.WechetPayInfo;
+import com.t.httplib.yigou.bean.req.ReqAddressInfo;
+import com.t.httplib.yigou.bean.req.ReqBalanceRankingInfo;
+import com.t.httplib.yigou.bean.req.ReqBrandInfo;
+import com.t.httplib.yigou.bean.req.ReqCartAddInfo;
+import com.t.httplib.yigou.bean.req.ReqCommentInfo;
+import com.t.httplib.yigou.bean.req.ReqCouponGrantInfo;
+import com.t.httplib.yigou.bean.req.ReqCouponInfo;
+import com.t.httplib.yigou.bean.req.ReqGoodsInfo;
+import com.t.httplib.yigou.bean.req.ReqGoodsInfo2;
+import com.t.httplib.yigou.bean.req.ReqGoodsListInfo;
+import com.t.httplib.yigou.bean.req.ReqGoodsListInfo2;
+import com.t.httplib.yigou.bean.req.ReqGoodsPayInfo;
+import com.t.httplib.yigou.bean.req.ReqGoodsTypeInfo;
+import com.t.httplib.yigou.bean.req.ReqHorsemanInfo;
+import com.t.httplib.yigou.bean.req.ReqInvoice2Info;
+import com.t.httplib.yigou.bean.req.ReqInvoiceInfo;
+import com.t.httplib.yigou.bean.req.ReqLoginInfo;
+import com.t.httplib.yigou.bean.req.ReqLoginWxInfo;
+import com.t.httplib.yigou.bean.req.ReqOrderInfo;
+import com.t.httplib.yigou.bean.req.ReqOrderListInfo;
+import com.t.httplib.yigou.bean.req.ReqOrderSubmitInfo;
+import com.t.httplib.yigou.bean.req.ReqPageInfo;
+import com.t.httplib.yigou.bean.req.ReqPayOrderInfo;
+import com.t.httplib.yigou.bean.req.ReqPayOrderMentInfo;
+import com.t.httplib.yigou.bean.req.ReqPaymentInfo;
+import com.t.httplib.yigou.bean.req.ReqRuleInfo;
+import com.t.httplib.yigou.bean.req.ReqSearchGoodsInfo;
+import com.t.httplib.yigou.bean.req.ReqShopInfo;
+import com.t.httplib.yigou.bean.req.ReqShopInfo2;
+import com.t.httplib.yigou.bean.req.ReqSynchroCartInfoOut;
+import com.t.httplib.yigou.bean.req.ReqTimeInfo;
+import com.t.httplib.yigou.bean.req.ReqYgSearchInfo;
+import com.t.httplib.yigou.bean.req.ReqYzmInfo;
+import com.t.httplib.yigou.bean.resp.AddressInfoBean;
+import com.t.httplib.yigou.bean.resp.BalanceStatInfoBean;
+import com.t.httplib.yigou.bean.resp.BannerInfoBean;
+import com.t.httplib.yigou.bean.resp.BrandInfoBean;
+import com.t.httplib.yigou.bean.resp.CouponCenterInfoBean;
+import com.t.httplib.yigou.bean.resp.CouponGrantInfoBean;
+import com.t.httplib.yigou.bean.resp.CouponInfoBean;
+import com.t.httplib.yigou.bean.resp.DistributionInfoBean;
+import com.t.httplib.yigou.bean.resp.EvaluateInfoBean;
+import com.t.httplib.yigou.bean.resp.ExpressPsInfoBean;
+import com.t.httplib.yigou.bean.resp.FensInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsDetailInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsSpecInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsTypeInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsTypeOutInfoBean;
+import com.t.httplib.yigou.bean.resp.HorsemanLocationInfoBean;
+import com.t.httplib.yigou.bean.resp.HotCityInfoBean;
+import com.t.httplib.yigou.bean.resp.LoginInfoBean;
+import com.t.httplib.yigou.bean.resp.MoneyRecordListInfoBean;
+import com.t.httplib.yigou.bean.resp.OrderDetailInfoBean;
+import com.t.httplib.yigou.bean.resp.OrderListInfoBean;
+import com.t.httplib.yigou.bean.resp.OrderNumberInfoBean;
+import com.t.httplib.yigou.bean.resp.OutInfoBean;
+import com.t.httplib.yigou.bean.resp.PayListInfoBean;
+import com.t.httplib.yigou.bean.resp.PayOrderInfoBean;
+import com.t.httplib.yigou.bean.resp.PayOrderInfoBean2;
+import com.t.httplib.yigou.bean.resp.RuleInfoBean;
+import com.t.httplib.yigou.bean.resp.ShouyRankingInfoBean;
+import com.t.httplib.yigou.bean.resp.UserInfoBean;
+import com.trjx.tbase.http.HttpBase;
+import com.trjx.tbase.mvp.TModel;
+import com.trjx.tlibs.uils.Logger;
+
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+import okhttp3.RequestBody;
+
+public class DemoModel extends TModel {
+
+    private DemoHttpRetrofit httpRetrofit;
+
+    private Gson gson;
+
+    public DemoModel() {
+        httpRetrofit = DemoHttpRetrofit.getInstance();
+        //这里可以设置固定的HeadInfoModel
+//        HttpBase.headerName = "extend";
+//        HttpBase.headerInfo = "";
+        gson = new Gson();
+    }
+
+//    public void test3(ReqTest2Info info, Observer<DemoRespBean<List<GoodsInfoBean>>> observer) {
+//
+//        httpRetrofit.httpAPI.test3(getRequestBody(info))
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer);
+//    }
+//
+//    public void test3_(String jsonStr, Observer<DemoRespBean<GoodsInfoBean>> observer) {
+//
+//        httpRetrofit.httpAPI.test3_(HttpBase.getRequestBody(jsonStr))
+//                .subscribeOn(Schedulers.io())
+//                .unsubscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(observer);
+//    }
+
+
+    //登陆注册
+    public void requestYzm(ReqYzmInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postYzm(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestLogin(ReqLoginInfo info, Observer<DemoRespBean<LoginInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postLogin(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestLoginWx(ReqLoginWxInfo info, Observer<DemoRespBean<LoginInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postLoginWx(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestShopInfo(ReqShopInfo info, Observer<DemoRespBean<ShopInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postShopInfo(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    // 系统相关
+
+    //系统规则
+    public void requestRule(ReqRuleInfo info, Observer<DemoRespBean<RuleInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postRule(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //热门城市
+    public void requestHotCityList(Observer<DemoRespBean<List<HotCityInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postHotCityList(setTimeHeadInfoString()), observer);
+    }
+
+    //商品分类
+    public void requestCategory(ReqGoodsTypeInfo info, Observer<DemoRespBean<GoodsTypeOutInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCategory(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestCategoryMain(ReqGoodsTypeInfo info, Observer<DemoRespBean<List<GoodsTypeInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCategoryMain(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    品牌
+    public void requestBrandList(ReqBrandInfo info, Observer<DemoRespBean<List<BrandInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postBrandList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //搜索商品
+    public void requestSearchGoods(ReqSearchGoodsInfo info, Observer<DemoRespBean<List<GoodsInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postSearchGoods(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //首页banner图
+    public void requestBanner(Observer<DemoRespBean<List<BannerInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postBanner(setTimeHeadInfoString()), observer);
+    }
+
+    // 位置信息
+//    获取骑手位置信息
+    public void requestLocation(ReqHorsemanInfo info, Observer<DemoRespBean<HorsemanLocationInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postLocation(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    优惠卷
+    public void requestCouponMyInfo(ReqCouponInfo info, Observer<DemoRespBean<List<CouponInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCouponMyInfo(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestCouponCenterInfo(ReqPageInfo info, Observer<DemoRespBean<List<CouponCenterInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCouponCenterInfo(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestCouponGrantInfo(ReqCouponGrantInfo info, Observer<DemoRespBean<CouponGrantInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCouponGrantInfo(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    搜索
+    public void requestSearchInfo(ReqYgSearchInfo info, Observer<DemoRespBean<List<GoodsInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postSearchInfo(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestSearchPopularGoodsList(Observer<DemoRespBean<List<String>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postSearchPopularGoodsList(setTimeHeadInfoString()), observer);
+    }
+
+
+    //    个人信息
+    public void requestUserInfo(Observer<DemoRespBean<UserInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postUserInfo(setTimeHeadInfoString()), observer);
+    }
+
+    //    我的收益统计
+    public void requestUserBalanceStat(Observer<DemoRespBean<BalanceStatInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postBalanceStat(setTimeHeadInfoString()), observer);
+    }
+
+    //    我的粉丝列表
+    public void requestUserFans(ReqPageInfo info, Observer<DemoRespBean<List<FensInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postMemberFans(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    余额记录列表
+    public void requestUserMoneyRecordList(ReqPageInfo info, Observer<DemoRespBean<List<MoneyRecordListInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postMoneyRecordList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    生成用户二维码
+    public void requestUserCreatWxaqrcode(Observer<DemoRespBean<String>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCreatWxaqrcode(setTimeHeadInfoString()), observer);
+    }
+
+    //    商品相关
+
+    //    商品列表
+    public void requestGoodsList(ReqGoodsListInfo info, Observer<DemoRespBean<List<GoodsInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postGoodsList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestHomePageGoodsList(ReqGoodsListInfo2 info, Observer<DemoRespBean<List<GoodsInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postHomePageGoodsList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    商品详情
+    public void requestGoodsDetail(ReqGoodsInfo info, Observer<DemoRespBean<OutInfoBean<GoodsDetailInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postGoodsDetail(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    商品规格列表
+    public void requestGoodsItem(ReqGoodsInfo info, Observer<DemoRespBean<GoodsSpecInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postGoodsItem(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    //    订单相关
+//    订单数量
+    public void requestOrderNumber(Observer<DemoRespBean<OrderNumberInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderNumber(setTimeHeadInfoString()), observer);
+    }
+
+    public void requestOrderList(ReqOrderListInfo info, Observer<DemoRespBean<List<OrderListInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestOrderDetail(ReqOrderInfo info, Observer<DemoRespBean<OrderDetailInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderDetail(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestOrderCancel(ReqOrderInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderCancel(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestOrderReceive(ReqOrderInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderReceive(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestOrderExpress(ReqOrderInfo info, Observer<DemoRespBean<ExpressPsInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderExpress(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestOrderDelete(ReqOrderInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderDelete(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    //    评论相关
+    public void requestCommentList(ReqGoodsInfo2 info, Observer<DemoRespBean<List<EvaluateInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCommentList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestAddComment(ReqCommentInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddComment(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestCartAdd(ReqCartAddInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCartAdd(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestCartList(ReqShopInfo2 info, Observer<DemoRespBean<List<CartShopInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postCartList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestCartDelete(ReqCartDeleteInfo info, Observer<DemoRespBean> observer) {
+        info.setTimestamp(getCurrentTimeStr());
+        HeadInfoModel headInfoModel = new HeadInfoModel();
+        headInfoModel.setTimestamp(info.getTimestamp());
+        headInfoModel.setVersion("1.0");
+        Logger.t("DemoModel 加密前 ：" + info.toString());
+        String myao = Util.MD5EncodeUtf8(info.toString());
+        Logger.t("DemoModel 加密后 ：" + myao);
+        headInfoModel.setSign(myao);
+        bindObserver(httpRetrofit.httpAPI.postCartDelete( headInfoModel.toString(),getRequestBody(info)), observer);
+    }
+
+
+    //同步购物车消息
+    public void requestSynchorCart(ReqSynchroCartInfoOut info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postSynchorCart(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    //    购物车相关
+//    public void requestCartAdd(String jsonStr,Observer<DemoRespBean> observer){
+//
+//        bindObserver(httpRetrofit.httpAPI.postCartAdd(getRequestBody(info)),observer);
+//    }
+//    public void requestCartList(String jsonStr,Observer<DemoRespBean<List<CartShopInfoBean>>> observer){
+//        bindObserver(httpRetrofit.httpAPI.postCartList(getRequestBody(info)),observer);
+//    }
+//    public void requestCartDelete(String jsonStr,Observer<DemoRespBean> observer){
+//        bindObserver(httpRetrofit.httpAPI.postCartDelete(getRequestBody(info)),observer);
+//    }
+//    public void requestCartSelect(String jsonStr,Observer<DemoRespBean> observer){
+//        bindObserver(httpRetrofit.httpAPI.postCartSelect(getRequestBody(info)),observer);
+//    }
+//    public void requestCartUpdateNum(String jsonStr,Observer<DemoRespBean> observer){
+//        bindObserver(httpRetrofit.httpAPI.postCartUpdateNum(getRequestBody(info)),observer);
+//    }
+
+
+// 收货地址信息相关
+
+    public void requestAddressEdit(AddressInfoBean info, Observer<DemoRespBean<AddressInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddressEdit(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestAddressDelete(ReqAddressInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddressDelete(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestAddressList(ReqShopInfo2 info, Observer<DemoRespBean<List<AddressInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddressList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestAddressDetail(ReqAddressInfo info, Observer<DemoRespBean<AddressInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddressDetail(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    public void requestAddressSetDefault(ReqAddressInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postAddressSetDefault(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    会员充值信息相关
+    //充值规则列表
+    public void requestPurchaseRecordList(ReqPageInfo info, Observer<DemoRespBean<List<PayOrderInfoBean2>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPurchaseRecordList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //充值规则列表
+    public void requestPayList(ReqPageInfo info, Observer<DemoRespBean<List<PayListInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    生成充值订单
+    public void requestPayOrder(ReqPayOrderInfo info, Observer<DemoRespBean<PayOrderInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayOrder(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    充值支付
+    public void requestPayOrderPayMent(ReqPayOrderMentInfo info, Observer<DemoRespBean<WechetPayInfo>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayOrderPayMent(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    充值记录列表
+    public void requestPayRecordList(ReqPageInfo info, Observer<DemoRespBean<List<PayOrderInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayRecordList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    提交订单
+    public void requestOrderSubmit(ReqOrderSubmitInfo info, Observer<DemoRespBean<String>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postOrderSubmit(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    //    购买支付
+    public void requestPayment(ReqPaymentInfo info, Observer<DemoRespBean<WechetPayInfo>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayment(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    //    商品订单支付信息
+    public void requestPayInfoOrder(ReqGoodsPayInfo info, Observer<DemoRespBean<OrderDetailInfoBean>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postPayInfoOrder(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+    // 配送费列表
+    public void requestDistribution(Observer<DemoRespBean<List<DistributionInfoBean>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postDistribution(setTimeHeadInfoString()), observer);
+    }
+    // 申请开发票
+    public void requestApplyInvoice(ReqInvoiceInfo info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postApplyInvoice(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+    public void requestApplyInvoice2(ReqInvoice2Info info, Observer<DemoRespBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.postApplyInvoice(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    public void requestBalanceRankingList(ReqBalanceRankingInfo info, Observer<DemoRespBean<OutInfoBean<List<ShouyRankingInfoBean>>>> observer) {
+        bindObserver(httpRetrofit.httpAPI.postBalanceRankingList(setHeadInfoString(info),getRequestBody(info)), observer);
+    }
+
+
+    //微信
+    public void requestWxAccesstoken(String path, Observer<WechatCodeBean> observer) {
+        bindObserver(httpRetrofit.httpAPI.wxAccesstoken(path), observer);
+    }
+
+    public void requestWxUserInfo(String path, Observer<WechatUserInfo> observer) {
+        bindObserver(httpRetrofit.httpAPI.wxUserInfo(path), observer);
+    }
+//    public void requestWxXcxEwm(String path,String jsonStr,Observer<BufferedInputStream> observer) {
+//
+//        bindObserver(httpRetrofit.httpAPI.wxXcxEwm(path,getRequestBody(info)),observer);
+//    }
+
+
+    public String setTimeHeadInfoString(){
+        return setTimeHeadInfoString("1.0");
+    }
+
+    public String setTimeHeadInfoString(String versionStr) {
+       return setHeadInfoString(versionStr, new ReqTimeInfo());
+    }
+
+    public String getCurrentTimeStr() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+        return sdf.format(System.currentTimeMillis());
+    }
+
+    public <B extends ReqTimeInfo> String setHeadInfoString(B info) {
+        return  this.setHeadInfoString("1.0", info);
+    }
+
+    public <B extends ReqTimeInfo> String setHeadInfoString(String versionStr, B info) {
+        info.setTimestamp(getCurrentTimeStr());
+        HeadInfoModel headInfoModel = new HeadInfoModel();
+        headInfoModel.setTimestamp(info.getTimestamp());
+        headInfoModel.setVersion(versionStr);
+        Logger.t("DemoModel 加密前 ：" + info.toString());
+        String myao = Util.MD5EncodeUtf8(info.toString());
+        Logger.t("DemoModel 加密后 ：" + myao);
+        headInfoModel.setSign(myao);
+        return headInfoModel.toString();
+    }
+
+    private <T> RequestBody getRequestBody(T t) {
+        return HttpBase.getRequestBody(gson.toJson(t));
+    }
+
+    //添加观察者模式
+    private <B> void bindObserver(Observable<B> observable, Observer<B> observer) {
+        observable.subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+    }
+
+
+}

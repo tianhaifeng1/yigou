@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_white"
+    tools:context=".activity.address.SelectSHAddressActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp30"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_c_f6"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        >
+
+
+        <ImageView
+            android:layout_width="@dimen/dp40"
+            android:layout_height="match_parent"
+            android:src="@mipmap/address_dw"
+            android:padding="@dimen/dp8"/>
+
+        <TextView
+            android:id="@+id/shaddress_search_citytext"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="拉萨市"
+            android:gravity="center_vertical"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp8"
+            android:layout_height="@dimen/dp8"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/t_bottom"
+            android:layout_marginRight="@dimen/dp8"
+            android:layout_marginLeft="@dimen/dp2"
+            />
+
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="@dimen/dp10"
+            android:background="@color/color_gray"
+            android:layout_gravity="center_vertical"
+            />
+        <ImageView
+            android:layout_width="@dimen/dp12"
+            android:layout_height="@dimen/dp12"
+            android:src="@mipmap/address_search"
+            android:layout_marginLeft="@dimen/dp8"
+            android:layout_marginRight="@dimen/dp8"
+            android:layout_gravity="center_vertical"
+            />
+
+        <TextView
+            android:id="@+id/shaddress_search"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp30"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp2"
+            android:text="搜索"
+            android:textColor="@color/textcolor_tishi"
+            android:textSize="@dimen/dp12"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/shaddress_remind_ll"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fef9cf"
+
+        >
+        <TextView
+            android:id="@+id/shaddress_remind"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="因各地区商品和配送服务不同，请选择准确的收货地址"
+            android:textSize="@dimen/dp12"
+            android:textColor="#f86d07"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:maxLines="1"
+            android:ellipsize="end"
+            />
+
+        <ImageView
+            android:id="@+id/shaddress_remind_delete"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="match_parent"
+            android:src="@mipmap/address_close"
+            android:padding="@dimen/dp15"
+            />
+
+    </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_fa"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:background="@color/color_white"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:text="定位地址"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_content"
+                    />
+
+                <TextView
+                    android:id="@+id/shaddress_dwtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_marginRight="@dimen/dp100"
+                    android:hint="定位中..."
+                    android:textColorHint="@color/color_content"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/dp16"
+                    android:textColor="@color/color_name"
+                    />
+
+                <TextView
+                    android:id="@+id/shaddress_dwbtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="重新定位"
+                    android:gravity="center_vertical|right"
+                    android:textSize="@dimen/dp16"
+                    android:paddingLeft="@dimen/dp6"
+                    android:textColor="#f86d07"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_alignParentRight="true"
+                    />
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/address_refersh"
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_toLeftOf="@id/shaddress_dwbtn"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/shaddress_rl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:background="@color/color_white"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:text="我的收货地址"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_content"
+                    />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shaddress_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp30"
+                    >
+
+                </androidx.recyclerview.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/shaddress_add"
+                    android:layout_width="120dp"
+                    android:layout_height="@dimen/dp36"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:text="新建地址"
+                    android:background="@drawable/shape_c_fe6f09"
+                    android:gravity="center"
+                    android:textColor="@color/color_white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/shaddress_recyclerview"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/shaddress_rl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:background="@color/color_white"
+                android:visibility="gone"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:text="我的收货地址"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_content"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp30"
+                    android:text="登录后使用常用的收货地址"
+                    android:textColor="@color/color_name"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dp30"
+                    />
+                <TextView
+                    android:id="@+id/shaddress_login"
+                    android:layout_width="@dimen/dp110"
+                    android:layout_height="@dimen/dp36"
+                    android:text="立即登录"
+                    android:textSize="@dimen/dp16"
+                    android:textColor="@color/color_white"
+                    android:gravity="center"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:background="@drawable/shape_c_fe6f09"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="@dimen/dp15"
+                android:paddingRight="@dimen/dp15"
+                android:background="@color/color_white"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp30"
+                    android:text="附近地址"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/color_content"
+                    />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/shaddress_fj_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp30"
+                    >
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

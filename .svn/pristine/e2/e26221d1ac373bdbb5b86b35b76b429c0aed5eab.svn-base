@@ -1,0 +1,133 @@
+package com.t.httplib.yigou.bean.resp;
+
+/**
+ * 商品列表的bean
+ */
+public class GoodsInfoBean {
+    /**
+     * 主键id
+     */
+    private Integer id;
+    private String goodsName;
+    /**
+     * 普通价格
+     */
+    private float sellPrice;
+    /**
+     * 会员价格
+     */
+    private float sellPriceDiscount;
+    /**
+     * 缩略图
+     */
+    private String goodsImage;
+
+    private int itemNum;
+    private int stock;
+
+    private int shopId;
+    private String shopName;
+
+    private int sellTotalNum;
+
+    private int specialSale;
+
+    private int isTemai;
+
+    public int getSpecialSale() {
+        return specialSale;
+    }
+
+    public void setSpecialSale(int specialSale) {
+        this.specialSale = specialSale;
+    }
+
+    public int getIsTemai() {
+        return isTemai;
+    }
+
+    public void setIsTemai(int isTemai) {
+        this.isTemai = isTemai;
+    }
+
+    public int getSellTotalNum() {
+        return sellTotalNum;
+    }
+
+    public void setSellTotalNum(int sellTotalNum) {
+        this.sellTotalNum = sellTotalNum;
+    }
+
+    public int getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(int shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public int getItemNum() {
+        return itemNum;
+    }
+
+    public void setItemNum(int itemNum) {
+        this.itemNum = itemNum;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
+
+    public float getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(float sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public float getSellPriceDiscount() {
+        return sellPriceDiscount;
+    }
+
+    public void setSellPriceDiscount(float sellPriceDiscount) {
+        this.sellPriceDiscount = sellPriceDiscount;
+    }
+
+    public String getGoodsImage() {
+        return goodsImage;
+    }
+
+    public void setGoodsImage(String goodsImage) {
+        this.goodsImage = goodsImage;
+    }
+
+}

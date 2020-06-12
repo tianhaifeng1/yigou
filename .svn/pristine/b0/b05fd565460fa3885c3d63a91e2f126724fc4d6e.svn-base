@@ -1,0 +1,54 @@
+package com.work.doctor.fruits.activity.adapter;
+
+import android.content.res.ColorStateList;
+import android.view.View;
+import android.widget.ImageView;
+
+import androidx.annotation.Nullable;
+
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
+import com.trjx.tbase.module.recyclermodule.TRecyclerAdapter;
+import com.trjx.tlibs.uils.GlideUtile;
+import com.work.doctor.fruits.R;
+
+import java.util.List;
+
+public class ShoppingJrtmAdapter extends TRecyclerAdapter<GoodsInfoBean> {
+
+    private boolean isShow;
+
+    public ShoppingJrtmAdapter(@Nullable List<GoodsInfoBean> data,boolean isShow) {
+        super( data);
+        this.isShow = isShow;
+    }
+
+    @Override
+    protected int addItemLayoutRes() {
+        return R.layout.item_shop_jrtm;
+    }
+    @Override
+    protected void convert(BaseViewHolder helper, GoodsInfoBean item) {
+        helper.setText(R.id.item_shop_name,item.getGoodsName());
+        helper.setText(R.id.item_shop_price,"￥"+item.getSellPriceDiscount());
+        GlideUtile.bindImageView(mContext, item.getGoodsImage(), helper.getView(R.id.item_shop_icon));
+        helper.addOnClickListener(R.id.item_shop_cart);
+
+        if(isShow){
+            helper.getView(R.id.item_shop_tm).setVisibility(View.VISIBLE);
+        }else{
+            helper.getView(R.id.item_shop_tm).setVisibility(View.GONE);
+        }
+
+        if (item.getSpecialSale() == 1) {
+            helper.getView(R.id.item_shop_cart).setEnabled(false);
+            ((ImageView) helper.getView(R.id.item_shop_cart))
+                    .setImageTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.color_gray)));
+        }else{
+            helper.getView(R.id.item_shop_cart).setEnabled(true);
+            ((ImageView) helper.getView(R.id.item_shop_cart))
+                    .setImageTintList(ColorStateList.valueOf(mContext.getResources().getColor(R.color.color_red)));
+        }
+
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/ttitle" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.trjx.tlibs.views.SidebarView2
+            android:id="@+id/siderbarview"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            app:sv2_bg_click_color="@color/color_gray"
+            app:sv2_text_color="@color/textcolor_black"
+            app:sv2_text_click_color="@color/textcolor_point"
+            app:sv2_text_size="@dimen/dp14"
+            app:sv2_min_len="27"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

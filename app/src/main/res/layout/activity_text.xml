@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_white"
+    tools:context=".TextActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- 第一层：地图层 -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/shape_c_f6"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginRight="@dimen/dp15"
+        >
+
+        <ImageView
+            android:id="@+id/as_icon"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/address_dw"
+            android:paddingLeft="@dimen/dp13"
+            android:paddingRight="@dimen/dp5"
+            />
+
+        <TextView
+            android:id="@+id/as_citytext"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:text="city"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp10"
+            />
+
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="@dimen/dp10"
+            android:background="@color/color_gray"
+            android:layout_gravity="center_vertical"
+
+            />
+        <ImageView
+            android:id="@+id/as_searchicon"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/address_search"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp6"
+            />
+
+        <EditText
+            android:id="@+id/as_searchcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="搜索内容"
+            android:imeActionLabel="搜索"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp"
+            />
+    </LinearLayout>
+
+</LinearLayout>

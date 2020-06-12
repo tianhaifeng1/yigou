@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.SigninActivity">
+
+    <include layout="@layout/ttitle" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/signinbottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp90"
+            android:background="@mipmap/signin_back">
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_marginRight="@dimen/dp10"
+            android:background="@mipmap/signin_list_background"
+            android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:paddingLeft="@dimen/dp20"
+                    android:paddingRight="@dimen/dp20">
+
+                    <TextView
+                        android:id="@+id/signin_param"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="已连续签到0天"
+                        android:textColor="@color/color_name" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp30"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/signin_txt_rule"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/signintext"
+                            android:text="签到规则" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/signintext"
+                            android:text=" | " />
+
+                        <TextView
+                            android:id="@+id/signin_record"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/signintext"
+                            android:text="记录" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp20"
+                    android:paddingLeft="@dimen/dp20"
+                    android:paddingRight="@dimen/dp12">
+
+                    <TextView
+                        android:id="@+id/signin_xq"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="连续签到7天可获得雪花勇闯天涯啤酒500ml一箱免费送"
+                        android:textSize="@dimen/sp12" />
+
+                </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/signin_recy_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/signin_recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp6"
+                    android:layout_marginRight="@dimen/dp6"
+                    android:minHeight="@dimen/dp10"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"></androidx.recyclerview.widget.RecyclerView>
+                <!--            android:background="@drawable/Signin_info"-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp15"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_marginRight="@dimen/dp15">
+
+                    <ImageView
+                        android:id="@+id/signin_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp140"
+                        android:scaleType="fitXY"></ImageView>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/signin_but"
+                    android:layout_width="@dimen/dp200"
+                    android:layout_height="@dimen/dp50"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp20"
+                    android:layout_marginBottom="@dimen/dp20"
+                    android:background="@drawable/signin_btn" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/signin_complete_show"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_marginTop="@dimen/dp30"
+                    android:layout_width="@dimen/dp150"
+                    android:layout_height="@dimen/dp150"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/signin_complete"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dp25"
+                    android:textColor="@color/color_name"
+                    android:gravity="center"
+                    android:text="签到完成"/>
+                <TextView
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="您已连续7天签到完成"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

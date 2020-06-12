@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/dp10"
+    android:layout_marginRight="@dimen/dp10"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/waikuang_r5_white"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_shopcart_out_event_selectall2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:src="@mipmap/round_n"/>
+
+        <ImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:src="@mipmap/goodscart_shopicon"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp50"
+            />
+
+        <TextView
+            android:id="@+id/item_shopcart_out_shopname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp25"
+            tools:text="如龙配送"
+            android:textColor="@color/color_name"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="@dimen/dp90"
+            />
+        <TextView
+            android:id="@+id/item_shopcart_out_shopaddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp25"
+            android:layout_below="@id/item_shopcart_out_shopname"
+            tools:text="如龙配送"
+            android:gravity="center_vertical"
+            android:textColor="@color/color_content"
+            android:layout_marginLeft="@dimen/dp90"
+            android:textSize="@dimen/dp12"
+            />
+        <TextView
+            android:id="@+id/item_shopcart_out_shopnotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp25"
+            android:layout_below="@id/item_shopcart_out_shopaddress"
+            android:text="(以下商品不在配送范围)"
+            android:gravity="center_vertical"
+            android:textColor="@color/textcolor_point"
+            android:layout_marginLeft="@dimen/dp90"
+            android:textSize="@dimen/dp12"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_alignParentBottom="true"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_shopcart_out_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:id="@+id/item_shopcart_out_eventll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_shopcart_out_event_selectall"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:src="@mipmap/round_n" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="全选"
+            android:textColor="@color/color_name"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/item_shopcart_out_event_pricetotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp10"
+            android:text="合计: ￥0.00"
+            android:textColor="@color/color_name" />
+
+        <Button
+            android:id="@+id/item_shopcart_out_event_checkout"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_red"
+            android:text="结算"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp14" />
+
+        <Button
+            android:id="@+id/item_shopcart_out_event_delete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:background="@drawable/selector_btn_red"
+            android:text="删除"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp14"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

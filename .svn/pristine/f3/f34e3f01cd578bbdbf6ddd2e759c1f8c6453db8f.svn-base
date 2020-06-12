@@ -1,0 +1,6 @@
+package com.work.rulong.delivery.activity;
+
+import com.trjx.tbase.mvp.TView;
+
+public interface Main2View extends TView {
+}

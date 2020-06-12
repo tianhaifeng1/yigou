@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp10"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:background="@color/color_white"
+        >
+        
+        <TextView
+            android:id="@+id/item_orderlist_shopname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_centerVertical="true"
+            tools:text="儒龙好医生"
+            android:textColor="@color/color_name"
+            />
+        
+        <TextView
+            android:id="@+id/item_orderlist_orderstatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" 
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            tools:text="等待发货"
+            android:textColor="@color/textcolor_point"
+            />
+        
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/item_orderlist_goodslist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/item_orderlist_goodstotal"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp30"
+        tools:text="共1件商品  合计：￥3.99"
+        android:textColor="@color/color_name"
+        android:gravity="center_vertical|right"
+        android:paddingRight="@dimen/dp10"
+        android:background="@color/color_white"
+        />
+
+    <RelativeLayout
+        android:id="@+id/item_orderlist_bottom_rl"
+        android:layout_width="match_parent"
+        android:padding="@dimen/dp10"
+        android:layout_height="@dimen/dp50"
+        android:background="@color/color_white"
+        android:visibility="gone"
+        >
+        <TextView
+            android:id="@+id/item_orderlist_btnright"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="match_parent"
+            tools:text="申请退款"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:background="@drawable/shape_r_red"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/item_orderlist_btnleft"
+            android:layout_width="@dimen/dp80"
+            android:layout_height="match_parent"
+            tools:text="提醒发货"
+            android:gravity="center"
+            android:textColor="@color/color_name"
+            android:background="@drawable/shape_r_gray_line"
+            android:layout_toLeftOf="@id/item_orderlist_btnright"
+            android:layout_marginRight="@dimen/dp16"
+            />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/ttitle" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/yhj_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/color_white"
+        app:tabIndicatorColor="@color/textcolor_point"
+        app:tabSelectedTextColor="@color/textcolor_point"
+        app:tabTextColor="@color/color_name"
+        app:tabMode="fixed"
+        app:tabGravity="fill"
+        app:tabRippleColor="#f2f2f2"
+        >
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <LinearLayout
+        android:id="@+id/yhj_center"
+        android:layout_width="match_parent"
+        android:layout_margin="@dimen/dp10"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/waikuang_r5_white">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@mipmap/yhj"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="领券中心"
+            android:paddingLeft="10dp"
+            android:layout_weight="1"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/right"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/layout_recyclerview" />
+
+
+</LinearLayout>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@mipmap/shouyi_bg"
+    tools:context=".activity.vip.MyEarningRankingActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/waikuang_r5_white"
+                android:layout_marginTop="10dp"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/frist_rl"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:gravity="bottom"
+                    android:paddingBottom="20dp"
+                    >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/sy_frist"
+                        android:layout_centerHorizontal="true"
+                        />
+                    <ImageView
+                        android:id="@+id/frist_img"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="26dp"
+                        android:padding="2dp"
+                        android:background="@mipmap/sy_frist_c"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/frist_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frist_img"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/title_color"
+                        />
+                    <TextView
+                        android:id="@+id/frist_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/frist_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorRedFont"
+                        />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/second_rl"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:paddingBottom="20dp"
+                    android:layout_toLeftOf="@id/frist_rl"
+                    android:visibility="gone"
+                    >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/sy_second"
+                        android:layout_centerHorizontal="true"
+
+                        />
+                    <ImageView
+                        android:id="@+id/second_img"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="26dp"
+                        android:padding="2dp"
+                        android:background="@mipmap/sy_second_c"
+                        android:layout_centerHorizontal="true"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/second_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/second_img"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/title_color"
+                        />
+                    <TextView
+                        android:id="@+id/second_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/second_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:id="@+id/third_rl"
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:paddingBottom="20dp"
+                    android:layout_toRightOf="@id/frist_rl"
+                    android:visibility="gone"
+                    >
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@mipmap/sy_third"
+                        android:layout_centerHorizontal="true"
+                        />
+                    <ImageView
+                        android:id="@+id/third_img"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_marginTop="26dp"
+                        android:padding="2dp"
+                        android:background="@mipmap/sy_third_c"
+                        android:layout_centerHorizontal="true"
+                        />
+
+                    <TextView
+                        android:id="@+id/third_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/third_img"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/title_color"
+                        />
+                    <TextView
+                        android:id="@+id/third_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/third_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="5dp"
+                        />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <com.trjx.tlibs.views.TListView
+                android:id="@+id/tlistview"
+                android:layout_width="match_parent"
+                android:layout_marginTop="220dp"
+                android:divider="@color/transparent"
+                android:dividerHeight="0dp"
+                android:layout_height="wrap_content"></com.trjx.tlibs.views.TListView>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前暂无排名"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:textSize="16dp"
+        android:textColor="@color/color_white"
+        />
+
+</LinearLayout>

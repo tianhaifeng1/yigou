@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp10"
+    android:background="@color/color_white">
+
+    <TextView
+        android:id="@+id/item_czrecord_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="money"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/textcolor_point"
+        android:gravity="right"
+        />
+    <TextView
+        android:id="@+id/item_czrecord_money_sm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        tools:text="money"
+        android:textSize="@dimen/dp12"
+        android:layout_below="@id/item_czrecord_money"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/textcolor_point"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/dp5"
+        />
+
+    <TextView
+        android:id="@+id/item_czrecord_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="购买商品"
+        android:textColor="@color/color_name"
+        android:textSize="@dimen/dp16"
+        android:paddingRight="@dimen/dp10"
+        android:layout_toLeftOf="@id/item_czrecord_money"
+        />
+    <TextView
+        android:id="@+id/item_czrecord_datetime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        tools:text="time"
+        android:textSize="@dimen/dp12"
+        android:textColor="@color/color_content"
+        android:layout_below="@id/item_czrecord_title"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/item_czrecord_datetime"
+        android:background="@color/color_line"
+        android:layout_marginTop="@dimen/dp10"
+        />
+
+</RelativeLayout>

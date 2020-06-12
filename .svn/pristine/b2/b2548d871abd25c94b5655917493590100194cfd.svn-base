@@ -1,0 +1,23 @@
+package com.t.httplib.yigou.bean.req;
+
+/**
+ * 骑手位置请求参数Bean
+ */
+public class ReqHorsemanInfo extends ReqTimeInfo {
+
+    private String horsemanId;
+
+    public String getHorsemanId() {
+        return horsemanId;
+    }
+
+    public void setHorsemanId(String horsemanId) {
+        this.horsemanId = horsemanId;
+    }
+
+    @Override
+    public String toString() {
+        return "horsemanId" + horsemanId +
+                "timestamp" + timestamp;
+    }
+}

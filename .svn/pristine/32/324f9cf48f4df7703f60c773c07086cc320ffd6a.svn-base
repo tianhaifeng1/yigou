@@ -1,0 +1,1 @@
+[{"outputType":{"type":"INSTANT_APP_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":200,"versionName":"2.0.0.13","enabled":true,"outputFile":"yigou-release.apk","fullName":"release","baseName":"release"},"path":"AndroidManifest.xml","properties":{"packageId":"com.work.doctor.fruits","split":"","minSdkVersion":"21"}}]

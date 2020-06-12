@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp5">
+
+
+    <RelativeLayout
+        android:id="@+id/item_height_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/item_coupon_texttype"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:background="@mipmap/yhj_no"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="满减券"
+            android:textColor="@color/color_white"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:id="@+id/item_coupon_rl"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_toRightOf="@id/item_coupon_texttype"
+            android:background="@color/color_white"
+            android:paddingLeft="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp10"
+                android:gravity="bottom">
+
+                <TextView
+                    android:layout_width="@dimen/dp20"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:text="￥"
+                    android:textColor="@color/color_content"
+                    android:textSize="@dimen/dp16" />
+
+                <TextView
+                    android:id="@+id/item_coupon_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="00.00"
+                    android:textColor="@color/color_content"
+                    android:textSize="26sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_coupon_term"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp20"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp50"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="无门槛"
+                android:textColor="@color/color_content"
+                android:textSize="@dimen/dp10" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/item_coupon_rlright"
+            android:layout_width="80dp"
+            android:layout_height="@dimen/dp80"
+            android:layout_alignParentRight="true"
+            android:background="@color/color_white">
+
+            <ImageView
+                android:id="@+id/item_coupon_icon"
+                android:layout_width="@dimen/dp50"
+                android:layout_height="@dimen/dp50"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/dp15"
+                android:src="@mipmap/yishiyong"
+                android:visibility="gone"
+                />
+
+
+            <ImageView
+                android:id="@+id/item_coupon_icon_select"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:padding="30dp"
+                android:src="@mipmap/round_n" />
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80"
+            android:layout_toRightOf="@id/item_coupon_rl"
+            android:background="@color/color_white"
+            android:orientation="vertical"
+            android:paddingRight="5dp"
+            android:layout_toLeftOf="@id/item_coupon_rlright"
+            >
+
+            <TextView
+                android:id="@+id/item_coupon_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp5"
+                android:ellipsize="end"
+                android:lineSpacingExtra="@dimen/dp2"
+                android:maxLines="2"
+                android:text="仅限如龙易购n商店指定商品使用商店指定商品使"
+                android:textColor="@color/color_name"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/item_coupon_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/dp5"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:maxLines="1"
+                android:text="2019.05.04 - 2019.10.31"
+                android:textColor="@color/color_content"
+                android:textSize="@dimen/dp12" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/item_coupon_bottomtext"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/dp80"
+            android:layout_toRightOf="@id/item_coupon_texttype"
+            android:background="@color/color_white"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingLeft="20dp"
+            android:text="所结算的商品中没有符合条件的商品"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/dp12" />
+
+        <View
+            android:id="@+id/item_coupon_bottomline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="@dimen/dp80"
+            android:layout_toRightOf="@id/item_coupon_texttype"
+            android:background="@color/color_line" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

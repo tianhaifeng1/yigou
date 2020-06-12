@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">yigou</string>
+
+    <string name="to_be_paid">待支付</string>
+    <string name="to_send_goods">待发货</string>
+    <string name="for_goods">待收货</string>
+    <string name="to_evaluate">待评价</string>
+    <string name="refund">退款</string>
+
+
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unsupported">不支持错误</string>
+    <string name="errcode_unknown">发送返回</string>
+
+
+    <string name="instance_context">
+1、电子发票和纸质发票具备同等法律效力，可作为用户维权保修的有效凭据。\n
+2、请确保开票抬头，纳税人识别号或统一社会信用代码的准确性，开票成功后无法更改。\n
+3、自2017年7月1日起，增值税普通发票的开具不填写纳税人识别号或统一社会信用代码不得作为税收凭证。
+</string>
+
+</resources>

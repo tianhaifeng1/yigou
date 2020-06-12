@@ -1,0 +1,15 @@
+package com.work.rulong.delivery.activity;
+
+import com.trjx.tbase.mvp.TView;
+import com.work.rulong.delivery.bean.TestBean;
+import com.work.rulong.delivery.bean.resp.GoodsListModel;
+
+import java.util.List;
+
+public interface MainView extends TView {
+
+    void testSuccess(TestBean testBean);
+    void test2Success(List<GoodsListModel> goodsList);
+    void test3Success(GoodsListModel goodsListModel);
+
+}

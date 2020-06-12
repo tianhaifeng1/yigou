@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.tongruijun8.TongAndroidX:tbase:0.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/977b7a81c0951e1cd46c091ee1a02720/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/977b7a81c0951e1cd46c091ee1a02720/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.tongruijun8.TongAndroidX/tbase/0.0.1/9b86b07d3a9fb5df909b1d2cffbdee0f9258c5da/tbase-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

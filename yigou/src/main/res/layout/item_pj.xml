@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/selcet_ripple_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp10"
+        >
+
+        <ImageView
+            android:id="@+id/item_pj_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/default_img" />
+
+        <TextView
+            android:id="@+id/item_pj_name"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@id/item_pj_icon"
+            android:layout_toLeftOf="@id/item_pj_time"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/sp14"
+            android:text="name"
+            />
+
+        <TextView
+            android:id="@+id/item_pj_time"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            tools:text="2019.01.15"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/dp10"
+            />
+
+        <TextView
+            android:id="@+id/item_pj_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp30"
+            android:lineSpacingExtra="@dimen/dp5"
+            android:layout_toRightOf="@id/item_pj_icon"
+            android:layout_below="@id/item_pj_name"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/sp14"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

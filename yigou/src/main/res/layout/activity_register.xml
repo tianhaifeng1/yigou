@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/ttitle" />
+
+    <EditText
+        android:id="@+id/login_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp30"
+        android:background="@color/transparent"
+        android:hint="请输入手机号码"
+        android:inputType="number"
+        android:maxLength="11"
+        tools:text="13112345678"
+        android:textColor="@color/color_name"
+        android:textSize="@dimen/sp14"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        android:paddingLeft="@dimen/dp10"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        >
+
+        <EditText
+            android:id="@+id/login_psw"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            tools:text="7342"
+            android:textColor="@color/color_name"
+            android:textSize="@dimen/sp14"
+            android:paddingLeft="@dimen/dp10"/>
+
+        <TextView
+            android:id="@+id/login_sendsms"
+            android:layout_width="115dp"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/dp3"
+            android:gravity="center"
+            android:text="发送验证码"
+            android:textColor="@color/color_zhuse"
+            android:textSize="@dimen/sp12" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp30"
+        android:background="@drawable/selector_longin"
+        android:text="登录"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/sp16"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp5"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        >
+
+        <CheckBox
+            android:id="@+id/login_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/dp5"
+            android:checked="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我已阅读并同意"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/sp12" />
+
+        <TextView
+            android:id="@+id/login_yhxy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="《儒龙易购用户协议》"
+            android:textColor="@color/color_zhuse"
+            android:textSize="@dimen/sp12" />
+    </LinearLayout>
+
+
+</LinearLayout>

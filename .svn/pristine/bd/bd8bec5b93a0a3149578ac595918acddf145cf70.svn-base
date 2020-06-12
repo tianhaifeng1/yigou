@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_ea"
+
+    tools:context=".activity.order.OrderRefundActivity">
+
+    <include layout="@layout/ttitle"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="75dp"
+
+        />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guideline5"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/order_refund_ll_top"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@mipmap/bg_txsq" >
+
+                <TextView
+                    android:id="@+id/order_refund_toptext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="已申请退款"
+                    android:textStyle="bold"
+                    android:textColor="@color/color_name"
+                    android:textSize="@dimen/dp20"
+                    />
+
+                <TextView
+                    android:id="@+id/order_refund_toptext2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="请等待商家确认请等待商家确认请等待商家确认请等待商家确认请等待商家确认请等待商家确认请等待商家确认"
+                    android:textColor="@color/color_name"
+                    android:textSize="@dimen/dp16"
+                    android:layout_marginTop="@dimen/dp5"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/order_refund_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="订单总价"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_name"
+                    />
+                <TextView
+                    android:id="@+id/order_refund_totalprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    tools:text="￥3.12"
+                    android:textStyle="bold"
+                    android:textColor="@color/textcolor_point"
+                    android:textSize="@dimen/dp16"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/order_refund_rl_tuikuai"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp70"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/dp26"
+                    android:layout_height="@dimen/dp26"
+                    android:src="@mipmap/t_tuikuan"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:text="仅退款"
+                    android:textColor="@color/color_name"
+                    android:layout_marginLeft="@dimen/dp40"
+                    android:textSize="@dimen/dp16"
+                    android:lineHeight="@dimen/dp20"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/dp5"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp30"
+                    android:text="未收到货（包含未签收）"
+                    android:textColor="@color/color_content"
+                    android:textSize="@dimen/dp14"
+                    android:layout_marginLeft="@dimen/dp40"
+                    android:layout_marginTop="@dimen/dp35"
+                    android:gravity="center_vertical"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_line" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/order_refund_question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp50"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp5"
+                android:paddingTop="@dimen/dp15"
+                android:paddingBottom="@dimen/dp15"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退款原因"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_name"
+                    android:lineHeight="@dimen/dp20"
+                    />
+
+                <TextView
+                    android:id="@+id/order_refund_questiontext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp90"
+                    android:hint="请选择退款原因"
+                    android:lineSpacingExtra="@dimen/dp5"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_content"
+                    android:lineHeight="@dimen/dp20"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/order_refund_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp50"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:layout_marginTop="@dimen/dp5"
+                android:paddingTop="@dimen/dp15"
+                android:paddingBottom="@dimen/dp15"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退款金额"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_name"
+                    android:lineHeight="@dimen/dp20"
+                    />
+
+                <TextView
+                    android:id="@+id/order_refund_pricetext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp90"
+                    tools:text="￥3.12"
+                    android:textSize="16dp"
+                    android:textColor="@color/textcolor_point"
+                    android:lineHeight="@dimen/dp20"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/order_refund_beizhu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="包含邮费"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                />
+            <RelativeLayout
+                android:id="@+id/order_refund_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/dp50"
+                android:background="@color/color_white"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp15"
+                android:paddingBottom="@dimen/dp15"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="退款说明"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_name"
+                    android:lineHeight="@dimen/dp20"
+                    />
+
+                <EditText
+                    android:id="@+id/order_refund_smtext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp90"
+                    android:hint="请输入退款说明"
+                    android:textSize="16dp"
+                    android:textColor="@color/color_content"
+                    android:lineHeight="@dimen/dp20"
+                    android:background="@color/transparent"
+                    android:lineSpacingExtra="@dimen/dp5"
+                    />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/order_refund_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="退款原因：不想要了\n退款金额：￥3.12\n退款备注：234\n申请时间：2019-12-02 17:06:50"
+                android:paddingLeft="@dimen/dp12"
+                android:paddingRight="@dimen/dp12"
+                android:paddingTop="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10"
+                android:background="@color/color_white"
+                android:layout_marginTop="@dimen/dp5"
+                android:textSize="@dimen/dp14"
+                android:lineSpacingExtra="@dimen/dp5"
+                android:textColor="@color/color_content"
+                android:visibility="gone"
+                />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp50"/>
+            <TextView
+                android:id="@+id/order_refund_commit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:text="提交"
+                android:textColor="@color/color_white"
+                android:gravity="center"
+                android:background="@drawable/selector_longin"
+                android:layout_marginLeft="@dimen/dp40"
+                android:layout_marginRight="@dimen/dp40"
+                />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp50"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

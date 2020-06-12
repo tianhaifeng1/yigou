@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_bg_ea">
+
+    <include layout="@layout/ttitle" />
+
+    <RelativeLayout
+        android:id="@+id/agm_rl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_white"
+        >
+        <ImageView
+            android:layout_width="@dimen/dp12"
+            android:layout_height="@dimen/dp12"
+            android:src="@mipmap/jrtm_remind"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp20"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="此分类下每件商品一天仅限购一件"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_centerVertical="true"
+            android:maxLines="1"
+            android:textSize="@dimen/dp12"
+            android:textColor="#ec3d57"
+            />
+    </RelativeLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_bg_ff"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:paddingLeft="@dimen/item_recyclerview_space_h"
+                android:paddingRight="@dimen/item_recyclerview_space_h"
+                android:paddingTop="@dimen/item_recyclerview_space_v"
+                android:paddingBottom="@dimen/item_recyclerview_space_v"
+                android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
+
+            <include layout="@layout/layout_defaultpage" />
+
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

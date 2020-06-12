@@ -1,0 +1,7 @@
+package com.work.rulong.delivery.bean.req;
+
+public interface ReqBaseInfo {
+
+    String getHeadInfo();
+
+}

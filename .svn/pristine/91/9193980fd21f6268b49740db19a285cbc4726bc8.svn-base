@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="170dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="5dp"
+    android:background="@color/color_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:padding="@dimen/dp5"
+        >
+
+        <ImageView
+            android:id="@+id/item_shop_icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp100"
+            android:src="@mipmap/page1"
+            android:scaleType="fitCenter"
+            />
+        <ImageView
+            android:id="@+id/item_shop_cart"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:padding="@dimen/dp5"
+            android:src="@mipmap/shopping_cart"
+            />
+        <TextView
+            android:id="@+id/item_shop_name"
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            tools:text="名称"
+            android:textSize="12dp"
+            android:textColor="@color/color_name"
+            android:layout_below="@id/item_shop_icon"
+            />
+        <TextView
+            android:id="@+id/item_shop_price"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:gravity="center_vertical"
+            android:text="￥0"
+            android:textSize="13dp"
+            android:maxLines="1"
+            android:textColor="@color/textcolor_point"
+            android:layout_below="@id/item_shop_name"
+            android:layout_toLeftOf="@id/item_shop_cart"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

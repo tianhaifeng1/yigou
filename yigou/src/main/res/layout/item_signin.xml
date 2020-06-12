@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/dp5"
+    android:background="@drawable/item_signin_background">
+
+    <RelativeLayout
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        android:id="@+id/item_signin_rel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        >
+
+        <ImageView
+            android:id="@+id/item_signin_icon"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80"
+            android:scaleType="fitCenter"
+            />
+
+    </RelativeLayout>
+    <TextView
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        android:id="@+id/item_signin_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp35"
+        android:maxLines="1"
+        android:gravity="center"
+        tools:text="名称"
+        android:textColor="@color/color_white"
+        android:layout_below="@id/item_signin_rel"
+        />
+    <TextView
+
+        android:id="@+id/item_signin_day"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp25"
+        android:gravity="center"
+        android:textColor="@color/color_name"
+        tools:text="1天"
+        android:background="@drawable/item_signin_text_ackground"
+        android:layout_below="@id/item_signin_name"
+        />
+
+    <ImageView
+        android:id="@+id/signin_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp150"
+        android:src="@mipmap/signin_res"
+        android:scaleType="center"
+        android:background="@color/colorsignin"
+        >
+    </ImageView>
+
+
+
+</RelativeLayout>

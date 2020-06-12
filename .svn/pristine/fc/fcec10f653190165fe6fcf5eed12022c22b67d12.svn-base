@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/ttitle" />
+
+    <ImageView
+        android:id="@+id/wx_pay_img"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:src="@mipmap/t_zf_success" />
+
+    <TextView
+        android:id="@+id/wx_pay_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="订单支付成功"
+        android:textColor="@color/color_name"
+        android:textSize="@dimen/dp16" />
+
+    <TextView
+        android:id="@+id/wx_pay_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp20"
+        android:text="我们将尽快为您发货!"
+        android:textColor="@color/color_content"
+        android:textSize="@dimen/dp16" />
+
+
+    <RelativeLayout
+        android:id="@+id/wx_pay_rl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp50">
+
+        <TextView
+            android:id="@+id/wx_pay_look"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@drawable/waikuang_r5_zhuseline"
+            android:gravity="center"
+            android:text="查看订单"
+            android:textColor="@color/color_name" />
+
+        <TextView
+            android:id="@+id/wx_pay_main"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
+            android:layout_toRightOf="@id/wx_pay_look"
+            android:background="@drawable/waikuang_r5_zhuseline"
+            android:gravity="center"
+            android:text="随便逛逛"
+            android:textColor="@color/color_name" />
+
+    </RelativeLayout>
+
+</LinearLayout>

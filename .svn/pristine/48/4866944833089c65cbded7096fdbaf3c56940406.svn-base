@@ -1,0 +1,27 @@
+package com.work.doctor.fruits.activity.order;
+
+import com.t.httplib.yigou.bean.WechetPayInfo;
+import com.t.httplib.yigou.bean.resp.AddressInfoBean;
+import com.t.httplib.yigou.bean.resp.DistributionInfoBean;
+import com.t.httplib.yigou.bean.resp.OrderDetailInfoBean;
+import com.trjx.tbase.mvp.TView;
+
+import java.util.List;
+
+public interface GoodsAffirmView extends TView {
+
+    void getInfoSuccess(OrderDetailInfoBean infoBean);
+
+    void getInfoFail(String msg);
+
+    void getListDataSuccess(List<AddressInfoBean> beanList);
+
+    void updateAddressSuccess(AddressInfoBean infoBean);
+
+    void getDistributionInfoSuccess(List<DistributionInfoBean> list);
+
+    void getSubmitOrderSuccess(String systemOrderNo);
+    void getPayMentSuccess(WechetPayInfo infoBean);
+
+    void applyInvoiceSuccess();
+}

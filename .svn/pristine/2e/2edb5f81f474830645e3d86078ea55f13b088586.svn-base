@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/dp90">
+
+    <ImageView
+        android:id="@+id/item_shoptype_icon"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:src="@mipmap/default_img"
+        android:paddingTop="@dimen/dp16"/>
+
+    <TextView
+        android:id="@+id/item_shoptype_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp30"
+        android:text="Type1"
+        android:textSize="@dimen/dp14"
+        android:gravity="center"
+        android:textColor="@color/color_name"
+        android:paddingBottom="@dimen/dp5"
+        />
+
+</LinearLayout>

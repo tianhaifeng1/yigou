@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/lbm_rl"
+    >
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true" />
+
+    <ImageView
+        android:id="@+id/dingwei"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:src="@drawable/huidaoyuandian"
+        android:padding="@dimen/dp10"
+        android:background="@drawable/yuandian_bg"
+        android:layout_margin="@dimen/dp20"
+        />
+
+</RelativeLayout>

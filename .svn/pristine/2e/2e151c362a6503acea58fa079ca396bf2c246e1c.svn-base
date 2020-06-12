@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="@dimen/dp100"
+    android:background="@color/color_white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_chongzhi_blue"
+        >
+
+        <TextView
+            android:id="@+id/item_paylist_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1000 元"
+            android:layout_centerHorizontal="true"
+            android:textSize="16sp"
+            android:textColor="@color/color_blue"
+            />
+        <TextView
+            android:id="@+id/item_paylist_real_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="售价：0.01"
+            android:textSize="12sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/item_paylist_number"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/color_blue"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

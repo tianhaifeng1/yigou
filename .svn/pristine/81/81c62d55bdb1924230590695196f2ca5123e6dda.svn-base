@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tong="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp30"
+        android:orientation="horizontal"
+        android:paddingLeft="12dp"
+        android:paddingRight="20dp">
+
+        <com.work.doctor.fruits.views.DotView
+            android:id="@+id/item_wl_dotview"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="@dimen/dp30"
+            tong:dotview_color="@color/color_darkgray"
+            tong:dotview_color_line="@color/color_line"
+            tong:dotview_hollow_width="2dp"
+            tong:dotview_line_size="2dp"
+            tong:dotview_size="4dp"
+            tong:dotview_type="fill" />
+
+        <TextView
+            android:id="@+id/item_wl_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="name" />
+
+        <TextView
+            android:id="@+id/item_wl_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical|right"
+            android:text="time" />
+    </LinearLayout>
+</RelativeLayout>

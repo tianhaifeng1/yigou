@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="tswitch_tab_space">2dp</dimen>
+
+    <!-- TFilterModule2  -->
+    <dimen name="filter_tab_height">36dp</dimen>
+    <dimen name="filter_item_item_height">40dp</dimen>
+
+
+    <dimen name="dp210">210dp</dimen>
+
+</resources>

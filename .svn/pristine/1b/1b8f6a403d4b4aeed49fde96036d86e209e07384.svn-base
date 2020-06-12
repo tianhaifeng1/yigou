@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp80"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:paddingTop="@dimen/dp5"
+        android:paddingBottom="@dimen/dp5"
+        android:paddingLeft="@dimen/dp15"
+        >
+
+        <TextView
+            android:id="@+id/dialog_address_select_item_address"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:layout_marginRight="@dimen/dp50"
+            android:textColor="@color/color_name"
+            android:textSize="14dp"
+            tools:text="西藏自治区拉萨市当雄县"
+            android:maxLines="2"
+            android:ellipsize="end"
+            />
+
+        <TextView
+            android:id="@+id/dialog_address_select_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:layout_below="@id/dialog_address_select_item_address"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            tools:text="大壮" />
+
+        <TextView
+            android:id="@+id/dialog_address_select_item_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@id/dialog_address_select_item_name"
+            android:layout_marginRight="@dimen/dp50"
+            android:layout_below="@id/dialog_address_select_item_address"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp20"
+            android:textColor="@color/color_name"
+            android:textSize="12dp"
+            tools:text="15333611256" />
+
+        <ImageView
+            android:id="@+id/dialog_address_select_item_select"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp70"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp15"
+            android:gravity="center"
+            android:src="@mipmap/round_n"
+            android:text="编辑" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_bg_fa"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,38 @@
+package com.work.rulong.delivery.http;
+
+import com.work.rulong.delivery.bean.DemoRespBean;
+import com.work.rulong.delivery.bean.TestBean;
+import com.work.rulong.delivery.bean.resp.GoodsListModel;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
+
+public interface DemoAPI {
+
+    //
+    @FormUrlEncoded
+    @POST("member/memberInfo")
+    Observable<DemoRespBean<TestBean>> test(@Field("userId") String userId);
+
+    @FormUrlEncoded
+    @POST("goods/goodsList")
+    Observable<DemoRespBean<GoodsListModel>> test2(@Field("types") int types,
+                                                   @Field("relatedCatids") int relatedCatids,
+                                                   @Field("page") int page,
+                                                   @Field("pageSize") int pageSize
+    );
+
+    @POST("goods/goodsList")
+    Observable<DemoRespBean<List<GoodsListModel>>> test3(@Body RequestBody body);
+
+    @POST("http://192.168.1.152:8080/demo/test/goods/goodsList")
+    Observable<DemoRespBean<GoodsListModel>> test3_(@Body RequestBody body);
+
+
+}

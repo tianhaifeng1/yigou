@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.work.doctor.fruits"
+    android:targetSandboxVersion="2"
+    android:versionCode="201"
+    android:versionName="2.0.1" >
+
+    <uses-sdk
+        android:minSdkVersion="21"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- 必需  一些系统要求的权限，如 访问网络等 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <!-- 可选 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+
+    <application
+        android:name="com.work.doctor.fruits.base.DemoApplication"
+        android:allowBackup="false"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:icon="@mipmap/ic_applogo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_applogo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true" >
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="k8u3A3iSwc0Xxa67qmaMezgZs6HK7Mvk" />
+
+        <!-- 极光相关 -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="c6b49eaac5ff765f762bb973" />
+
+        <activity
+            android:name="com.tencent.bugly.beta.ui.BetaActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|locale"
+            android:theme="@android:style/Theme.Translucent" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.work.doctor.fruits.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_filepaths" />
+        </provider>
+
+        <activity android:name="com.work.doctor.fruits.activity.Goods.GoodsListActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.Goods.GoodsListMOMoreActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.RegisterActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.coupon.CouponCenterActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.coupon.CouponActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.coupon.CouponUseActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MVipActivity" />
+        <activity android:name="com.work.doctor.fruits.base.DemoWebActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.SettingActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.Goods.GoodsDetialActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.Goods.GoodsDetial2Activity" />
+        <activity android:name="com.work.doctor.fruits.activity.myrecycler.MyRecyclerActivity" /> <!-- 微信登录 -->
+        <activity
+            android:name="com.work.doctor.fruits.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/transparent" />
+        <!-- 微信支付 -->
+        <activity
+            android:name="com.work.doctor.fruits.wxapi.WXPayEntryActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.work.doctor.fruits.activity.WelcomeActivity"
+            android:theme="@style/AppTheme.NoActionBar.welcome" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.work.doctor.fruits.activity.GuideActivity"
+            android:theme="@style/AppTheme.NoActionBar.welcome" />
+        <activity
+            android:name="com.work.doctor.fruits.activity.MainNavActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name="com.work.doctor.fruits.activity.LoginActivity"
+            android:launchMode="singleTask" /> <!-- <activity android:name=".activity.YgSearchActivity" /> -->
+        <activity android:name="com.work.doctor.fruits.activity.SharePageActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.ShareDetailActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.ShareFaceToFacePageActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.FensActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyEarningActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyEarningRankingActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyVipPayRecordListActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.InvoiceActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.DdDeliveryDetailActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.OrderCommentActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.GoodsAffirmActivity" />
+        <activity
+            android:name="com.work.doctor.fruits.activity.address.SelectSHAddressActivity"
+            android:launchMode="singleTop" />
+        <activity android:name="com.work.doctor.fruits.activity.address.AddressUpdateActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.address.AddressManageActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.OrderDetailActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.order.OrderListActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyVipPayListActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyEarningTxRecordDetialActivity" />
+        <activity
+            android:name="com.work.doctor.fruits.activity.vip.MyEarningTxActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name="com.work.doctor.fruits.activity.vip.MyEarningGzActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.Goods.GoodsTypeAndListActivity" />
+        <activity android:name="com.work.doctor.fruits.activity.search.SearchGoodsActivity" />
+        <!-- 声明service组件 -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" /> <!-- AK鉴权 -->
+        <!-- meta-data需要写在application中：在对应的Module中的声明文件中添加 -->
+        <!-- <meta-data -->
+        <!-- android:name="com.baidu.lbsapi.API_KEY" -->
+        <!-- android:value="k8u3A3iSwc0Xxa67qmaMezgZs6HK7Mvk" /> -->
+        <activity
+            android:name="com.xzte.maplib.baidu.BaiduMapSearchActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.xzte.maplib.baidu.BdMapAddressSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name="com.xzte.maplib.baidu.SearchAddressActivity" />
+        <activity
+            android:name="com.xzte.maplib.city.CitySelectActivity"
+            android:theme="@style/AppTheme.NoActionBar" /> <!-- 在依赖的项目中添加次配置 -->
+        <!-- <provider -->
+        <!-- android:name="androidx.core.content.FileProvider" -->
+        <!-- android:authorities="com.trj.tbase.fileprovider" -->
+        <!-- android:exported="false" -->
+        <!-- android:grantUriPermissions="true"> -->
+        <!-- <meta-data -->
+        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
+        <!-- android:resource="@xml/provider_filepaths"/> -->
+        <!-- </provider> -->
+        <activity
+            android:name="com.trjx.tbase.activity.LookImagesOneActivity"
+            android:theme="@style/AppTheme.NoActionBar.transparent" />
+        <activity
+            android:name="com.trjx.tbase.activity.LookImagesActivity"
+            android:theme="@style/AppTheme.NoActionBar.transparent" />
+        <activity
+            android:name="com.trjx.tbase.activity.LookImages2Activity"
+            android:theme="@style/AppTheme.NoActionBar.transparent" />
+        <activity android:name="com.zhihu.matisse.ui.MatisseActivity" />
+        <activity android:name="com.zhihu.matisse.internal.ui.AlbumPreviewActivity" />
+        <activity android:name="com.zhihu.matisse.internal.ui.SelectedPreviewActivity" /> <!-- Custom FileProvider for 7.x -->
+        <provider
+            android:name="com.tencent.bugly.beta.utils.BuglyFileProvider"
+            android:authorities="com.work.doctor.fruits.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider> <!-- 配置tinker合成结果service -->
+        <service
+            android:name="com.tencent.bugly.beta.tinker.TinkerResultService"
+            android:exported="false" />
+
+        <activity
+            android:name="cn.jiguang.analytics.android.view.BuryWebActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar" />
+    </application>
+
+</manifest>

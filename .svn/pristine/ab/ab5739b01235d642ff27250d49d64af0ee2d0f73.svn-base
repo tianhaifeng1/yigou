@@ -1,0 +1,29 @@
+package com.work.doctor.fruits.base;
+
+import com.trjx.tlibs.uils.Logger;
+import com.xzte.maplib.MapApplication;
+
+import cn.jiguang.analytics.android.api.JAnalyticsInterface;
+
+/**
+ * 需要继承MapApplication
+ */
+public class DemoApplication extends MapApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initBaidu();
+
+        //激光统计的初始化
+        JAnalyticsInterface.init(this);
+        //设置调试模式：参数为 true 表示打开调试模式，可看到 sdk 的日志
+        JAnalyticsInterface.setDebugMode(true);
+
+        //打开Log打印
+        Logger.LOG_ENABLE = true;
+
+        setBugglyAppid("45f28af007");
+    }
+
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".lifecycle.TestLifecycleActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="验证生命周期Lifecycle类：\n
+        1.目的是让类拥有和Activity一样的生命周期，避免activity中的生命周期方法臃肿;\n
+        2.目前的Activity和Fragment都默认实现了LifecycleOwner"
+        android:gravity="center_vertical"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

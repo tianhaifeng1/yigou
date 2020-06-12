@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.tongruijun8:TBaseApp:0.0.5@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2eddcd759350a856002b61327a3ba502/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2eddcd759350a856002b61327a3ba502/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.tongruijun8/TBaseApp/0.0.5/5650853f3b89d703aa380281ea7fd2817da20399/TBaseApp-0.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

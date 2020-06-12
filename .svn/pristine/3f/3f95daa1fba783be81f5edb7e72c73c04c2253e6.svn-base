@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp10"
+    android:background="@color/color_white"
+    >
+
+    <TextView
+        android:id="@+id/item_czrecord_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="money"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/textcolor_point"
+        />
+
+    <TextView
+        android:id="@+id/item_czrecord_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="购买商品"
+        android:textColor="@color/color_name"
+        android:paddingRight="@dimen/dp10"
+        android:layout_toLeftOf="@id/item_czrecord_money"
+        />
+    <TextView
+        android:id="@+id/item_czrecord_datetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="time"
+        android:paddingRight="@dimen/dp10"
+        android:layout_below="@id/item_czrecord_title"
+        android:layout_toLeftOf="@id/item_czrecord_money"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/item_czrecord_datetime"
+        android:background="@color/color_line"
+        android:layout_marginTop="@dimen/dp10"
+        />
+
+</RelativeLayout>

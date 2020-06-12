@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.search.SearchGoodsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ttitle_and_top_h"
+        android:background="#eeeeee"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/statetitle" />
+
+        <ImageView
+            android:id="@+id/sg_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="@dimen/top_h"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            app:srcCompat="@mipmap/ic_back" />
+
+        <EditText
+            android:id="@+id/sg_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/sg_search"
+            android:layout_toRightOf="@id/sg_back"
+            android:background="@drawable/dialog_t_bg"
+            android:clickable="true"
+            android:enabled="true"
+            android:gravity="center"
+            android:hint="搜索"
+            android:singleLine="true"
+            android:textColor="#333333"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/sg_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/top_h"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:enabled="true"
+            android:gravity="center"
+            android:minWidth="@dimen/ttitle_img_w"
+            android:paddingRight="10dp"
+            android:text="搜索"
+            android:textColor="#333333"
+            android:textSize="16sp"
+             />
+
+    </RelativeLayout>
+
+
+    <!-- 第一层：热门和历史记录 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sg_recyclerviewone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        ></androidx.recyclerview.widget.RecyclerView>
+    <!-- 第二层：搜索商品列表 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sg_recyclerviewtwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_white"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        android:visibility="gone"
+        ></androidx.recyclerview.widget.RecyclerView>
+
+
+    <RelativeLayout
+        android:id="@+id/sg_defaultview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        android:background="@color/color_white"
+        android:visibility="gone"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp200"
+            android:layout_height="@dimen/dp200"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/default_goodslist"
+            android:layout_marginTop="@dimen/dp100"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp300"
+            android:text="暂无搜索商品，请重新输入搜索内容"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="@dimen/dp10"
+
+            />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

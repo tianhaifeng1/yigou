@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg_ea"
+    tools:context=".activity.vip.MyEarningTxRecordDetialActivity">
+
+    <include layout="@layout/ttitle" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="75dp" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp190"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/waikuang_r5_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <ImageView
+        android:id="@+id/ametrd_bankicon"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        tools:src="@mipmap/mp_wx"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        android:layout_marginLeft="@dimen/dp10"
+        android:layout_marginTop="@dimen/dp10"
+        />
+    <TextView
+        android:id="@+id/ametrd_bankname"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp60"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        android:layout_marginLeft="@dimen/dp60"
+        tools:text="中国银行"
+        android:textSize="@dimen/dp18"
+        android:textColor="@color/color_name"
+        android:gravity="center_vertical"
+        />
+    <TextView
+        android:id="@+id/ametrd_money"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp60"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintRight_toRightOf="@id/view"
+        android:layout_marginRight="@dimen/dp10"
+        tools:text="￥200.00"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        android:gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/ametrd_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        tools:text="提现失败"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_bankname"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        app:layout_constraintRight_toRightOf="@id/view"
+         />
+
+    <TextView
+        android:id="@+id/ametrd_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/color_content"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_status"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        app:layout_constraintRight_toRightOf="@id/view"
+        tools:text="2019-10.10  18:00" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp30"
+        android:gravity="center_vertical"
+        android:text="提现到"
+        android:textColor="@color/color_content"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_time"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"
+        />
+    <TextView
+        android:id="@+id/ametrd_name"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp30"
+        android:gravity="center_vertical"
+        tools:text="姓名"
+        android:textColor="@color/color_content"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_time"
+        app:layout_constraintRight_toRightOf="@id/view"
+        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginRight="@dimen/dp10"
+        />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dp1"
+        android:background="@color/color_line"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_time"
+        app:layout_constraintRight_toRightOf="@id/view"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        android:layout_marginTop="@dimen/dp40"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp30"
+        android:gravity="center_vertical"
+        android:text="发起时间"
+        android:textColor="@color/color_content"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_time"
+        app:layout_constraintLeft_toLeftOf="@id/view"
+        android:layout_marginTop="@dimen/dp41"
+        android:layout_marginLeft="@dimen/dp10"
+        />
+    <TextView
+        android:id="@+id/ametrd_starttime"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp30"
+        android:gravity="center_vertical"
+        tools:text="2019-10.10  18:00"
+        android:textColor="@color/color_content"
+        app:layout_constraintTop_toBottomOf="@id/ametrd_time"
+        app:layout_constraintRight_toRightOf="@id/view"
+        android:layout_marginTop="@dimen/dp41"
+        android:layout_marginRight="@dimen/dp10"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

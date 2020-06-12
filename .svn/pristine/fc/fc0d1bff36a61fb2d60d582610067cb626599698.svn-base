@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:paddingLeft="12dp"
+    android:paddingTop="10dp"
+    android:paddingRight="12dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        >
+        <ImageView
+            android:id="@+id/item_gmr_icon"
+            android:layout_width="@dimen/dp60"
+            android:layout_height="@dimen/dp60"
+            android:src="@mipmap/t_head" />
+
+        <TextView
+            android:id="@+id/item_gmr_name"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_toRightOf="@id/item_gmr_icon"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="name"
+            android:textColor="@color/color_name"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/item_gmr_time"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_below="@id/item_gmr_name"
+            android:layout_toRightOf="@id/item_gmr_icon"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="time"
+            android:textColor="@color/color_content"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/item_gmr_number"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            tools:text="1份"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_name"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_line" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/color_white"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/fm_shop_gmr_text"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@drawable/shape_r_ba"
+        android:backgroundTint="#f9f2ec"
+        android:backgroundTintMode="src_in"
+        android:gravity="center"
+        tools:text="目前共多少人参与购买，商品共销售多少份"
+        android:textColor="@color/color_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fm_shop_gmr_text">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/item_recyclerview_space_h"
+                android:paddingTop="@dimen/item_recyclerview_space_v"
+                android:paddingRight="@dimen/item_recyclerview_space_h"
+                android:paddingBottom="@dimen/item_recyclerview_space_v"
+                android:scrollbars="vertical"
+                android:visibility="gone"></androidx.recyclerview.widget.RecyclerView>
+
+            <include layout="@layout/layout_defaultpage" />
+
+        </RelativeLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

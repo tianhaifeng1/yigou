@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/waikuang_r5_white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/dp30">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp120"
+        android:background="@drawable/shape_dialog_kefu_top">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/dialog_kefu_top_bg" />
+
+        <ImageView
+            android:id="@+id/dialog_kefu_cancle"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp13"
+            android:src="@mipmap/dialog_kefu_top_cancle" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="联系客服"
+        android:textColor="@color/color_name"
+        android:textStyle="bold"
+        android:textSize="@dimen/dp16" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="@dimen/dp8"
+        android:text="我们将全心全意为您提供满意周到的咨询服务，也希望您能支持和监督我们的服务！"
+        android:textColor="@color/color_name"
+        android:textSize="@dimen/dp14"
+        android:paddingLeft="@dimen/dp20"
+        android:paddingRight="@dimen/dp20"
+        />
+
+    <TextView
+        android:id="@+id/dialog_kefu_affirm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp30"
+        android:layout_marginRight="@dimen/dp20"
+        android:background="@drawable/shape_dialog_kefu_btn"
+        android:gravity="center"
+        android:text="拨打客服热线"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/dp16" />
+
+</LinearLayout>

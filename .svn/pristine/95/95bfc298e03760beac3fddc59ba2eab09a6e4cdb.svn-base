@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.address.AddressManageActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <include
+        layout="@layout/layout_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/color_white">
+
+        <TextView
+            android:id="@+id/address_manage_add"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/dp50"
+            android:layout_marginRight="@dimen/dp50"
+            android:background="@drawable/selector_longin"
+            android:gravity="center"
+            android:text="添加收货地址"
+            android:textColor="@color/color_white" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,667 @@
+package com.work.doctor.fruits.activity.fragment;
+
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.baidu.location.BDLocation;
+import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import com.bigkoo.convenientbanner.holder.Holder;
+import com.bigkoo.convenientbanner.listener.OnPageChangeListener;
+import com.t.databaselib.DatabaseGoodsInfo;
+import com.t.databaselib.bean.ShopInfoBean;
+import com.t.httplib.yigou.YigouConstant;
+import com.t.httplib.yigou.bean.req.ReqCartAddInfo;
+import com.t.httplib.yigou.bean.resp.BannerInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsSpecInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsTypeInfoBean;
+import com.trjx.tlibs.uils.GlideUtile;
+import com.trjx.tlibs.uils.Logger;
+import com.trjx.tlibs.uils.SharedPreferencesUtils;
+import com.trjx.tlibs.uils.SnackbarUtil;
+import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.activity.Goods.GoodsDetial2Activity;
+import com.work.doctor.fruits.activity.Goods.GoodsListActivity;
+import com.work.doctor.fruits.activity.Goods.GoodsListMOMoreActivity;
+import com.work.doctor.fruits.activity.MainNavActivity;
+import com.work.doctor.fruits.activity.adapter.ShopTypeAdapter;
+import com.work.doctor.fruits.activity.adapter.ShoppingAdapter;
+import com.work.doctor.fruits.activity.address.SelectSHAddressActivity;
+import com.work.doctor.fruits.activity.search.SearchGoodsActivity;
+import com.work.doctor.fruits.assist.DemoConstant;
+import com.work.doctor.fruits.assist.Util;
+import com.work.doctor.fruits.base.DemoApplication;
+import com.work.doctor.fruits.base.DemoMVPFragment;
+import com.work.doctor.fruits.base.DemoWebActivity;
+import com.work.doctor.fruits.dialog.LocationDialog;
+import com.work.doctor.fruits.dialog.MoreGoodsSpecInfoDialog2;
+import com.work.doctor.fruits.dialog.RemindDialog;
+import com.xzte.maplib.baidu.TMapInfoListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.RuntimePermissions;
+
+@RuntimePermissions
+public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresenter>
+        implements MainOneView, View.OnClickListener, TMapInfoListener, MoreGoodsSpecInfoDialog2.OnMoreGoodsListSpecInfoListener {
+
+    private MainNavActivity mainNavActivity;
+    private DemoApplication demoApplication;
+
+    private int colors[] = {
+            Color.rgb(47, 223, 189),
+            Color.rgb(223, 47, 189),
+            Color.rgb(189, 223, 47),
+            Color.rgb(47, 55, 80)
+    };
+
+    private TextView topLocationView;
+    private ImageView topLocationImg;
+    private ImageView topCart;
+    private RelativeLayout topSearchRl;
+
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private ConvenientBanner banner;
+
+    private TextView mFmOneMoreJrtm;
+    private RecyclerView mFmOneRecyclerviewJrtm;
+    private TextView mFmOneMoreJrtj;
+    private RecyclerView mFmOneRecyclerviewJrtj;
+
+    private RecyclerView mFmOneRecyclerviewType;
+
+
+    private GoodsInfoBean goodsInfoBean;
+
+    @Override
+    protected int initLayout() {
+        return R.layout.fragment_main_one;
+    }
+
+    @Override
+    protected void initFragmentView(View view) {
+        mainNavActivity = (MainNavActivity) getActivity();
+
+        topLocationImg = view.findViewById(R.id.main_top_locationimg);
+        topLocationView = view.findViewById(R.id.main_top_locationname);
+        topSearchRl = view.findViewById(R.id.main_top_search);
+        topCart = view.findViewById(R.id.main_top_cart);
+        swipeRefreshLayout = view.findViewById(R.id.fm_one_swiperefreshlayout);
+        banner = view.findViewById(R.id.fm_one_banner);
+
+        mFmOneMoreJrtm = view.findViewById(R.id.fm_one_more_jrtm);
+        mFmOneRecyclerviewJrtm = view.findViewById(R.id.fm_one_recyclerview_jrtm);
+        mFmOneMoreJrtj = view.findViewById(R.id.fm_one_more_jrtj);
+        mFmOneRecyclerviewJrtj = view.findViewById(R.id.fm_one_recyclerview_jrtj);
+
+        mFmOneRecyclerviewType = view.findViewById(R.id.fm_one_recyclerview_type);
+
+        topLocationImg.setVisibility(View.VISIBLE);
+        topLocationView.setVisibility(View.VISIBLE);
+        topCart.setVisibility(View.VISIBLE);
+
+        topCart.setOnClickListener(this);
+        topLocationImg.setOnClickListener(this);
+        topLocationView.setOnClickListener(this);
+        topSearchRl.setOnClickListener(this);
+        mFmOneMoreJrtm.setOnClickListener(this);
+        mFmOneMoreJrtj.setOnClickListener(this);
+
+
+//        demoApplication = (DemoApplication) activity.getApplication();
+//        demoApplication.applicationAssist.setTMapInfoListener(this);
+//        demoApplication.applicationAssist.startLoction();
+
+        initAdapter();
+
+        swipeRefreshLayout.setColorSchemeColors(colors);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            getPresenter().getJrtjData();
+            getPresenter().getJrtmData();
+        });
+
+        MainOneFragmentPermissionsDispatcher.getPremission_locationWithPermissionCheck(this);
+    }
+
+    @Override
+    public void initData() {
+        super.initData();
+        topLocationView.setText(Util.showAddressDetail2(mainNavActivity.getprovince,mainNavActivity.name));
+        if (DemoConstant.refershOne) {
+            //店铺以改变
+            DemoConstant.refershOne = true;
+            pdRefershPage();
+            getPresenter().getShopTypeData(DemoConstant.shopInfoBean.getShopId());
+
+            //获取购物车数据：可以保证多端数据同步
+//            getPresenter().getShoppingCartListData();
+            getPresenter().getBannerData();
+            getPresenter().getJrtjData();
+            getPresenter().getJrtmData();
+
+        }
+    }
+
+    private ShoppingAdapter adapterJrtm;
+    private ShoppingAdapter adapterJrtj;
+    private ShopTypeAdapter adapterType;
+
+    private void initAdapter() {
+
+        mFmOneRecyclerviewJrtm.setLayoutManager(new GridLayoutManager(activity.context, 3) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;//禁止垂直滚动
+            }
+        });
+        adapterJrtm = new ShoppingAdapter(null);
+        //添加条目点击事件
+        adapterJrtm.setOnItemClickListener((adapter, view, position) -> {
+            GoodsInfoBean infoBean = (GoodsInfoBean) adapter.getData().get(position);
+            Intent intent = new Intent(activity.context, GoodsDetial2Activity.class);
+            intent.putExtra("id", infoBean.getId());
+            activity.skipActivity(intent);
+        });
+        mFmOneRecyclerviewJrtm.setAdapter(adapterJrtm);
+        adapterJrtm.setOnItemChildClickListener((adapter, view, position) -> {
+            goodsInfoBean = (GoodsInfoBean) adapter.getData().get(position);
+            getPresenter().getGoodsItem(goodsInfoBean.getId());
+        });
+
+        mFmOneRecyclerviewJrtj.setLayoutManager(new GridLayoutManager(activity.context, 3) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        adapterJrtj = new ShoppingAdapter(null);
+        //添加条目点击事件
+        adapterJrtj.setOnItemClickListener((adapter, view, position) -> {
+            GoodsInfoBean infoBean = (GoodsInfoBean) adapter.getData().get(position);
+            Intent intent = new Intent(activity.context, GoodsDetial2Activity.class);
+            intent.putExtra("id", infoBean.getId());
+            activity.skipActivity(intent);
+        });
+        mFmOneRecyclerviewJrtj.setAdapter(adapterJrtj);
+        adapterJrtj.setOnItemChildClickListener((adapter, view, position) -> {
+            goodsInfoBean = (GoodsInfoBean) adapter.getData().get(position);
+            getPresenter().getGoodsItem(goodsInfoBean.getId());
+        });
+
+        mFmOneRecyclerviewType.setLayoutManager(new GridLayoutManager(activity.context, 5) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        adapterType = new ShopTypeAdapter(null);
+        //添加条目点击事件
+        adapterType.setOnItemClickListener((adapter, view, position) -> {
+            GoodsTypeInfoBean infoBean = (GoodsTypeInfoBean) adapter.getData().get(position);
+//            String cnname = infoBean.getCnname();
+//            if (cnname != null && cnname.equals("暂未开放")) {
+//                return;
+//            }
+            Intent intent = new Intent(activity, GoodsListActivity.class);
+            intent.putExtra("id", infoBean.getId());
+            activity.skipActivity(intent);
+        });
+        mFmOneRecyclerviewType.setAdapter(adapterType);
+
+    }
+
+
+    @Override
+    protected MainOnePresenter initPersenter() {
+        return new MainOnePresenter(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int ids = v.getId();
+        switch (ids) {
+            case R.id.main_top_cart:
+                mainNavActivity.skipTab(2);
+                break;
+            case R.id.main_top_locationimg:
+            case R.id.main_top_locationname:
+                //选择地址
+                startActivityForResult(new Intent(activity.context, SelectSHAddressActivity.class), 100);
+                break;
+            case R.id.main_top_search:
+                //搜索
+                activity.skipActivity(SearchGoodsActivity.class);
+                break;
+            case R.id.fm_one_more_jrtm:
+                //今日特卖
+                Intent intent_jrtm = new Intent(activity.context, GoodsListMOMoreActivity.class);
+                intent_jrtm.putExtra("code", 0);
+                activity.startActivity(intent_jrtm);
+                break;
+            case R.id.fm_one_more_jrtj:
+                //今日推荐
+                Intent intent_jrtj = new Intent(activity.context, GoodsListMOMoreActivity.class);
+                intent_jrtj.putExtra("code", 1);
+                activity.startActivity(intent_jrtj);
+                break;
+        }
+    }
+
+    @Override
+    public void getShopInfoSuccess(ShopInfoBean infoBean) {
+        if (infoBean == null) {
+            return;
+        }
+
+        if (DemoConstant.shopInfoBean == null || DemoConstant.shopInfoBean.getShopId() != infoBean.getShopId()) {
+            //店铺以改变
+            DemoConstant.isChangeShop = true;
+            DemoConstant.shopInfoBean = infoBean;
+            DemoConstant.refershOne = false;
+            DemoConstant.refershTwo = true;
+            DemoConstant.refershThree = true;
+
+            pdRefershPage();
+
+            //添加店铺
+            mainNavActivity.greenDaoAssist.insertShop(DemoConstant.shopInfoBean);
+            getPresenter().getShopTypeData(infoBean.getShopId());
+
+            //获取购物车数据：可以保证多端数据同步
+//            getPresenter().getShoppingCartListData();
+            getPresenter().getBannerData();
+            getPresenter().getJrtjData();
+            getPresenter().getJrtmData();
+
+        } else {
+            //店铺未改变
+            DemoConstant.isChangeShop = false;
+        }
+
+        boolean isRemind = (boolean) SharedPreferencesUtils.getParam(activity.context, DemoConstant.user_onepage_dialog_remind, true);
+        if (isRemind && locationDialog == null) {
+            String address = Util.changeAddressDetail(mainNavActivity.getprovince,
+                    mainNavActivity.getcity,
+                    mainNavActivity.getcounty,
+                    mainNavActivity.name);
+            locationDialog = new LocationDialog.Builder(activity.context)
+                    .setAddress(DemoConstant.shopInfoBean.getShopIntro())
+                    .setAddressDetail(address)
+                    .setCancelable(false)
+                    .setOnLocationDialogClickListener(view -> {
+                        //选择地址
+                        startActivityForResult(new Intent(activity.context, SelectSHAddressActivity.class), 100);
+                    })
+                    .create();
+            locationDialog.show(getFragmentManager(), "dialog_location_change");
+        }
+
+    }
+
+    @Override
+    public void getShopTypeSuccess(List<GoodsTypeInfoBean> list) {
+        int row = 0;
+        if (list != null) {
+            row = (int) Math.ceil(list.size() / 5.0f);
+        }
+        adapterType.setNewData(list);
+        adapterType.loadMoreEnd(true);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mFmOneRecyclerviewType.getLayoutParams();
+        layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layoutParams.height = activity.context.getResources().getDimensionPixelOffset(R.dimen.dp90) * row;
+        mFmOneRecyclerviewType.setLayoutParams(layoutParams);
+    }
+
+    @Override
+    public void getGoodsSpecSuccess(GoodsSpecInfoBean infoBean) {
+        if (infoBean != null && infoBean.getGoodsItemList() != null && infoBean.getGoodsItemList().size() > 0) {
+            // 有规格
+            goodsItemDialog(infoBean);
+        } else {
+
+            if (goodsInfoBean.getStock() <= 0) {
+                SnackbarUtil.showToast(rootView, "暂无库存");
+                return;
+            }
+
+            //没有规格
+            //直接添加到购物车
+            DatabaseGoodsInfo goodsInfo = new DatabaseGoodsInfo();
+//        商品信息
+            goodsInfo.setGoodsId(goodsInfoBean.getId() + "");
+            goodsInfo.setGoodsName(goodsInfoBean.getGoodsName());
+            goodsInfo.setGoodsPrice(goodsInfoBean.getSellPriceDiscount());
+            goodsInfo.setGoodsNumber(1);
+            goodsInfo.setGoodsUrl(goodsInfoBean.getGoodsImage());
+            goodsInfo.setGoodsTotal(goodsInfoBean.getStock());
+            //规格
+            goodsInfo.setSpecId("");
+            goodsInfo.setSpecName("");
+//        店铺信息
+            goodsInfo.setShopId(goodsInfoBean.getShopId() + "");
+            mainNavActivity.greenDaoAssist.insertGoods(DemoConstant.shopInfoBean.getShopId()+"", goodsInfo, isChange -> DemoConstant.isChangeDatabase = isChange);
+
+            ReqCartAddInfo addInfo = new ReqCartAddInfo();
+            ReqCartAddInfo.ReqCartAddInfoBean infoBean2 = new ReqCartAddInfo.ReqCartAddInfoBean();
+            infoBean2.setGoodsId(goodsInfo.getGoodsId());
+            infoBean2.setAttrStrId(goodsInfo.getSpecId());
+            infoBean2.setTotalNum(goodsInfo.getGoodsNumber());
+            List<ReqCartAddInfo.ReqCartAddInfoBean> goods = new ArrayList<>();
+            goods.add(infoBean2);
+            addInfo.setGoods(goods);
+            if (YigouConstant.token.equals("")) {
+
+                SnackbarUtil.showToast(rootView,"添加成功");
+//                SnackbarUtil.showToast(activity.context, "添加成功");
+            } else {
+                getPresenter().addGoodsToShoppingCart(addInfo);
+            }
+
+        }
+    }
+
+    @Override
+    public void addGoodsToShoppingCartSuccess() {
+        SnackbarUtil.showToast(rootView,"添加成功");
+//        SnackbarUtil.showToast(activity.context, "添加成功");
+    }
+
+    @Override
+    public void getJrtmDataSuccess(List<GoodsInfoBean> list) {
+        int row = 0;
+        if (list != null && list.size() > 0) {
+            row = (int) Math.ceil(list.size() / 3.0f);
+        }
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mFmOneRecyclerviewJrtm.getLayoutParams();
+        layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layoutParams.height = activity.context.getResources().getDimensionPixelOffset(R.dimen.dp200) * row;
+        mFmOneRecyclerviewJrtm.setLayoutParams(layoutParams);
+        adapterJrtm.setNewData(list);
+        adapterJrtm.loadMoreEnd(true);
+    }
+
+    @Override
+    public void getJrtjDataSuccess(List<GoodsInfoBean> list) {
+        int row = 0;
+        if (list != null && list.size() > 0) {
+            row = (int) Math.ceil(list.size() / 3.0f);
+        }
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mFmOneRecyclerviewJrtj.getLayoutParams();
+        layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+        layoutParams.height = activity.context.getResources().getDimensionPixelOffset(R.dimen.dp200) * row;
+        mFmOneRecyclerviewJrtj.setLayoutParams(layoutParams);
+        adapterJrtj.setNewData(list);
+        adapterJrtj.loadMoreEnd(true);
+    }
+
+    @Override
+    public void tPostFinish(int code) {
+        super.tPostFinish(code);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void getBannerDataSuccess(List<BannerInfoBean> list) {
+        if (list == null || list.size() == 0) {
+            return;
+        }
+        banner.setPages(new CBViewHolderCreator() {
+            @Override
+            public NetworkImageHolderView createHolder(View itemView) {
+                return new NetworkImageHolderView(itemView);
+            }
+
+            @Override
+            public int getLayoutId() {
+                return R.layout.item_banner;
+            }
+        }, list)
+                .setCanLoop(true)//默认循环
+                .setOnItemClickListener(position -> {
+                    BannerInfoBean infoBean = list.get(position);
+                    String goodsId = infoBean.getGoodId();
+                    if (goodsId != null && !goodsId.equals("")) {
+                        Intent intent = new Intent(activity.context, GoodsDetial2Activity.class);
+                        intent.putExtra("id", goodsId);
+                        activity.skipActivity(intent);
+                    } else {
+                        String path = infoBean.getLink();
+                        if (path != null && !path.equals("") && path.startsWith("http")) {
+                            Intent intent = new Intent(activity.context, DemoWebActivity.class);
+                            intent.putExtra("code", 0);
+                            intent.putExtra("path", path);
+                            intent.putExtra("title", "儒龙易购");
+                            activity.skipActivity(intent);
+                        }
+                    }
+
+
+                }).setFirstItemPos(0)
+//                .setCurrentItem(0,false)
+                .setPageIndicator(new int[]{R.mipmap.dian_, R.mipmap.dian})
+                .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)
+                .setOnPageChangeListener(new OnPageChangeListener() {
+                    @Override
+                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+                    }
+
+                    @Override
+                    public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+
+                    }
+
+                    @Override
+                    public void onPageSelected(int index) {
+
+                    }
+                });
+    }
+
+    private LocationDialog locationDialog;
+
+    @Override
+    public void bdSuccess(BDLocation aMapLocation) {
+        Logger.t("定位成功" + aMapLocation.getCity());
+
+        String addrStr = aMapLocation.getAddrStr();
+
+        mainNavActivity.name = Util.showAddressDetail(addrStr);
+        topLocationView.setText(Util.showAddressDetail2(aMapLocation.getProvince(),addrStr));
+        mainNavActivity.getprovince = aMapLocation.getProvince();
+        mainNavActivity.getcity = aMapLocation.getCity();
+        mainNavActivity.getcounty = aMapLocation.getDistrict();
+        mainNavActivity.la = aMapLocation.getLatitude();
+        mainNavActivity.lo = aMapLocation.getLongitude();
+
+        activity.setDialogText("请求中...");
+        getPresenter().getShopInfo(aMapLocation.getLatitude(), aMapLocation.getLongitude());
+
+
+
+    }
+
+    private int cishu = 0;
+
+    @Override
+    public void bdFail(String failStr) {
+        cishu++;
+        if (cishu > 3) {
+            cishu = 0;
+//
+//            Logger.t("当前线程：" + Thread.currentThread().getName());
+//            Logger.t("主线程：" + Looper.getMainLooper().getThread().getName());
+
+            RemindDialog remindDialog = new RemindDialog.Builder(activity.context)
+                    .setMessage("请打开定位功能后，重新进入")
+                    .setAffirmText("退出系统")
+                    .setCancelable(false)
+                    .setOnRemindClickListener(new RemindDialog.OnRemindClickListener() {
+                        @Override
+                        public void onRemindClickAffirm(View view) {
+                            //强制退出
+                            activity.activityManager.exit();
+                        }
+
+                        @Override
+                        public void onRemindClickCancle(View view) {
+
+                        }
+                    })
+                    .create();
+            remindDialog.show(getFragmentManager(), "dialog_location");
+
+//            activity.setDialogText("请求中...");
+//            getPresenter().getShopInfo(29.70056, 91.13205);
+        } else {
+            demoApplication.applicationAssist.startLoction();//手动定位
+        }
+        if (failStr != null && !failStr.equals("")) {
+            Logger.t("定位失败" + failStr);
+        }
+    }
+
+    @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
+    void getPremission_location() {
+        demoApplication = (DemoApplication) getActivity().getApplication();
+        demoApplication.applicationAssist.setTMapInfoListener(this);
+        demoApplication.applicationAssist.setScanSpan(1);//手动定位
+        demoApplication.applicationAssist.startLoction();
+        showDialog("定位中...");
+    }
+
+    @SuppressLint("NeedOnRequestPermissionsResult")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        MainOneFragmentPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+    }
+
+    private MoreGoodsSpecInfoDialog2 infoDialog;
+    //弹框
+    private void goodsItemDialog(GoodsSpecInfoBean specListBeanList) {
+        if (infoDialog == null || infoDialog.getDialog() == null) {
+            infoDialog = new MoreGoodsSpecInfoDialog2.Builder(activity.context)
+                    .setCancelable(false)
+                    .setGoodsInfo(goodsInfoBean)
+                    .setGoodsItemList(specListBeanList)
+                    .setOnMoreGoodsListSpecInfoListener(this)
+                    .create();
+            infoDialog.show(activity.getSupportFragmentManager(), "tishi_itemspec");
+        }
+    }
+
+    @Override
+    public void onOnMoreGoodsListAddcartClick(View view, String specIds, String specName, float goodsPrice, int number) {
+        //添加购物车
+//        SnackbarUtil.showToast(activity.context, "添加购物车商品为：" + goodsInfoBean.getGoodsName());
+
+        DatabaseGoodsInfo goodsInfo = new DatabaseGoodsInfo();
+//        商品信息
+        goodsInfo.setGoodsId(goodsInfoBean.getId() + "");
+        goodsInfo.setGoodsName(goodsInfoBean.getGoodsName());
+        goodsInfo.setGoodsPrice(goodsPrice);
+        goodsInfo.setGoodsNumber(number);
+        goodsInfo.setGoodsUrl(goodsInfoBean.getGoodsImage());
+        goodsInfo.setGoodsTotal(goodsInfoBean.getStock());
+        //规格
+        goodsInfo.setSpecId(specIds);
+        goodsInfo.setSpecName(specName);
+//        店铺信息
+        goodsInfo.setShopId(goodsInfoBean.getShopId() + "");
+        mainNavActivity.greenDaoAssist.insertGoods(DemoConstant.shopInfoBean.getShopId()+"", goodsInfo, isChange -> DemoConstant.isChangeDatabase = isChange);
+
+        ReqCartAddInfo addInfo = new ReqCartAddInfo();
+        ReqCartAddInfo.ReqCartAddInfoBean infoBean = new ReqCartAddInfo.ReqCartAddInfoBean();
+        infoBean.setGoodsId(goodsInfo.getGoodsId());
+        infoBean.setAttrStrId(goodsInfo.getSpecId());
+        infoBean.setTotalNum(goodsInfo.getGoodsNumber());
+        List<ReqCartAddInfo.ReqCartAddInfoBean> goods = new ArrayList<>();
+        goods.add(infoBean);
+        addInfo.setGoods(goods);
+        if (YigouConstant.token.equals("")) {
+            SnackbarUtil.showToast(rootView,"添加成功");
+//            SnackbarUtil.showToast(activity.context, "添加成功");
+        } else {
+            getPresenter().addGoodsToShoppingCart(addInfo);
+        }
+
+    }
+
+    public class NetworkImageHolderView extends Holder<BannerInfoBean> {
+
+        private ImageView imageView;
+
+        public NetworkImageHolderView(View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        protected void initView(View itemView) {
+            imageView = itemView.findViewById(R.id.imageview);
+        }
+
+        @Override
+        public void updateUI(BannerInfoBean data) {
+            GlideUtile.bindImageView(activity, data.getImageUrl(), R.mipmap.banne_default, imageView);
+        }
+
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if (resultCode == 601) {
+
+                String addrStr = data.getStringExtra("name");
+                mainNavActivity.getprovince = data.getStringExtra("sheng");
+                mainNavActivity.getcity = data.getStringExtra("shi");
+                mainNavActivity.getcounty = data.getStringExtra("qu");
+                mainNavActivity.la = data.getDoubleExtra("la", 0);
+                mainNavActivity.lo = data.getDoubleExtra("lo", 0);
+
+                mainNavActivity.name = Util.showAddressDetail(addrStr);
+                topLocationView.setText(Util.showAddressDetail2(mainNavActivity.getprovince,addrStr));
+
+                getPresenter().getShopInfo(mainNavActivity.la, mainNavActivity.lo);
+
+            }
+        }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        activity.changeStateBar(false);
+        //开始翻页
+        banner.startTurning();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //停止翻页
+        banner.stopTurning();
+    }
+}

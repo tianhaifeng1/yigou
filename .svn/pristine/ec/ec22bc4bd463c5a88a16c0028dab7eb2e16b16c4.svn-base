@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/waikuang_r5_white"
+    android:padding="@dimen/dp20"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="您当前在"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp30"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp16"
+        android:layout_marginBottom="@dimen/dp10"
+        >
+
+        <ImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/ic_applogo"/>
+        <TextView
+            android:id="@+id/dialog_location_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            tools:text="地址"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:textColor="@color/color_name"
+            android:paddingLeft="@dimen/dp10"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="确认送货至："
+        android:gravity="center_vertical"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        />
+    <TextView
+        android:id="@+id/dialog_location_addressdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="详细地址"
+        android:textSize="14dp"
+        android:textColor="#fa2f49"
+        android:gravity="center_vertical"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="right">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="不再提示"
+            android:gravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/dialog_location_remind"
+            android:layout_width="@dimen/dp40"
+            android:layout_height="@dimen/dp40"
+            android:src="@mipmap/round_n"
+            android:padding="@dimen/dp13"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginTop="@dimen/dp6">
+
+        <TextView
+            android:id="@+id/dialog_location_change"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="我要更换地址"
+            android:background="@drawable/shape_dialog_c_gray"
+            android:gravity="center"
+            android:textColor="@color/color_name"
+            />
+        <TextView
+            android:id="@+id/dialog_location_affirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="确定"
+            android:layout_marginLeft="@dimen/dp40"
+            android:background="@drawable/shape_dialog_c_gray"
+            android:gravity="center"
+            android:textColor="@color/color_name"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

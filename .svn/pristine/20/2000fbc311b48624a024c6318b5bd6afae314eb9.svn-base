@@ -1,0 +1,115 @@
+package com.xzte.test;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class Test1 {
+
+    public static void main(String[] arg){
+        mm();
+    }
+
+    private static void mm(){
+
+//        BigDecimal bigDecimal = BigDecimal.ZERO;
+//        System.out.println(bigDecimal.toString());
+//
+//        System.out.println(new BigDecimal(132.1256, new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(1.0000, new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(2.0000).setScale(2,RoundingMode.HALF_UP));
+//        System.out.println(new BigDecimal(2.456789).setScale(0,RoundingMode.HALF_UP));
+//        //相反
+//        System.out.println(new BigDecimal(3.123456).negate(new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(-4.123456).negate(new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(123.456).plus(new MathContext(3, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(-1.456).plus(new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(-1.003).round(new MathContext(2, RoundingMode.HALF_UP)));
+//        System.out.println(new BigDecimal(-123.003).round(new MathContext(3, RoundingMode.HALF_UP)));
+//        System.out.println(Math.round(2.123456));
+//
+//        BigDecimal bigDecimal1 = new BigDecimal(Double.toString(1.00456));
+//        BigDecimal bd = bigDecimal1.setScale(3, RoundingMode.HALF_UP);
+//        System.out.println(bd);
+//        System.out.println(bd.intValue());
+//        System.out.println(bd.intValue() == bd.doubleValue());
+//
+//        System.out.println(bigDecimal1.setScale(2, RoundingMode.HALF_UP).stripTrailingZeros());
+//
+//
+//        System.out.println(new BigDecimal("0000.00001").setScale(2,RoundingMode.HALF_UP).stripTrailingZeros().toPlainString());
+        System.out.println(new BigDecimal("0.00").stripTrailingZeros());
+        System.out.println(new BigDecimal("0.00").stripTrailingZeros().toPlainString());
+        System.out.println(new BigDecimal(Double.toString(0)).setScale(2, RoundingMode.HALF_UP).stripTrailingZeros().toPlainString());
+
+        System.out.println("123".indexOf("."));
+
+        System.out.println(test("0.000"));
+        System.out.println(test("00000.000"));
+        System.out.println(test("00123.100"));
+        System.out.println(test("00123.100"));
+        System.out.println(test("123.1230"));
+
+    }
+
+    public static String test(String string) {
+        int dian = string.indexOf(".");
+        if (dian > -1) {
+            String[] splitStr = string.split("\\.");
+            String qian = "";
+            String hou = "";
+            if(splitStr.length == 0){
+                return string;
+            }else if (splitStr.length == 1) {
+                if(dian == 0){
+                    hou = splitStr[0];
+                }else{
+                    qian = splitStr[0];
+                }
+            }else{
+                qian = splitStr[0];
+                hou = splitStr[1];
+            }
+
+            StringBuilder qianStr = new StringBuilder();
+            StringBuilder houStr = new StringBuilder();
+            boolean start0 = false;
+            boolean end0 = false;
+            for (int i = 0, size = qian.length(); i < size; i++) {
+                char cc = qian.charAt(i);
+                if (!start0 && cc == '0') {
+                    continue;
+                }
+                start0 = true;
+                qianStr.append(cc);
+            }
+            for (int size = hou.length(), i = size - 1; i >= 0; i--) {
+                char cc = hou.charAt(i);
+                if (!end0 && cc == '0') {
+                    continue;
+                }
+                end0 = true;
+                houStr.append(cc);
+            }
+
+            if (houStr.length() == 0) {
+                if (qianStr.length() == 0) {
+                    return "0";
+                }else{
+                    return qianStr.toString();
+                }
+            }else{
+                if (qianStr.length() == 0) {
+                    return "0."+houStr;
+                }else{
+                    return qianStr.toString() + "." + houStr;
+                }
+            }
+
+        }else{
+            return string;
+        }
+    }
+
+
+
+}

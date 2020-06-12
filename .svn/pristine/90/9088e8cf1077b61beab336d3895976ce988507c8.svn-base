@@ -1,0 +1,274 @@
+package com.t.httplib.yigou.bean.resp;
+
+public class ExpressPsInfoBean {
+    private String horsemanId;
+    private long createTime;
+    private double memberLatitude;
+    private int type;
+    private int version;
+    private int id;
+    private String name;
+    private String receiverName;
+    private int inuse;
+    private double commission;
+    private long accomplishTime;
+    private String note;
+    private String orderId;
+    private String receiverPhone;
+    private String takeoutNum;
+    private long updateTime;
+    private int status;
+    private long expectedTime;
+    private long sendTime;
+    private double totalOrderFee;
+    private String memberAddress;
+    private double memberLongitude;
+    private String horsemanNum;
+    private double shopLongitude;
+    private double shopLatitude;
+    private String shopAddress;
+    private long deliveryTime;
+    private long grabTime;
+    private String photoUrl;
+    private String goodsDesc;
+
+    public String getHorsemanId() {
+        return horsemanId;
+    }
+
+    public void setHorsemanId(String horsemanId) {
+        this.horsemanId = horsemanId;
+    }
+
+    public long getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(long createTime) {
+        this.createTime = createTime;
+    }
+
+    public double getMemberLatitude() {
+        return memberLatitude;
+    }
+
+    public void setMemberLatitude(double memberLatitude) {
+        this.memberLatitude = memberLatitude;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    public int getInuse() {
+        return inuse;
+    }
+
+    public void setInuse(int inuse) {
+        this.inuse = inuse;
+    }
+
+    public double getCommission() {
+        return commission;
+    }
+
+    public void setCommission(double commission) {
+        this.commission = commission;
+    }
+
+    public long getAccomplishTime() {
+        return accomplishTime;
+    }
+
+    public void setAccomplishTime(long accomplishTime) {
+        this.accomplishTime = accomplishTime;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getTakeoutNum() {
+        return takeoutNum;
+    }
+
+    public void setTakeoutNum(String takeoutNum) {
+        this.takeoutNum = takeoutNum;
+    }
+
+    public long getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(long updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public long getExpectedTime() {
+        return expectedTime;
+    }
+
+    public void setExpectedTime(long expectedTime) {
+        this.expectedTime = expectedTime;
+    }
+
+    public long getSendTime() {
+        return sendTime;
+    }
+
+    public void setSendTime(long sendTime) {
+        this.sendTime = sendTime;
+    }
+
+    public double getTotalOrderFee() {
+        return totalOrderFee;
+    }
+
+    public void setTotalOrderFee(double totalOrderFee) {
+        this.totalOrderFee = totalOrderFee;
+    }
+
+    public String getMemberAddress() {
+        return memberAddress;
+    }
+
+    public void setMemberAddress(String memberAddress) {
+        this.memberAddress = memberAddress;
+    }
+
+    public double getMemberLongitude() {
+        return memberLongitude;
+    }
+
+    public void setMemberLongitude(double memberLongitude) {
+        this.memberLongitude = memberLongitude;
+    }
+
+    public String getHorsemanNum() {
+        return horsemanNum;
+    }
+
+    public void setHorsemanNum(String horsemanNum) {
+        this.horsemanNum = horsemanNum;
+    }
+
+    public double getShopLongitude() {
+        return shopLongitude;
+    }
+
+    public void setShopLongitude(double shopLongitude) {
+        this.shopLongitude = shopLongitude;
+    }
+
+    public double getShopLatitude() {
+        return shopLatitude;
+    }
+
+    public void setShopLatitude(double shopLatitude) {
+        this.shopLatitude = shopLatitude;
+    }
+
+    public String getShopAddress() {
+        return shopAddress;
+    }
+
+    public void setShopAddress(String shopAddress) {
+        this.shopAddress = shopAddress;
+    }
+
+    public long getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public void setDeliveryTime(long deliveryTime) {
+        this.deliveryTime = deliveryTime;
+    }
+
+    public long getGrabTime() {
+        return grabTime;
+    }
+
+    public void setGrabTime(long grabTime) {
+        this.grabTime = grabTime;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getGoodsDesc() {
+        return goodsDesc;
+    }
+
+    public void setGoodsDesc(String goodsDesc) {
+        this.goodsDesc = goodsDesc;
+    }
+}

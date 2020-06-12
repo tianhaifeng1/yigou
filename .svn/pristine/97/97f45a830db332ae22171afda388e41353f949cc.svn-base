@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".baidu.SearchAddressActivity">
+
+    <include
+        layout="@layout/ttitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ttitle_and_top_h" />
+
+    <!-- 第一层：地图层 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp240">
+
+            <com.baidu.mapapi.map.MapView
+                android:id="@+id/sa_mapview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true" />
+
+            <ImageView
+                android:id="@+id/sa_dingwei"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp20"
+                android:background="@drawable/yuandian_bg"
+                android:gravity="center"
+                android:padding="@dimen/dp10"
+                android:src="@drawable/huidaoyuandian" />
+
+            <ImageView
+                android:id="@+id/sa_dtz"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true"
+                android:paddingBottom="@dimen/dp40"
+                android:src="@drawable/datouzhen" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sa_recyclerview_mapdata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <!-- 第二层：搜索层 -->
+    <RelativeLayout
+        android:id="@+id/sa_leveltwo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        android:background="@color/color_white"
+        android:clickable="true"
+        android:paddingTop="@dimen/dp50"
+        android:visibility="gone"
+        >
+        <!-- 历史搜索记录层 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp50"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/dp15"
+            android:text="历史搜索记录" />
+
+        <ImageView
+            android:id="@+id/sa_delete"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/city_delete"
+            android:padding="@dimen/dp16"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sa_recyclerview_historydata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp50"></androidx.recyclerview.widget.RecyclerView>
+        <!-- 搜索列表层 -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/sa_recyclerview_searchdata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            android:visibility="gone"></androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/sa_recyclerview_searchdata_defaultview"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp120"
+            android:text="没有找到相关地址"
+            android:gravity="center"
+            android:textColor="@color/color_content"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp40"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp80"
+        android:layout_marginRight="@dimen/dp15"
+        android:background="@drawable/shape_c_f6"
+        android:orientation="horizontal"
+        android:translationZ="@dimen/dp5"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/sa_icon"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp13"
+            android:paddingRight="@dimen/dp5"
+            android:src="@mipmap/address_dw" />
+
+        <!-- 不是定位城市：是传过来的值 -->
+        <TextView
+            android:id="@+id/sa_citytext"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/dp10"
+            tools:text="city" />
+
+        <View
+            android:layout_width="@dimen/dp2"
+            android:layout_height="@dimen/dp10"
+            android:layout_gravity="center_vertical"
+            android:background="@color/color_gray"
+
+            />
+
+        <ImageView
+            android:id="@+id/sa_searchicon"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingRight="@dimen/dp6"
+            android:src="@mipmap/address_search" />
+
+        <EditText
+            android:id="@+id/sa_searchcontent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent"
+            android:cursorVisible="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center_vertical"
+            android:hint="搜索内容"
+            android:imeActionLabel="搜索"
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:textCursorDrawable="@null"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

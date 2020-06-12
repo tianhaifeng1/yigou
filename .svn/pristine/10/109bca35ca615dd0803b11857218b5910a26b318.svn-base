@@ -1,0 +1,22 @@
+package com.work.doctor.fruits.base;
+
+import com.trjx.tlibs.uils.Logger;
+import com.xzte.maplib.MapApplication;
+
+/**
+ * 需要继承MapApplication
+ */
+public class DemoApplication extends MapApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        initBaidu();
+
+        //打开Log打印
+        Logger.LOG_ENABLE = true;
+
+        setBugglyAppid("f38ee331bd");
+    }
+
+}

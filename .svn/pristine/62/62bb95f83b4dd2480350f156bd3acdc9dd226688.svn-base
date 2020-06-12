@@ -1,0 +1,10 @@
+package com.work.rulong.delivery.base;
+
+import com.trjx.tbase.activity.mvp.BaseMVPFragment;
+import com.trjx.tbase.mvp.TPresenter;
+import com.trjx.tbase.mvp.TView;
+import com.work.rulong.delivery.http.DemoModel;
+
+public abstract class DemoMVPFragment<V extends TView, P extends TPresenter<V, DemoModel>>
+        extends BaseMVPFragment<V, DemoModel,P> {
+}

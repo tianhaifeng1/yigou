@@ -1,0 +1,111 @@
+-- Merging decision tree log ---
+manifest
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+	package
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:4:5-30
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+	xmlns:tools
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:1-43:12
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:6:5-81
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:7:5-79
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:7:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:8:5-76
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:8:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:9:22-73
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:11:5-81
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:11:22-78
+uses-permission#android.permission.INTERNET
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:12:5-67
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:12:22-64
+application
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:14:5-41:19
+	android:supportsRtl
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:14:18-44
+service#com.baidu.location.f
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:17:9-20:41
+	android:process
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:20:13-38
+	android:enabled
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:19:13-35
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:18:13-48
+activity#com.xzte.maplib.baidu.BaiduMapSearchActivity
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:25:9-28:59
+	android:launchMode
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:27:13-43
+	android:theme
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:28:13-56
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:26:13-57
+activity#com.xzte.maplib.baidu.BdMapAddressSelectActivity
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:29:9-32:59
+	android:launchMode
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:31:13-43
+	android:theme
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:32:13-56
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:30:13-61
+activity#com.xzte.maplib.baidu.SearchAddressActivity
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:33:9-36:25
+	android:launchMode
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:34:13-43
+	android:theme
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:35:13-56
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:33:19-62
+activity#com.xzte.maplib.city.CitySelectActivity
+ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:37:9-40:59
+	android:launchMode
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:39:13-43
+	android:theme
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:40:13-56
+	android:name
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml:38:13-52
+uses-sdk
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		ADDED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml
+		INJECTED from E:\tworks\AsWorks\XZTE\maplib\src\main\AndroidManifest.xml

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical">
+
+    <include layout="@layout/ttitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货人"
+            android:textColor="@color/color_name" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp45"
+            android:background="@color/transparent"
+            android:hint="姓名"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/color_content"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/color_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp50"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手机号码"
+            android:textColor="@color/color_name" />
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp30"
+            android:background="@color/transparent"
+            android:hint="手机号码"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:minLines="11"
+            android:padding="@dimen/dp10"
+            android:textColor="@color/color_content"
+            android:textSize="14dp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/color_line" />
+
+    <LinearLayout
+        android:id="@+id/ll_select_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp50"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingTop="@dimen/dp15"
+        android:paddingRight="@dimen/dp12"
+        android:paddingBottom="@dimen/dp15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择地区"
+            android:textColor="@color/color_name" />
+
+        <ImageView
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginLeft="@dimen/dp40"
+            android:src="@mipmap/my_item_address" />
+
+        <TextView
+            android:id="@+id/tv_select_area"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transparent"
+            android:hint="请选择"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_content"
+            android:textSize="14dp"
+            tools:text="直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给直接给你答复见的话估计可是电话给" />
+
+        <ImageView
+            android:id="@+id/tv_select_"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:layout_gravity="center_vertical"
+            android:paddingLeft="@dimen/dp10"
+            android:src="@mipmap/right" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/color_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp50"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingTop="@dimen/dp15"
+        android:paddingRight="@dimen/dp12"
+        android:paddingBottom="@dimen/dp15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收货地址"
+            android:textColor="@color/color_name" />
+
+        <TextView
+            android:id="@+id/et_detailed_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp30"
+            android:background="@color/transparent"
+            android:hint="如道路、门牌号、小区、单元室等"
+            android:paddingLeft="@dimen/dp10"
+            android:textColor="@color/color_content"
+            android:textSize="14dp"
+            tools:text="如道路、门牌号、小区、单元室等如道路、门牌号、小区、单元室等如道路、门牌号、小区、单元室等" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/color_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/dp50"
+        android:paddingLeft="@dimen/dp12"
+        android:paddingRight="@dimen/dp12">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="详细地址"
+            android:textColor="@color/color_name" />
+
+        <EditText
+            android:id="@+id/et_detailed_addressdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp30"
+            android:background="@color/transparent"
+            android:hint="例：XX路XX小区15号楼1201室"
+            android:minHeight="@dimen/dp50"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="@dimen/dp15"
+            android:paddingBottom="@dimen/dp15"
+            android:textColor="@color/color_content"
+            android:textSize="14dp"
+            tools:text="例：XX路XX小区15号楼1201室例" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/dp12"
+        android:layout_marginRight="@dimen/dp12"
+        android:background="@color/color_line" />
+
+    <TextView
+        android:id="@+id/tv_editaddress_bz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp15"
+        android:text="注:当前只可配送西藏自治区拉萨市" />
+
+    <TextView
+        android:id="@+id/tv_save"
+        android:layout_width="270dp"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp10"
+        android:background="@drawable/selector_longin"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@color/color_white"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="270dp"
+        android:layout_height="@dimen/dp40"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp12"
+        android:background="@drawable/waikuang_c_grey"
+        android:gravity="center"
+        android:text="删除收货地址"
+        android:textColor="@color/color_name"
+        android:textSize="15sp"
+        android:visibility="gone" />
+
+</LinearLayout>

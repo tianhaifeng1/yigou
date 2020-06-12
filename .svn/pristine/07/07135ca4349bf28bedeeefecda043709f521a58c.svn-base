@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp110"
+    android:padding="@dimen/dp5">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:background="@drawable/dialog_waikuang_r5_white"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/item_shopcart_select"
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/round_n"
+            android:paddingRight="@dimen/dp10"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/item_shopcart_icon"
+            android:layout_width="@dimen/dp90"
+            android:layout_height="match_parent"
+            tools:src="@mipmap/page1"
+            android:scaleType="fitCenter"
+            android:layout_toRightOf="@id/item_shopcart_select"
+            />
+        <TextView
+            android:id="@+id/item_shopcart_tm"
+            android:layout_width="@dimen/dp90"
+            android:layout_height="@dimen/dp20"
+            android:layout_marginTop="@dimen/dp70"
+            android:background="@mipmap/main_img_bottom_tip"
+            android:text="此商品一天仅限购一件"
+            android:gravity="center_horizontal|bottom"
+            android:textScaleX="0.8"
+            android:textSize="8dp"
+            android:paddingBottom="@dimen/dp2"
+            android:textColor="@color/color_white"
+            android:layout_toRightOf="@id/item_shopcart_select"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/item_shopcart_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:layout_toRightOf="@id/item_shopcart_icon"
+            android:layout_marginLeft="@dimen/dp10"
+            android:textColor="@color/color_name"
+            />
+
+        <TextView
+            android:id="@+id/item_shopcart_guige"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_below="@id/item_shopcart_name"
+            android:paddingTop="@dimen/dp5"
+            tools:text="张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三张三"
+            android:lineSpacingExtra="@dimen/dp2"
+            android:layout_toRightOf="@id/item_shopcart_icon"
+            android:layout_marginLeft="@dimen/dp10"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/dp12"
+            />
+
+        <TextView
+            android:id="@+id/item_shopcart_remind"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="当前库存仅剩10个"
+            android:textSize="@dimen/dp10"
+            android:textColor="@color/textcolor_point"
+            android:layout_below="@id/item_shopcart_guige"
+            android:layout_toRightOf="@id/item_shopcart_icon"
+            android:layout_marginLeft="@dimen/dp10"
+            android:paddingTop="@dimen/dp5"
+            />
+
+        <TextView
+            android:id="@+id/item_shopcart_price"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:maxLines="1"
+            tools:text="￥3.99"
+            android:textSize="@dimen/dp16"
+            android:textColor="@color/textcolor_point"
+            android:gravity="center"
+            android:layout_toRightOf="@id/item_shopcart_icon"
+            android:layout_marginLeft="@dimen/dp10"
+            android:layout_alignParentBottom="true"
+            />
+
+        <LinearLayout
+            android:id="@+id/item_shopcart_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp30"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            >
+            <ImageView
+                android:id="@+id/item_shopcart_minus"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="match_parent"
+                android:src="@mipmap/goodscart_jian"
+                android:padding="@dimen/dp5"
+                 />
+            <TextView
+                android:id="@+id/item_shopcart_num"
+                android:layout_width="@dimen/dp40"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/textcolor_point"/>
+            <ImageView
+                android:id="@+id/item_shopcart_add"
+                android:layout_width="@dimen/dp30"
+                android:layout_height="match_parent"
+                android:src="@mipmap/goodscart_jia"
+                android:padding="@dimen/dp5"
+                 />
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="@dimen/dp12"
+    android:paddingRight="@dimen/dp12"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dp10"
+    android:background="@color/color_white"
+    >
+
+    <TextView
+        android:id="@+id/item_record_tx_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/color_name"
+        android:layout_alignParentRight="true"
+        android:textSize="@dimen/dp16"
+        tools:text="money" />
+
+    <TextView
+        android:id="@+id/item_record_tx_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentRight="true"
+        tools:text="money"
+        android:textSize="@dimen/dp14"
+        android:layout_below="@id/item_record_tx_money"
+        android:lineSpacingExtra="5dp"
+        android:textColor="@color/textcolor_point"
+        />
+
+    <TextView
+        android:id="@+id/item_record_tx_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        tools:text="购买商品"
+        android:textSize="@dimen/dp16"
+        android:textColor="@color/color_name"
+        android:maxLines="1"
+        android:paddingRight="@dimen/dp10"
+        android:layout_toLeftOf="@id/item_record_tx_money"
+        />
+    <TextView
+        android:id="@+id/item_record_tx_datetime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        tools:text="time"
+        android:layout_marginTop="5dp"
+        android:textSize="@dimen/dp14"
+        android:textColor="@color/color_content"
+        android:paddingRight="@dimen/dp10"
+        android:layout_below="@id/item_record_tx_title"
+        android:layout_toLeftOf="@id/item_record_tx_status"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/item_record_tx_datetime"
+        android:background="@color/color_line"
+        android:layout_marginTop="@dimen/dp10"
+        />
+
+</RelativeLayout>

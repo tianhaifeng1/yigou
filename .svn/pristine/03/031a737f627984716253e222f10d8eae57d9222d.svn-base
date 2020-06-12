@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.ShareFaceToFacePageActivity">
+
+    <include layout="@layout/ttitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="860dp"
+                android:background="@mipmap/share_bg_facetoface">
+
+
+                <RelativeLayout
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@color/color_white"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="170dp"
+                    android:padding="10dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/ewm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@mipmap/ic_applogo"
+                        />
+
+                </RelativeLayout>
+
+            </FrameLayout>
+            
+            
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

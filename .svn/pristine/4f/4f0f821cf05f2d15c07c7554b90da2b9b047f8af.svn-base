@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/ttitle" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+
+        <TextView
+            android:id="@+id/map_city"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="City"
+            android:textColor="#222222"
+            />
+
+        <TextView
+            android:id="@+id/map_search"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="搜索"
+            android:textSize="16sp" />
+        
+        <AutoCompleteTextView
+            android:id="@+id/map_search_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/map_search"
+            android:layout_toRightOf="@id/map_city"
+            android:background="@drawable/waikuang_r5_zhuseline"
+            android:hint="搜索内容"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="14sp"
+            android:maxLines="1"
+            />
+        
+        <!--<EditText-->
+            <!--android:id="@+id/map_search_content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_toLeftOf="@id/map_search"-->
+            <!--android:layout_toRightOf="@id/map_city"-->
+            <!--android:background="@drawable/waikuang_r5_zhuseline"-->
+            <!--android:hint="搜索内容"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:paddingRight="10dp"-->
+            <!--android:textSize="14sp"-->
+            <!--android:maxLines="1"-->
+            <!--android:imeOptions="actionSearch"-->
+            <!--android:imeActionLabel="搜索"-->
+            <!--/>-->
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/map_search_rl"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <include layout="@layout/layout_baidumap" />
+
+        <ImageView
+            android:id="@+id/map_search_dtz"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/datouzhen"
+            android:paddingBottom="40dp"
+            android:layout_centerInParent="true"
+            />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/map_search_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+
+</LinearLayout>

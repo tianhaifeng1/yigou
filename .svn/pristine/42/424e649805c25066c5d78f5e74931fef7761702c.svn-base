@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/layout_filter_tab_rv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/filter_tab_height"
+        android:background="@color/filter_tab_bg">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include layout="@layout/layout_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/filter_tab_height"
+        />
+
+    <RelativeLayout
+        android:id="@+id/layout_filter_item_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/filter_all_bg"
+        android:layout_marginTop="@dimen/filter_tab_height"
+        android:visibility="gone"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/layout_filter_item_recyclerview"
+            android:layout_width="match_parent"
+            android:background="@color/filter_item_bg"
+            android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+
+        <LinearLayout
+            android:id="@+id/layout_filter_item_bottom_ll"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:visibility="gone"
+            android:layout_below="@id/layout_filter_item_recyclerview"
+            >
+            <TextView
+                android:id="@+id/layout_filter_item_reset_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="重置"
+                android:gravity="center"
+                android:textSize="@dimen/dp16"
+                android:background="@drawable/line_top_reset"
+                />
+
+            <TextView
+                android:id="@+id/layout_filter_item_affirm_tv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="确认"
+                android:gravity="center"
+                android:textSize="@dimen/dp16"
+                android:background="@drawable/line_top_affirm"
+                android:textColor="@color/color_white"
+                />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

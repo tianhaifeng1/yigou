@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp140"
+        android:scaleType="fitXY"
+        android:src="@mipmap/goodscart_bg" />
+
+    <include layout="@layout/ttitle" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/ttitle_and_top_h"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <RelativeLayout
+                android:id="@+id/fm_main_three_address_rl"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/waikuang_r5_white"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingTop="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:paddingBottom="@dimen/dp10">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+                    <ImageView
+                        android:layout_width="@dimen/dp20"
+                        android:layout_height="@dimen/dp30"
+                        android:src="@mipmap/ic_mine_address" />
+
+                    <ImageView
+                        android:layout_width="@dimen/dp10"
+                        android:layout_height="30dp"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/right_goodscart"
+                        android:layout_centerVertical="true"/>
+
+                    <TextView
+                        android:id="@+id/fm_main_three_address_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="@dimen/dp30"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginRight="@dimen/dp16"
+                        android:gravity="center_vertical"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:textColor="@color/color_name"
+                        android:text="请选择地址" />
+
+                    <TextView
+                        android:id="@+id/fm_main_three_address_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/dp30"
+                        android:layout_marginRight="@dimen/dp16"
+                        android:textColor="@color/color_content"
+                        tools:text="潇洒人生    13112345678" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/fm_main_three_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/dp90"
+                android:background="@color/color_bg_fa"
+                ></androidx.recyclerview.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/fm_main_three_empty_ll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:visibility="gone"
+                android:background="@color/color_bg_fa"
+                android:paddingBottom="100dp"
+                >
+
+                <ImageView
+                    android:layout_width="@dimen/dp120"
+                    android:layout_height="@dimen/dp120"
+                    android:background="@mipmap/default_cartlist" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="您的购物车还没有商品哦"
+                    android:textColor="@color/textcolor_nomal"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/fm_main_three_empty_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/selector_longin"
+                    android:paddingLeft="25dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="25dp"
+                    android:paddingBottom="5dp"
+                    android:text="去逛逛吧"
+                    android:textColor="@color/color_white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</RelativeLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.MVipActivity">
+
+    <include layout="@layout/ttitle"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:background="@mipmap/wallet_bg"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:id="@+id/vip_guize"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp40"
+            android:text="会员规则"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/vip_jilu"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp40"
+            android:text="充值记录"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            />
+
+        <TextView
+            android:id="@+id/vip_yue"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:text="0.00 元"
+            android:textSize="24sp"
+            android:maxLines="1"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/vip_guize"
+            />
+        <TextView
+            android:id="@+id/vip_yue_"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="余额"
+            android:textSize="14sp"
+            android:textColor="@color/color_white"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/vip_yue"
+            />
+
+        <TextView
+            android:id="@+id/vip_chongzhi"
+            android:layout_width="@dimen/dp100"
+            android:layout_height="@dimen/dp30"
+            android:text="充值"
+            android:layout_below="@id/vip_yue_"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_chongzhi"
+            />
+
+    </RelativeLayout>
+
+    <include layout="@layout/layout_recyclerview" />
+
+</LinearLayout>

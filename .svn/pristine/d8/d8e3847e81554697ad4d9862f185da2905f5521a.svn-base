@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp90"
+    android:padding="@dimen/dp5"
+    >
+
+    <RelativeLayout
+        android:id="@+id/item_coupon_rl"
+        android:layout_width="@dimen/dp100"
+        android:layout_height="@dimen/dp80"
+        android:background="@mipmap/item_yhj_bg_left"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp40"
+            android:layout_centerHorizontal="true"
+            android:gravity="bottom"
+            android:layout_marginTop="@dimen/dp10"
+            >
+            <TextView
+                android:layout_width="@dimen/dp20"
+                android:layout_height="wrap_content"
+                android:text="￥"
+                android:textSize="@dimen/sp16"
+                android:gravity="bottom"
+                android:textColor="@color/color_white"
+                />
+            <TextView
+                android:id="@+id/item_coupon_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textSize="@dimen/sp30"
+                android:textColor="@color/color_white"
+                android:maxLines="1"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/item_coupon_term"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp20"
+            android:text="无门槛"
+            android:textSize="@dimen/sp10"
+            android:layout_marginTop="@dimen/dp50"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/color_white"
+            android:gravity="center"
+            android:maxLines="1"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp80"
+        android:paddingLeft="@dimen/dp10"
+        android:paddingRight="@dimen/dp10"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:background="@color/color_white"
+        >
+
+        <TextView
+            android:id="@+id/item_coupon_btn"
+            android:layout_width="@dimen/dp70"
+            android:layout_height="@dimen/dp30"
+            android:text="立即领取"
+            android:gravity="center"
+            android:background="@drawable/shape_yhj1"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp12"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="10dp"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/item_coupon_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仅限如龙易购n商店指定商品使用商店指定商品使"
+            android:textColor="@color/color_name"
+            android:lineSpacingExtra="@dimen/dp5"
+            android:textSize="@dimen/sp14"
+            android:layout_marginTop="@dimen/dp5"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_toLeftOf="@id/item_coupon_btn"
+            />
+
+        <TextView
+            android:id="@+id/item_coupon_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2019.05.04 - 2019.10.31"
+            android:layout_alignParentBottom="true"
+            android:maxLines="1"
+            android:textSize="@dimen/sp12"
+            android:layout_marginBottom="@dimen/dp5"
+            android:textColor="@color/color_content"
+            />
+
+        <ImageView
+            android:id="@+id/item_coupon_icon"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp50"
+            android:src="@mipmap/yilingqu"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp60"
+            android:visibility="gone"
+            />
+        
+    </RelativeLayout>
+
+</LinearLayout>

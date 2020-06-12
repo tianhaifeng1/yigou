@@ -1,0 +1,40 @@
+package com.work.doctor.fruits.activity.adapter;
+
+import androidx.annotation.Nullable;
+
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.t.httplib.yigou.bean.resp.PayOrderInfoBean;
+import com.trjx.tbase.module.recyclermodule.TRecyclerAdapter;
+import com.work.doctor.fruits.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+public class CzListAdapter extends TRecyclerAdapter<PayOrderInfoBean> {
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public CzListAdapter(@Nullable List<PayOrderInfoBean> data) {
+        super(data);
+    }
+
+    @Override
+    protected int addItemLayoutRes() {
+        return R.layout.item_czrecord;
+    }
+
+    @Override
+    protected void convert(BaseViewHolder helper, PayOrderInfoBean item) {
+        helper.setText(R.id.item_czrecord_money, item.getPayMoney().floatValue() + "\n售价" + item.getSellPrice().floatValue());
+//        ０．申请；１．成功；２．失败
+        String titleStr = "";
+        int status = item.getStatus();
+        if(status == 1){
+            titleStr = "充值成功";
+        }else {
+            titleStr = "充值失败";
+        }
+        helper.setText(R.id.item_czrecord_title, titleStr);
+        helper.setText(R.id.item_czrecord_datetime, dateFormat.format(new Date(item.getCreateTime())));
+    }
+
+}

@@ -1,0 +1,1 @@
+[{"outputType":{"type":"BUNDLE_MANIFEST"},"apkData":{"type":"MAIN","splits":[],"versionCode":200,"versionName":"2.0.0.11","enabled":true,"outputFile":"yigou-debug.apk","fullName":"debug","baseName":"debug"},"path":"AndroidManifest.xml","properties":{"packageId":"com.work.doctor.fruits","split":"","minSdkVersion":"21"}}]
