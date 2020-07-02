@@ -110,6 +110,13 @@ public class DemoPresenter<V extends TView> extends TPresenter<V, DemoModel> {
         registerWxApp(context);
         //这里注意要放在子线程
 //        Runnable payRunnable = () -> {
+        if (wxAPI == null) {
+            return;
+        }
+        if (!wxAPI.isWXAppInstalled()) {
+            ToastUtil2.showToast(context, "您还未安装微信客户端");
+            return;
+        }
         PayReq request = new PayReq(); //调起微信APP的对象
         //下面是设置必要的参数，也就是前面说的参数,这几个参数从何而来请看上面说明
         request.appId = DemoConstant.wx_app_id;

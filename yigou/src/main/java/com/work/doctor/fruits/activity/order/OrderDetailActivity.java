@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -24,6 +24,7 @@ import com.work.doctor.fruits.activity.Goods.GoodsDetial2Activity;
 import com.work.doctor.fruits.assist.DemoUtils;
 import com.work.doctor.fruits.base.DemoMVPActivity;
 import com.work.doctor.fruits.dialog.CommonPopupWindow;
+import com.xzte.maplib.baidu.StoreMapActivity;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -32,10 +33,7 @@ import java.util.Date;
 public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderDetailPresenter>
         implements OrderDetailView, View.OnClickListener, CommonPopupWindow.ViewInterface, BaseQuickAdapter.OnItemClickListener {
 
-    private ImageView ivAddress;
-    private TextView tvConsignee;
-    private TextView tvAddress;
-    private TextView tvPhonenumber;
+
     private RecyclerView recyclerView;
     private TextView tvInvoiceInformationMessage;
     private TextView tvOrderPrice;
@@ -44,7 +42,19 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
     private TextView tvInvoiceInformation;
     private TextView tvRealPayment;
     private TextView tvOrderStatus;
-    private TextView tvOrderContentText;
+    private TextView mTogoodsName;
+    private TextView mTogoodsAddress;
+    private TextView mTogoodsPhonenumber;
+    private TextView mTogoodsZtName;
+    private TextView moTgoodsZtPhone;
+    private TextView mTvOrderNo;
+    private TextView mTvOrderTime;
+    private TextView mTvOrderShopname;
+    private TextView mTvOrderBeizhu;
+    private TextView mTvOrderBeizhutxt;
+
+    private LinearLayout mTogoodsZtRel;
+    private RelativeLayout mTvOrderMaprel;
 //    private TextView tvOrderNumber;
 //    private TextView tvOrderTime;
 //    private TextView tvOrderPerson;
@@ -53,6 +63,9 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
 //    private TextView tvShippingBeizhu;
 
     private String orderNo;
+
+    private String shopLongitude;
+    private String shopLatitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +85,6 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
 
         orderNo = getIntent().getStringExtra("orderNo");
 
-        ivAddress = findViewById(R.id.iv_address);
-        tvConsignee = findViewById(R.id.tv_consignee);
-        tvAddress = findViewById(R.id.tv_address);
-        tvPhonenumber = findViewById(R.id.tv_phonenumber);
         recyclerView = findViewById(R.id.recyclerView);
         tvInvoiceInformationMessage = findViewById(R.id.tv_invoice_information_message);
         tvOrderPrice = findViewById(R.id.tv_order_price);
@@ -84,7 +93,19 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
         tvInvoiceInformation = findViewById(R.id.tv_invoice_information);
         tvRealPayment = findViewById(R.id.tv_real_payment);
         tvOrderStatus = findViewById(R.id.tv_order_status);
-        tvOrderContentText = findViewById(R.id.tv_order_contenttext);
+        mTogoodsName = findViewById(R.id.togoods_name);
+        mTogoodsAddress = findViewById(R.id.togoods_address);
+        mTogoodsPhonenumber = findViewById(R.id.togoods_phonenumber);
+        mTogoodsZtName = findViewById(R.id.togoods_zt_name);
+        moTgoodsZtPhone = findViewById(R.id.togoods_zt_phone);
+        mTvOrderNo = findViewById(R.id.tv_order_no);
+        mTvOrderTime = findViewById(R.id.tv_order_time);
+        mTvOrderShopname = findViewById(R.id.tv_order_shopname);
+        mTvOrderMaprel = findViewById(R.id.tv_order_maprel);
+        mTvOrderBeizhu = findViewById(R.id.tv_order_beizhu);
+        mTvOrderBeizhutxt = findViewById(R.id.tv_order_beizhutxt);
+
+        mTogoodsZtRel = findViewById(R.id.togoods_zt_rel);
 //        tvOrderNumber = findViewById(R.id.tv_order_number);
 //        tvOrderTime = findViewById(R.id.tv_order_time);
 //        tvOrderPerson = findViewById(R.id.tv_order_person);
@@ -93,6 +114,7 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
 //        tvShippingBeizhu = findViewById(R.id.tv_shipping_beizhu);
 
         tvInvoiceInformation.setOnClickListener(this);
+        mTvOrderMaprel.setOnClickListener(this);
 
         getPresenter().getDataOrderDetail(orderNo);
 
@@ -105,6 +127,43 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
         this.orderDetailInfoBean = infoBean;
         OrderDetailInfoBean.OrderBean orderBean = infoBean.getOrder();
         OrderDetailInfoBean.InvoiceBean invoiceBean = infoBean.getInvoice();
+
+        if(orderBean.getExpressType().equals("0")){
+            mTogoodsZtRel.setVisibility(View.GONE);
+            mTvOrderMaprel.setVisibility(View.GONE);
+
+            mTogoodsName.setText("收货人:" + orderBean.getReceiverName());
+            mTogoodsAddress.setText(orderBean.getReceiverPhone());
+            mTogoodsPhonenumber.setText("收货地址:" + orderBean.getReceiverAddress());
+
+        }else if(orderBean.getExpressType().equals("1")){
+            mTogoodsZtRel.setVisibility(View.VISIBLE);
+            mTvOrderMaprel.setVisibility(View.VISIBLE);
+
+            mTogoodsName.setText("提货门店："+orderBean.getShopName());
+            mTogoodsAddress.setText("门店地址："+orderBean.getShopAddress());
+            mTogoodsPhonenumber.setText("门店电话："+orderBean.getShopPhone());
+            mTogoodsZtName.setText("提货人："+orderBean.getReceiverName());
+            moTgoodsZtPhone.setText("提货人手机号："+orderBean.getReceiverPhone());
+        }
+
+        shopLongitude = orderBean.getShopLongitude();
+        shopLatitude = orderBean.getShopLatitude();
+
+        if(orderBean.getNote().equals("")){
+            mTvOrderBeizhu.setVisibility(View.GONE);
+            mTvOrderBeizhutxt.setVisibility(View.GONE);
+        }else{
+            mTvOrderBeizhu.setVisibility(View.VISIBLE);
+            mTvOrderBeizhutxt.setVisibility(View.VISIBLE);
+            mTvOrderBeizhutxt.setText(orderBean.getNote());
+        }
+
+        tvYhjmoney.setText("-￥" + orderBean.getCouponValue().setScale(2, BigDecimal.ROUND_HALF_UP).floatValue());
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+        mTvOrderNo.setText(orderBean.getSystemOrderNo());
+        mTvOrderTime.setText(sdf.format(new Date(orderBean.getAddTime())));
+        mTvOrderShopname.setText(orderBean.getShopName());
 
         //订单详情
         OrderListAllItemAdapter allItemAdapter = new OrderListAllItemAdapter(orderBean.getDetails());
@@ -144,33 +203,6 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
                     }
                 }
             }
-//        }
-
-        tvYhjmoney.setText("-￥" + orderBean.getCouponValue().setScale(2, BigDecimal.ROUND_HALF_UP).floatValue());
-        tvConsignee.setText("收货人:" + orderBean.getReceiverName());
-        tvPhonenumber.setText(orderBean.getReceiverPhone());
-        tvAddress.setText("收货地址:" + orderBean.getReceiverAddress());
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("订单编号：" + orderBean.getSystemOrderNo());
-        stringBuilder.append("\n下单时间：" + sdf.format(new Date(orderBean.getAddTime())));
-        stringBuilder.append("\n收货人：" + orderBean.getReceiverName());
-        stringBuilder.append("\n联系方式：" + orderBean.getReceiverPhone());
-        stringBuilder.append("\n收货地址：" + orderBean.getReceiverAddress());
-        String noteStr = orderBean.getNote();
-        if(!noteStr.equals("")){
-            stringBuilder.append("\n备注:" + orderBean.getNote());
-        }
-        tvOrderContentText.setText(stringBuilder.toString());
-
-//        tvOrderNumber.setText("订单编号:" + orderBean.getSystemOrderNo());
-//        tvOrderPerson.setText("收货人:" + orderBean.getReceiverName());
-//        tvContact.setText("联系方式:" + orderBean.getReceiverPhone());
-//        tvShippingAddress.setText("收货地址:" + orderBean.getReceiverAddress());
-//        tvShippingBeizhu.setText("备注:" + orderBean.getNote());
-//
-//        tvOrderTime.setText("下单时间:" + sdf.format(new Date(orderBean.getAddTime())));
 
         int type = orderBean.getTradeStatus();
         Logger.t("订单详情 状态：" + orderBean.getTradeStatus());
@@ -235,6 +267,12 @@ public class OrderDetailActivity extends DemoMVPActivity<OrderDetailView, OrderD
                 }catch (Exception e){
                     e.printStackTrace();
                 }
+                break;
+            case R.id.tv_order_maprel:
+                Intent intent = new Intent(context, StoreMapActivity.class);
+                intent.putExtra("shopLongitude",shopLongitude);
+                intent.putExtra("shopLatitude",shopLatitude);
+                startActivity(intent);
                 break;
         }
     }

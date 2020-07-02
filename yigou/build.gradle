@@ -16,8 +16,8 @@ android {
         applicationId "com.work.doctor.fruits"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 203
-        versionName "2.0.3.6"
+        versionCode 206
+        versionName "2.0.6.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled = true
@@ -37,6 +37,11 @@ android {
 
     buildTypes {
         release {
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release

@@ -15,6 +15,7 @@ public class DemoApplication extends MapApplication {
         super.onCreate();
         initBaidu();
 
+
         //激光统计的初始化
         JAnalyticsInterface.init(this);
         //设置调试模式：参数为 true 表示打开调试模式，可看到 sdk 的日志
@@ -29,7 +30,7 @@ public class DemoApplication extends MapApplication {
         //打开Log打印
         Logger.LOG_ENABLE = true;
 
-//        setBugglyAppid("45f28af007");
+        setBugglyAppid("45f28af007");
 
     }
 

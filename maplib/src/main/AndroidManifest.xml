@@ -10,12 +10,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"
+    <uses-permission
+        android:name="android.permission.WRITE_SECURE_SETTINGS"
         tools:ignore="ProtectedPermissions" />
 
     <application android:supportsRtl="true">
-
+        <activity android:name=".baidu.StoreMapActivity"></activity>
         <!-- 声明service组件 -->
         <service
             android:name="com.baidu.location.f"
@@ -31,8 +31,7 @@
         <activity
             android:name=".baidu.BdMapAddressSelectActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".baidu.SearchAddressActivity"
-            ></activity>
+        <activity android:name=".baidu.SearchAddressActivity" />
         <activity
             android:name=".city.CitySelectActivity"
             android:theme="@style/AppTheme.NoActionBar" />

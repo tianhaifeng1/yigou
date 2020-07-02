@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.FloatRange;
@@ -21,6 +22,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.trjx.tbase.tdialog.BaseDialog;
 import com.trjx.tlibs.uils.ToastUtil2;
 import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.assist.DemoConstant;
 
 import java.lang.reflect.Field;
 
@@ -86,7 +88,7 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
         /**
          * 支付方式
          *
-         * @param payType 2 微信； 4 余额
+         * @param payType 2 微信； 4 余额； 5货到付款
          * @return
          */
         public Builder setPayType(int payType) {
@@ -118,14 +120,26 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View contentView = inflater.inflate(R.layout.dialog_payway, null);
         ViewHolder viewHolder = new ViewHolder(contentView);
+        if(DemoConstant.userStatus==3){
+            viewHolder.mDialogPaywayHdfkLin.setVisibility(View.VISIBLE);
+        } else {
+            viewHolder.mDialogPaywayHdfkLin.setVisibility(View.GONE);
+        }
 
         if (param.payType == 2) {
             viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_);
             viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_no);
+            viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_no);
             viewHolder.mDialogPaywayAffirm.setEnabled(true);
         } else if (param.payType == 4) {
             viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_no);
             viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_);
+            viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_no);
+            viewHolder.mDialogPaywayAffirm.setEnabled(true);
+        } else if (param.payType == 5){
+            viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_no);
+            viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_no);
+            viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_);
             viewHolder.mDialogPaywayAffirm.setEnabled(true);
         } else {
             viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_no);
@@ -137,6 +151,7 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
             if (param.payType != 2) {
                 viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_);
                 viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_no);
+                viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_no);
                 param.payType = 2;
             }
         });
@@ -145,7 +160,17 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
             if (param.payType != 4) {
                 viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_no);
                 viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_);
+                viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_no);
                 param.payType = 4;
+            }
+        });
+        viewHolder.mDialogPaywaySelectHdfk.setOnClickListener(v -> {
+            viewHolder.mDialogPaywayAffirm.setEnabled(true);
+            if (param.payType != 5) {
+                viewHolder.mDialogPaywaySelectWx.setImageResource(R.mipmap.payway_select_no);
+                viewHolder.mDialogPaywaySelectYuE.setImageResource(R.mipmap.payway_select_no);
+                viewHolder.mDialogPaywaySelectHdfk.setImageResource(R.mipmap.payway_select_);
+                param.payType = 5;
             }
         });
         viewHolder.mDialogPaywayAffirm.setOnClickListener(this);
@@ -205,6 +230,8 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
         ImageView mDialogPaywayDelete;
         ImageView mDialogPaywaySelectWx;
         ImageView mDialogPaywaySelectYuE;
+        ImageView mDialogPaywaySelectHdfk;
+        LinearLayout mDialogPaywayHdfkLin;
         TextView mDialogPaywayAffirm;
 
         ViewHolder(View view) {
@@ -213,6 +240,8 @@ public class PaywaySelectDialog extends BaseDialog implements View.OnClickListen
             mDialogPaywaySelectWx = view.findViewById(R.id.dialog_payway_select_wx);
             mDialogPaywaySelectYuE = view.findViewById(R.id.dialog_payway_select_yu_e);
             mDialogPaywayAffirm = view.findViewById(R.id.dialog_payway_affirm);
+            mDialogPaywaySelectHdfk = view.findViewById(R.id.dialog_payway_select_hdfk);
+            mDialogPaywayHdfkLin = view.findViewById(R.id.dialog_payway_hdfk_lin);
         }
     }
 

@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.t.httplib.yigou.YigouConstant;
 import com.t.httplib.yigou.bean.resp.SigninInfoBean;
 import com.trjx.tlibs.uils.GlideUtile;
-import com.trjx.tlibs.uils.Logger;
 import com.work.doctor.fruits.R;
 import com.work.doctor.fruits.activity.adapter.SigninAdapter;
 import com.work.doctor.fruits.assist.DemoUtils;
@@ -127,7 +126,6 @@ public class SigninActivity extends DemoMVPActivity<SigninView, SigninPresenter>
             mSigninBut.setEnabled(false);
         }else if(operate==202){
             mSigninBut.setEnabled(false);
-            Logger.t("今日已签到");
         }
     }
 

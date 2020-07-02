@@ -67,6 +67,9 @@ public class DatabaseGoodsInfo implements Serializable {
     //分类名称
     private String cnname;
 
+    private int stock;
+
+
     //商品类型
     @NotNull
     private int goodsType;
@@ -76,13 +79,13 @@ public class DatabaseGoodsInfo implements Serializable {
     private long endTime;
 
 
-    @Generated(hash = 1165637342)
+    @Generated(hash = 195753874)
     public DatabaseGoodsInfo(String id, @NotNull String goodsId,
             @NotNull String shopId, @NotNull String specId,
             @NotNull String goodsName, String goodsUrl, float goodsPrice,
             float goodsPriceVip, int goodsNumber, @NotNull String specName,
             int goodsTotal, long goodsAddTime, boolean isSelect, int isTemai,
-            String catid, String cnname, int goodsType, long startTime,
+            String catid, String cnname, int stock, int goodsType, long startTime,
             long endTime) {
         this.id = id;
         this.goodsId = goodsId;
@@ -100,6 +103,7 @@ public class DatabaseGoodsInfo implements Serializable {
         this.isTemai = isTemai;
         this.catid = catid;
         this.cnname = cnname;
+        this.stock = stock;
         this.goodsType = goodsType;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -276,5 +280,13 @@ public class DatabaseGoodsInfo implements Serializable {
 
     public void setGoodsPriceVip(float goodsPriceVip) {
         this.goodsPriceVip = goodsPriceVip;
+    }
+
+    public int getStock() {
+        return this.stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 }

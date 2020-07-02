@@ -3,14 +3,15 @@ package com.work.doctor.fruits.activity;
 import android.view.View;
 
 import com.trjx.tbase.activity.GuidePageActivity;
-import com.trjx.tlibs.uils.SharedPreferencesUtils;
 import com.work.doctor.fruits.R;
-import com.work.doctor.fruits.assist.DemoConstant;
+import com.work.doctor.fruits.dialog.GuideDialog;
 import com.work.doctor.fruits.dialog.RemindDialog;
 
 import java.util.List;
 
 public class GuideActivity extends GuidePageActivity {
+
+    private GuideDialog guideDialog;
 
     @Override
     public void setContentView(int layoutResID) {
@@ -20,7 +21,20 @@ public class GuideActivity extends GuidePageActivity {
     @Override
     protected void initView() {
         super.initView();
-        SharedPreferencesUtils.setParam(context, DemoConstant.user_first, false);
+        if (guideDialog == null) {
+            guideDialog = new GuideDialog.Builder(context)
+                    .setListener(new GuideDialog.GuideDialogClickListener() {
+                        @Override
+                        public void GuideDialogChangeClick(View view) {
+                            tRemind("您未同意用户协议，将无法使用本软件");
+                            activityManager.exit();
+                        }
+                    }).create();
+            guideDialog.show(getSupportFragmentManager(), "dialog_location_change");
+        }
+
+
+//        SharedPreferencesUtils.setParam(context, DemoConstant.user_first, false);
     }
 
     @Override

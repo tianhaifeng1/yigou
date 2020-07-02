@@ -118,7 +118,7 @@ public class MainFourFragment extends DemoMVPFragment<MainFourView, MainFourPres
             mFmMainFourName.setText("立即登录");
             initOrdeNumber(new OrderNumberInfoBean());
             GlideUtile.bindImageView(activity.context, R.mipmap.t_member_no, mFmMainFourMember);
-            mFmMainFourMemberText.setText("游客");
+            mFmMainFourMemberText.setVisibility(View.GONE);
 
             mFmMainFourRlYaoqing.setVisibility(View.VISIBLE);
             mFmMainFourRlFens.setVisibility(View.VISIBLE);
@@ -128,7 +128,7 @@ public class MainFourFragment extends DemoMVPFragment<MainFourView, MainFourPres
             mFmMainFourSignin.setVisibility(View.GONE);
 
         }else{
-
+            mFmMainFourMemberText.setVisibility(View.VISIBLE);
             getPresenter().getUserInfo();
             getPresenter().getOrderNumber();
         }
@@ -289,12 +289,17 @@ public class MainFourFragment extends DemoMVPFragment<MainFourView, MainFourPres
     @Override
     public void getUserInfoSuccess(UserInfoBean userInfoBean) {
 
+        DemoConstant.balance = userInfoBean.getBalance();
+        DemoConstant.userStatus = userInfoBean.getStatus();
+
         if(DemoUtils.isPfUser()){
-            mFmMainFourRlYaoqing.setVisibility(View.GONE);
-            mFmMainFourRlFens.setVisibility(View.GONE);
             mFmMainFourRlShouyi.setVisibility(View.GONE);
             mFmMainFourRlShouyiSort.setVisibility(View.GONE);
             mFmMainFourRlYhj.setVisibility(View.GONE);
+            if(DemoConstant.userApprove == 0){
+                mFmMainFourRlYaoqing.setVisibility(View.GONE);
+                mFmMainFourRlFens.setVisibility(View.GONE);
+            }
         }else{
             mFmMainFourRlYaoqing.setVisibility(View.VISIBLE);
             mFmMainFourRlFens.setVisibility(View.VISIBLE);
@@ -308,22 +313,18 @@ public class MainFourFragment extends DemoMVPFragment<MainFourView, MainFourPres
             mFmMainFourSignin.setVisibility(View.VISIBLE);
         }
 
-
-        DemoConstant.balance = userInfoBean.getBalance();
-        DemoConstant.userStatus = userInfoBean.getStatus();
-
         GlideUtile.bindImageViewRound(activity.context, userInfoBean.getAvatarUrl(), R.mipmap.t_head, mFmMainFourHead);
 
         mFmMainFourName.setText(userInfoBean.getNickName());
 
         int status = userInfoBean.getStatus();
 
-        if (status == 1 || status == 2) {
+        if (status == 1 || status == 3) {
             GlideUtile.bindImageView(activity.context, R.mipmap.t_member, mFmMainFourMember);
-            if (status == 2) {
+            if (status == 3) {
                 mFmMainFourMemberText.setText("批发商");
             } else {
-                mFmMainFourMemberText.setText("会员");
+                mFmMainFourMemberText.setText("儒龙会员");
             }
         }/* else {
             GlideUtile.bindImageView(activity.context, R.mipmap.t_member_no, mFmMainFourMember);

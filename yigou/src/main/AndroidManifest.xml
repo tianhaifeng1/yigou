@@ -41,7 +41,7 @@
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activity.Goods.CategoryGoodsListActivity"></activity>
+        <activity android:name=".activity.Goods.CategoryGoodsListActivity" />
         <activity android:name=".activity.SigninRecordActivity" />
         <activity android:name=".activity.SigninActivity" />
         <activity android:name=".activity.Goods.GoodsListYsActivity" />
@@ -91,6 +91,7 @@
             android:name=".wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTask"
+            android:taskAffinity="com.work.doctor.fruits"
             android:theme="@style/transparent" /> <!-- 微信支付 -->
         <activity
             android:name=".wxapi.WXPayEntryActivity"
@@ -104,6 +105,7 @@
         </activity>
         <activity
             android:name=".activity.GuideActivity"
+            android:launchMode="singleTask"
             android:theme="@style/AppTheme.NoActionBar.welcome" />
         <activity
             android:name=".activity.MainNavActivity"

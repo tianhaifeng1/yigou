@@ -295,8 +295,8 @@ public class GoodsDetial3Activity extends DemoMVPActivity<GoodsDetialView, Goods
     //获取规格数据
     public void getGoodsItemData(int dialogState) {
         if (goodsDetailInfoBean != null && goodsDetailInfoBean.getPresell() != null
-                && goodsDetailInfoBean.getPresell().getBuyNum() >= goodsDetailInfoBean.getPresell().getLimitNum()) {
-            SnackbarUtil.showToast(rootView, "此商品限购" + goodsDetailInfoBean.getStock() + "份，您已经购买过此商品");
+                && goodsDetailInfoBean.getPresell().getBuyNum() >= goodsDetailInfoBean.getPresell().getLimitNum()&&goodsDetailInfoBean.getPresell().getLimitNum()!=0) {
+            SnackbarUtil.showToast(rootView, "此商品限购" + goodsDetailInfoBean.getPresell().getLimitNum() + "份，您已经购买过此商品");
             return;
         }
 
@@ -378,14 +378,19 @@ public class GoodsDetial3Activity extends DemoMVPActivity<GoodsDetialView, Goods
             if (goodsDetailInfoBean.getPresell() == null) {
                 return;
             }
-            if (goodsDetailInfoBean.getPresell().getLimitNum() <= 0 || goodsNumber >= goodsDetailInfoBean.getPresell().getLimitNum()) {
+            if (goodsDetailInfoBean.getPresell().getLimitNum() != 0 && goodsNumber >= goodsDetailInfoBean.getPresell().getLimitNum()) {
                 SnackbarUtil.showToast(rootView, "此商品限购" + goodsDetailInfoBean.getPresell().getLimitNum() + "份");
                 return;
             }
-            if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsDetailInfoBean.getPresell().getLimitNum()) {
+            if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsDetailInfoBean.getPresell().getLimitNum() && goodsDetailInfoBean.getPresell().getLimitNum() != 0) {
                 SnackbarUtil.showToast(rootView, "添加成功");
                 return;
             }
+            if(databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsDetailInfoBean.getStock()){
+                SnackbarUtil.showToast(rootView, "暂无库存");
+                return;
+            }
+
         } else {
 //                普通商品
             if (goodsDetailInfoBean.getPresell().getStock() <= 0) {
@@ -419,10 +424,11 @@ public class GoodsDetial3Activity extends DemoMVPActivity<GoodsDetialView, Goods
             goodsInfo.setStartTime(goodsDetailInfoBean.getPresell().getStartTime());
             goodsInfo.setEndTime(goodsDetailInfoBean.getPresell().getEndTime());
             goodsInfo.setGoodsTotal(goodsDetailInfoBean.getPresell().getLimitNum());
+            goodsInfo.setStock(goodsDetailInfoBean.getPresell().getStock());
         } else {
             goodsInfo.setGoodsTotal(goodsDetailInfoBean.getStock());
+            goodsInfo.setStock(goodsDetailInfoBean.getStock());
         }
-
 
         greenDaoAssist.insertGoods(DemoConstant.shopInfoBean.getShopId() + "", goodsInfo, isChange -> DemoConstant.isChangeDatabase = isChange);
 

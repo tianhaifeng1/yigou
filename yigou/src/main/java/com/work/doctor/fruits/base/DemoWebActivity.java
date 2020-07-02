@@ -19,6 +19,7 @@ import io.reactivex.disposables.Disposable;
  * code 区别码
  * <p>
  * JFGZ:积分规则
+ * TXGZ:隐私政策 （5）
  * TXGZ:提现协议 （4）
  * YHXY:用户协议 （3）
  * GYWM:关于我们 （2）
@@ -70,6 +71,9 @@ public class DemoWebActivity extends TWeb2Activity {
                 titleStr = "提现协议";
                 catype = "TXGZ";
                 break;
+            case 5:
+                titleStr = "隐私政策";
+                catype = "YSZC";
         }
 
         titleModule.setTitleText(titleStr);

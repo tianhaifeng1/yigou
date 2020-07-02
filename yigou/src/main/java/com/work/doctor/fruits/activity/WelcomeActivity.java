@@ -24,6 +24,7 @@ public class WelcomeActivity extends DemoMVPActivity {
 
     private Handler handler;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +37,13 @@ public class WelcomeActivity extends DemoMVPActivity {
         YigouConstant.token = (String) SharedPreferencesUtils.getParam(context, DemoConstant.user_token, "");
         DemoConstant.userId = (int) SharedPreferencesUtils.getParam(context, DemoConstant.user_id, -1);
         DemoConstant.userStatus = (int) SharedPreferencesUtils.getParam(context, DemoConstant.user_status, 0);
+        DemoConstant.userApprove = (int) SharedPreferencesUtils.getParam(context, DemoConstant.user_approve, 0);
+
 
         handler = new Handler();
         showPremission_all();
+
+
     }
 
     @Override

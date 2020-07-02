@@ -1,9 +1,5 @@
 package com.work.doctor.fruits.activity.adapter;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-
 import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -27,25 +23,25 @@ public class OrderCommentAdapter extends TRecyclerAdapter<OrderDetailInfoShopInf
     @Override
     protected void convert(BaseViewHolder helper, OrderDetailInfoShopInfoBean item) {
         helper.setText(R.id.item_comment_name, item.getGoodsName());
-        helper.setText(R.id.item_comment_attrStrValue, item.getGoodsDesc());
+//        helper.setText(R.id.item_comment_attrStrValue, item.getGoodsDesc());
         GlideUtile.bindImageView(mContext, item.getGoodsImage(), helper.getView(R.id.item_comment_image));
 
-        ((EditText) helper.getView(R.id.item_comment_context)).addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                item.setCommentText(s.toString());
-            }
-        });
+//        ((EditText) helper.getView(R.id.item_comment_context)).addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                item.setCommentText(s.toString());
+//            }
+//        });
 
 //        helper.setText(R.id.item_address_name, item.getName());
 //        helper.setText(R.id.item_address_phone, item.getPhone());

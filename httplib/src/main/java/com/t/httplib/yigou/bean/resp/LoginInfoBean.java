@@ -10,6 +10,16 @@ public class LoginInfoBean extends BalanceInfoBean{
 
     private String phone;
 
+    private int approve;
+
+    public int getApprove() {
+        return approve;
+    }
+
+    public void setApprove(int approve) {
+        this.approve = approve;
+    }
+
     //会员状态：0普通会员，1会员，2普通批发商，3会员批发商
     private int status;
 

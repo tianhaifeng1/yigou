@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/waikuang_r5_white">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp100"
+        android:background="@mipmap/wallet_bg" />
+
+    <TextView
+        android:layout_marginTop="@dimen/dp40"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="儒龙易购软件许可及服务协议"
+        android:gravity="center"
+        android:textSize="@dimen/dp18"
+        android:textColor="@color/color_white"
+        />
+    <TextView
+        android:id="@+id/agreement_txt"
+        android:padding="@dimen/dp15"
+        android:layout_marginTop="@dimen/dp100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     儒龙易购（下称“儒龙易购”）在此特别提醒您（下称“用户”）认真阅读、充分理解《儒龙易购软件许可及服务协议》（下称《协议》）。您应认真阅读、充分理解《协议》中各条款，包括免除或者限制儒龙易购责任中的免责条款及对用户的权利限制条款。除非您接受本《协议》所有条款，否则您无权登录或使用本协议所涉相关服务。"
+        />
+    <LinearLayout
+        android:id="@+id/agreement_lin"
+        android:layout_below="@+id/agreement_txt"
+        android:layout_marginLeft="@dimen/dp15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/agreement_yonghu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_red"
+            android:text="《用户协议》"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="及"/>
+        <TextView
+            android:id="@+id/agreement_yinsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_red"
+            android:text="《隐私政策》"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/agreement_lin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp20">
+
+        <TextView
+            android:id="@+id/agreement_no"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="取消"
+            android:textColor="@color/color_white"
+            android:background="@drawable/selector_longin"/>
+
+        <TextView
+            android:id="@+id/agreement_yes"
+            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp20"
+            android:layout_marginRight="@dimen/dp20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="同意并继续"
+            android:textColor="@color/color_white"
+            android:background="@drawable/selector_longin"/>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

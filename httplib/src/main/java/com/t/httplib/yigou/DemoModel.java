@@ -46,6 +46,7 @@ import com.t.httplib.yigou.bean.req.ReqSearchGoodsInfo;
 import com.t.httplib.yigou.bean.req.ReqShopInfo;
 import com.t.httplib.yigou.bean.req.ReqShopInfo2;
 import com.t.httplib.yigou.bean.req.ReqShopInfo3;
+import com.t.httplib.yigou.bean.req.ReqShopInfo4;
 import com.t.httplib.yigou.bean.req.ReqSynchroCartInfoOut;
 import com.t.httplib.yigou.bean.req.ReqTimeInfo;
 import com.t.httplib.yigou.bean.req.ReqYgSearchInfo;
@@ -64,6 +65,7 @@ import com.t.httplib.yigou.bean.resp.EvaluateInfoBean;
 import com.t.httplib.yigou.bean.resp.ExpressPsInfoBean;
 import com.t.httplib.yigou.bean.resp.FensInfoBean;
 import com.t.httplib.yigou.bean.resp.GmrOutInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsAffirmBean;
 import com.t.httplib.yigou.bean.resp.GoodsDetailInfoBean;
 import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
 import com.t.httplib.yigou.bean.resp.GoodsListInfoBean;
@@ -863,7 +865,7 @@ public class DemoModel extends TModel {
 
 
     //    商品订单支付信息
-    public void requestPayInfoOrder(final ReqGoodsPayInfo info, final Observer<DemoRespBean<OrderDetailInfoBean>> observer) {
+    public void requestPayInfoOrder(final ReqGoodsPayInfo info, final Observer<DemoRespBean<GoodsAffirmBean>> observer) {
         getTimeLong(new CurrenTimeListener() {
             @Override
             public void getTimeLong(long currenTime) {
@@ -875,7 +877,7 @@ public class DemoModel extends TModel {
     }
 
     // 配送费列表
-    public void requestDistribution(final ReqShopInfo3 info, final Observer<DemoRespBean<DistributionInfoBean>> observer) {
+    public void requestDistribution(final ReqShopInfo4 info, final Observer<DemoRespBean<DistributionInfoBean>> observer) {
         getTimeLong(new CurrenTimeListener() {
             @Override
             public void getTimeLong(long currenTime) {
@@ -1015,6 +1017,15 @@ public class DemoModel extends TModel {
 //        bindObserver(httpRetrofit.httpAPI.postCategoryGoodsList(setHeadInfoString(info), getRequestBody(info)), observer);
     }
 
+    public void requestRegister(final ReqLoginInfo info, final Observer<DemoRespBean<LoginInfoBean>> observer) {
+        getTimeLong(new CurrenTimeListener() {
+            @Override
+            public void getTimeLong(long currenTime) {
+                info.setTimestamp(currenTime+"");
+                bindObserver(httpRetrofit.httpAPI.postRegister(setHeadInfoString(info), getRequestBody(info)), observer);
+            }
+        });
+    }
 
 
 
@@ -1025,7 +1036,7 @@ public class DemoModel extends TModel {
     }
 
     public void requestWxUserInfo(String path, Observer<WechatUserInfo> observer) {
-//        bindObserver(httpRetrofit.httpAPI.wxUserInfo(path), observer);
+        bindObserver(httpRetrofit.httpAPI.wxUserInfo(path), observer);
     }
 //    public void requestWxXcxEwm(String path,String jsonStr,Observer<BufferedInputStream> observer) {
 //

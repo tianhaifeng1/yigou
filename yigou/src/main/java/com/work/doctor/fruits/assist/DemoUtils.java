@@ -211,7 +211,7 @@ public class DemoUtils {
      * @return
      */
     public static boolean isPfUser() {
-        if (DemoConstant.userStatus == 2) {
+        if (DemoConstant.userStatus == 3) {
             return true;
         }
         return false;

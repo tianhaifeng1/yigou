@@ -191,7 +191,6 @@ public class MainTwoFragment extends DemoMVPFragment<MainTwoView, MainTwoPresent
         activity.skipActivity(intent);
 
     }
-
     @Override
     public void onClickRecyclerExceptionPageEvent() {
 

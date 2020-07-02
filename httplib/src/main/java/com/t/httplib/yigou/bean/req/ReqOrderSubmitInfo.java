@@ -20,8 +20,29 @@ public class ReqOrderSubmitInfo extends ReqGoodsPayInfo {
 
     //    我的优惠券信息id
     private String mCouponId;
-
+    //配送天数
     private String distribDay;
+
+    public String getReceiverPhone() {
+        return receiverPhone;
+    }
+
+    public void setReceiverPhone(String receiverPhone) {
+        this.receiverPhone = receiverPhone;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
+    }
+
+    //自提电话
+    private String receiverPhone;
+    //自提姓名
+    private String receiverName;
 
     public String getDistribDay() {
         return distribDay;
@@ -100,6 +121,7 @@ public class ReqOrderSubmitInfo extends ReqGoodsPayInfo {
         if (dCouponId != null && !dCouponId.equals("")) {
             stringBuilder.append("dCouponId" + dCouponId);
         }
+        stringBuilder.append("distribDay" + distribDay);
         stringBuilder.append("distribId" + distribId);
         stringBuilder.append("isCart" + isCart);
         if (mCouponId != null && !mCouponId.equals("")) {
@@ -108,6 +130,9 @@ public class ReqOrderSubmitInfo extends ReqGoodsPayInfo {
         if (note != null && !note.equals("")) {
             stringBuilder.append("note" + note);
         }
+        stringBuilder.append("receiverName" + receiverName);
+        stringBuilder.append("receiverPhone" + receiverPhone);
+
         stringBuilder.append("shopId" + shopId);
         stringBuilder.append("timestamp" + timestamp);
         stringBuilder.append("totalOrderFee" + totalOrderFee);

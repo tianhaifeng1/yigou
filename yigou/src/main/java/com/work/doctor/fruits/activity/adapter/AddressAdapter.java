@@ -33,11 +33,13 @@ public class AddressAdapter extends TRecyclerAdapter<AddressInfoBean> {
 
         int isDefault = item.getIsDefault();
         if (isDefault == 1) {
-            helper.getView(R.id.item_address_status).setVisibility(View.VISIBLE);
-            helper.getView(R.id.item_address_event_default).setVisibility(View.GONE);
+            helper.setText(R.id.item_address_event_default, "[默认地址]");
+            helper.getView(R.id.item_address_event_default).setEnabled(false);
+            helper.setTextColor(R.id.item_address_event_default,mContext.getResources().getColor(R.color.textcolor_point));
         } else {
-            helper.getView(R.id.item_address_status).setVisibility(View.GONE);
-            helper.getView(R.id.item_address_event_default).setVisibility(View.VISIBLE);
+            helper.setText(R.id.item_address_event_default, "[设为默认]");
+            helper.getView(R.id.item_address_event_default).setEnabled(true);
+            helper.setTextColor(R.id.item_address_event_default,mContext.getResources().getColor(R.color.color_name));
         }
 
         if (item.isShowEventView()) {

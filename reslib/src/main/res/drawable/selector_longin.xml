@@ -3,7 +3,7 @@
 
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <solid android:color="#dedede" />
+            <solid android:color="#ff596c" />
             <corners android:radius="60dp" />
         </shape>
     </item>
@@ -13,14 +13,16 @@
             <!--<corners android:radius="60dp" />-->
         <!--</shape>-->
     <!--</item>-->
-    <item>
-        <shape >
-            <gradient android:startColor="@color/color_btn_click"
-                android:endColor="@color/color_btn_"
-                android:angle="-90"
-                />
-            <corners android:radius="60dp" />
-        </shape>
-    </item>
+
+
+<!--    <item>-->
+<!--        <shape >-->
+<!--            <gradient android:startColor="@color/color_btn_click"-->
+<!--                android:endColor="@color/color_btn_"-->
+<!--                android:angle="-90"-->
+<!--                />-->
+<!--            <corners android:radius="60dp" />-->
+<!--        </shape>-->
+<!--    </item>-->
 
 </selector>

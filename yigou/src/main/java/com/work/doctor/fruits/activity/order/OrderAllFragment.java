@@ -104,13 +104,13 @@ public class OrderAllFragment extends OrderInitFragment<OrderListAllAdapter>
             }
 
         } else if (status == 2) {
-            if (ids == R.id.item_orderlist_btnleft) {
+            if (ids == R.id.item_orderlist_btnmiddle) {
                 //查看物流
                 Intent intent = new Intent(activity.context, DdDeliveryDetailActivity.class);
                 intent.putExtra("orderno", infoBean.getSystemOrderNo());
                 intent.putExtra("shopId", infoBean.getShopId());
                 activity.skipActivity(intent);
-            } else if (ids == R.id.item_orderlist_btnmiddle) {
+            } else if (ids == R.id.item_orderlist_btnleft) {
                 //申请退款
                 Intent intent = new Intent(activity.context, OrderRefundActivity.class);
                 intent.putExtra("info", infoBean);
@@ -256,6 +256,15 @@ public class OrderAllFragment extends OrderInitFragment<OrderListAllAdapter>
         } else if (payType == 2) {
             //微信支付
             getPresenter().getWxPayInfo(activity.context, infoBean);
+        } else if (payType == 5) {
+            tRemind("支付成功");
+            adapter.remove(position);
+            if (adapter.getData().size() == 0) {
+                recyclerModule.isShowDefLayout(true);
+            }
+            Intent intent = new Intent(activity.context, WXPayEntryActivity.class);
+            intent.putExtra("code", 1);//成功
+            activity.skipActivity(intent);
         }
 
     }

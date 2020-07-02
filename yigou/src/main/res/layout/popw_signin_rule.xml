@@ -8,13 +8,13 @@
 
     <LinearLayout
         android:id="@+id/pwpw_rule_lin"
-        android:layout_width="@dimen/dp280"
-        android:layout_height="@dimen/dp200"
+        android:layout_width="@dimen/dp300"
+        android:layout_height="@dimen/dp220"
         android:layout_centerInParent="true"
         android:background="@mipmap/rule_background"
         android:orientation="vertical"
         android:layout_marginBottom="@dimen/dp20"
-        android:padding="@dimen/dp15">
+        android:padding="@dimen/dp10">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:text="签到规则"/>
 
         <LinearLayout
-            android:layout_width="@dimen/dp250"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/item_popw_background"
             android:padding="@dimen/dp15"

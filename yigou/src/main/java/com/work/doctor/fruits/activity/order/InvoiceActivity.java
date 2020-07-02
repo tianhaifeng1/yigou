@@ -2,6 +2,7 @@ package com.work.doctor.fruits.activity.order;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,9 @@ import com.trjx.tlibs.uils.ToastUtil2;
 import com.work.doctor.fruits.R;
 import com.work.doctor.fruits.assist.DemoUtils;
 import com.work.doctor.fruits.base.DemoMVPActivity;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresenter>
         implements InvoiceView, View.OnClickListener {
@@ -45,7 +49,7 @@ public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresent
     private TextView mTvInstanceBtn;
 
 
-    private String invoiceType, invoiceMessageType, emailStr;
+    private String invoiceType, invoiceMessageType, emailStr = "";
     private String InvoiceRise, InvoiceNumber, InvoiceAddress, InvoicePhone, InvoiceBank, InvoiceAccountNumber;
     private String PersonInvoiceName, PersonInvoicePhone;
     private String invoiceId;
@@ -191,8 +195,16 @@ public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresent
             InvoiceRise = mEdCompanyInvoiceRise.getText().toString();
             InvoiceNumber = mEdCompanyInvoiceNumber.getText().toString();
             InvoiceAddress = mEdCompanyInvoiceAddress.getText().toString();
+
             InvoicePhone = mEdCompanyInvoicePhone.getText().toString();
             InvoiceBank = mEdCompanyInvoiceBank.getText().toString();
+
+            Pattern p = Pattern.compile("[0-9]*");
+            Matcher m = p.matcher(mEdCompanyInvoiceAccountNumber.getText().toString());
+            if(!m.matches()){
+                tRemind("请输入正确的账号");
+                return;
+            }
             InvoiceAccountNumber = mEdCompanyInvoiceAccountNumber.getText().toString();
             if (("不开发票").equals(invoiceType)){
                 data.putExtra("invoiceType", invoiceType);
@@ -202,11 +214,23 @@ public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresent
                 if (!DemoUtils.isStringEmpty(invoiceMessageType)) {
                     if (invoiceMessageType.equals("个人"))
                     {
+                        if (TextUtils.isEmpty(PersonInvoicePhone)) {
+                            tRemind("请输入手机号码");
+                            return;
+                        } else if (PersonInvoicePhone.length() != 11) {
+                            tRemind("手机号码位数不正确");
+                            return;
+                        } else {
+                            String num = "[1][358]\\d{9}";
+                            if (!PersonInvoicePhone.matches(num)){
+                                tRemind("请输入正确的手机号码");
+                                return;
+                            }
+                        }
+
+
                         if (DemoUtils.isStringEmpty(PersonInvoiceName)) {
                             tRemind("请输入姓名");
-                            return;
-                        } else if(!TUtils.isMobileNO(PersonInvoicePhone)){
-                            tRemind("手机号未输入或格式错误");
                             return;
                         }
 
@@ -233,6 +257,21 @@ public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresent
 
                     }else if (invoiceMessageType.equals("公司"))
                     {
+                        if (TextUtils.isEmpty(InvoicePhone)) {
+                            tRemind("请输入手机号码");
+                            return;
+                        } else if (InvoicePhone.length() != 11) {
+                            tRemind("手机号码位数不正确");
+                            return;
+                        } else {
+                            String num = "[1][358]\\d{9}";
+                            if (!InvoicePhone.matches(num)){
+                                tRemind("请输入正确的手机号码");
+                                return;
+                            }
+                        }
+
+
                         if (DemoUtils.isStringEmpty(InvoiceRise)){
                             tRemind("请输入发票抬头");
                             return;
@@ -243,10 +282,6 @@ public class InvoiceActivity extends DemoMVPActivity<InvoiceView, InvoicePresent
                         }
                         if (DemoUtils.isStringEmpty(InvoiceAddress)){
                             tRemind("请输入地址");
-                            return;
-                        }
-                        if (!TUtils.isMobileNO(InvoicePhone)){
-                            tRemind("手机号未输入或格式错误");
                             return;
                         }
                         if (DemoUtils.isStringEmpty(InvoiceBank)){

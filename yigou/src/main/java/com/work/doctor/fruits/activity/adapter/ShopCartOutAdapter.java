@@ -138,7 +138,11 @@ public class ShopCartOutAdapter extends TRecyclerAdapter<DatabaseShopInfo> {
                     break;
                 case R.id.item_shopcart_add:
                     Logger.t("增加");
-                    if (info.getGoodsTotal() <= info.getGoodsNumber()) {
+                    if (info.getGoodsTotal() <= info.getGoodsNumber() && info.getGoodsTotal()!=0) {
+                        //选择数量大于限购数
+                        return;
+                    }
+                    if(info.getGoodsNumber()>=info.getStock()){
                         //库存小于当前选择的数量时
                         return;
                     }
@@ -147,13 +151,12 @@ public class ShopCartOutAdapter extends TRecyclerAdapter<DatabaseShopInfo> {
                         helper.setText(R.id.item_shopcart_out_event_pricetotal, BigDecimalUtil.roundOffString(item.getShopTotalPrice(),2));
                     }
                     adapter.notifyItemChanged(position);
-
                     break;
                 case R.id.item_shopcart_minus:
                     Logger.t("减少");
                     if (info.getGoodsNumber() > 1) {
                         int jian = -1;
-                        if (info.getGoodsNumber() > info.getGoodsTotal()) {
+                        if (info.getGoodsNumber() > info.getGoodsTotal() && info.getGoodsTotal()!=0) {
                             jian = info.getGoodsTotal() - info.getGoodsNumber();
                         }
                         threeFragment.mainNavActivity.greenDaoAssist.updateGoodsNumber(info, jian, item.getShopId(),isChange -> DemoConstant.isChangeDatabase = isChange);

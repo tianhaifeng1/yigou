@@ -291,7 +291,7 @@ public class GreenDaoAssist {
             //分类类型
             goodsInfo.setCatid(listBean.getCatid());
             goodsInfo.setCnname(listBean.getCnname());
-
+            goodsInfo.setStock(listBean.getStock());
             //商品类型
             int goodsType = listBean.getGoodsType();
             goodsInfo.setGoodsType(goodsType);
@@ -299,6 +299,7 @@ public class GreenDaoAssist {
             if (goodsType == 3 && listBean.getPresell() != null) {
                 goodsInfo.setStartTime(listBean.getPresell().getStartTime());
                 goodsInfo.setEndTime(listBean.getPresell().getEndTime());
+                goodsInfo.setGoodsTotal(listBean.getPresell().getLimitNum());
             }
 
             long time = System.currentTimeMillis();
@@ -320,7 +321,17 @@ public class GreenDaoAssist {
             info.setGoodsPriceVip(listBean.getSellPriceDiscount().floatValue());
             info.setGoodsNumber(listBean.getTotalNum());
             info.setGoodsUrl(listBean.getGoodsImage());
-            info.setGoodsTotal(listBean.getStock());
+            info.setStock(listBean.getStock());
+
+            int goodsType = listBean.getGoodsType();
+            //预售商品
+            if (goodsType == 3 && listBean.getPresell() != null) {
+                info.setStartTime(listBean.getPresell().getStartTime());
+                info.setEndTime(listBean.getPresell().getEndTime());
+                info.setGoodsTotal(listBean.getPresell().getLimitNum());
+            } else {
+                info.setGoodsTotal(listBean.getStock());
+            }
             info.setIsTemai(listBean.getIsTemai());
             info.setSpecialSale(listBean.getSpecialSale());
             //规格

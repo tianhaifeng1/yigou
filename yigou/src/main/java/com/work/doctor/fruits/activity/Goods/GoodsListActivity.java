@@ -22,6 +22,7 @@ import com.trjx.tbase.module.recyclermodule.TRecyclerViewListenter;
 import com.trjx.tlibs.uils.Logger;
 import com.trjx.tlibs.uils.SnackbarUtil;
 import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.activity.MainNavActivity;
 import com.work.doctor.fruits.activity.adapter.SearchGoodsAdapter;
 import com.work.doctor.fruits.activity.search.SearchGoodsActivity;
 import com.work.doctor.fruits.assist.DemoConstant;
@@ -41,6 +42,7 @@ public class GoodsListActivity extends DemoMVPActivity<GoodsListView, GoodsListP
 
     private ImageView titleBack;
     private RelativeLayout titleSearch;
+    private ImageView titleGwc;
 
     private ReqGoodsListInfo info;
 
@@ -58,11 +60,21 @@ public class GoodsListActivity extends DemoMVPActivity<GoodsListView, GoodsListP
     protected void initView() {
         titleBack = findViewById(R.id.title_back);
         titleSearch = findViewById(R.id.title_search);
+        titleGwc = findViewById(R.id.title_gwc);
 
         //返回
         titleBack.setOnClickListener(v -> finish());
         //搜索
         titleSearch.setOnClickListener(v -> skipActivity(SearchGoodsActivity.class));
+        //购物车跳转
+        titleGwc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_shopcart = new Intent(context, MainNavActivity.class);
+                intent_shopcart.putExtra("position", 2);
+                startActivity(intent_shopcart);
+            }
+        });
 
         greenDaoAssist = new GreenDaoAssist(((DemoApplication)getApplication()).databaseAssist);
 
@@ -79,7 +91,7 @@ public class GoodsListActivity extends DemoMVPActivity<GoodsListView, GoodsListP
                 .createAdapter(goodsAdapter)
                 .creat(rootView);
         recyclerModule.setDefImg(R.mipmap.default_goodslist);
-        recyclerModule.setDefText("暂无商品");
+        recyclerModule.setDefText("该条件下还没有商品哦");
         goodsAdapter.setOnItemChildClickListener(this);
         goodsAdapter.setOnItemClickListener(this);
 
@@ -220,7 +232,6 @@ public class GoodsListActivity extends DemoMVPActivity<GoodsListView, GoodsListP
             }
 
         }
-
         getRecyclerListData();
 
     }
@@ -232,8 +243,8 @@ public class GoodsListActivity extends DemoMVPActivity<GoodsListView, GoodsListP
 
     @Override
     public void getRecyclerListData() {
+        info.setPage(recyclerModule.getPage());
         getPresenter().getGoodsListData(info);
-        info.setPage(info.getPage()+1);
     }
 
     @Override

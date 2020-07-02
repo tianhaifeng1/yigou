@@ -137,6 +137,43 @@ public class OrderDetailInfoBean {
         private int payWay;
         private String latitude;
         private long addTime;
+        private String shopLongitude;
+        private String shopLatitude;
+        private String shopAddress;
+
+        public String getShopLongitude() {
+            return shopLongitude;
+        }
+
+        public void setShopLongitude(String shopLongitude) {
+            this.shopLongitude = shopLongitude;
+        }
+
+        public String getShopLatitude() {
+            return shopLatitude;
+        }
+
+        public void setShopLatitude(String shopLatitude) {
+            this.shopLatitude = shopLatitude;
+        }
+
+        public String getShopAddress() {
+            return shopAddress;
+        }
+
+        public void setShopAddress(String shopAddress) {
+            this.shopAddress = shopAddress;
+        }
+
+        public String getShopPhone() {
+            return shopPhone;
+        }
+
+        public void setShopPhone(String shopPhone) {
+            this.shopPhone = shopPhone;
+        }
+
+        private String shopPhone;
         private List<OrderDetailInfoShopInfoBean> details;
 
         public long getPaymentTime() {

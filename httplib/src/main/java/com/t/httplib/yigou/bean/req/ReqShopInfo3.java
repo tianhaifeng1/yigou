@@ -8,15 +8,6 @@ public class ReqShopInfo3 extends ReqTimeInfo {
         return shopId;
     }
 
-    private String distype;
-
-    public String getDistype() {
-        return distype;
-    }
-
-    public void setDistype(String distype) {
-        this.distype = distype;
-    }
 
     public void setShopId(String shopId) {
         this.shopId = shopId;

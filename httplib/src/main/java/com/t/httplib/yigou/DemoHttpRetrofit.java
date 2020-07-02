@@ -17,9 +17,9 @@ public class DemoHttpRetrofit extends HttpBase {
     @Override
     public void init() {
         //本地服务器
-//        baseUrl = "http://192.168.1.9:8080/egou.war.app/";
+//        baseUrl = "http://192.168.1.4:8080/egou.war.app/";
         //测试服务器
-       baseUrl = "https://delivery.rlhys.com:8090/egou_android/";
+        baseUrl = "https://delivery.rlhys.com:8090/egou_android/";
         // 服务器
 //        baseUrl = "https://delivery.rlhys.com:8444/fruits_android/";
     }

@@ -46,6 +46,7 @@ public class MyVipPayListActivity extends DemoMVPActivity<MyVipPayListView,MyVip
         });
         //初始化Module
         payListAdapter = new PayListAdapter(null);
+        payListAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(payListAdapter);
 
         getPresenter().getPayListData(1, 20);

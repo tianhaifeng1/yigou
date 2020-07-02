@@ -1,8 +1,9 @@
 package com.work.doctor.fruits.activity.order;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,7 @@ public class OrderCommentActivity extends DemoMVPActivity<OrderCommentView, Orde
 
     private RecyclerView mCommentRecyclerview;
     private TextView mCommentCommit;
+    private EditText mCommentContext;
 
 
     private OrderListInfoBean infoBean;
@@ -46,6 +48,7 @@ public class OrderCommentActivity extends DemoMVPActivity<OrderCommentView, Orde
 
         mCommentRecyclerview = findViewById(R.id.comment_recyclerview);
         mCommentCommit = findViewById(R.id.comment_commit);
+        mCommentContext = findViewById(R.id.comment_context);
 
         mCommentCommit.setOnClickListener(this);
 
@@ -55,10 +58,10 @@ public class OrderCommentActivity extends DemoMVPActivity<OrderCommentView, Orde
         if (shopInfoBeanList != null && shopInfoBeanList.size() > 0) {
             OrderCommentAdapter adapter = new OrderCommentAdapter(shopInfoBeanList);
 
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mCommentRecyclerview.getLayoutParams();
-            layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
-            layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.dp290) * shopInfoBeanList.size();
-            mCommentRecyclerview.setLayoutParams(layoutParams);
+//            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mCommentRecyclerview.getLayoutParams();
+//            layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
+//            layoutParams.height = context.getResources().getDimensionPixelOffset(R.dimen.dp290) * shopInfoBeanList.size();
+//            mCommentRecyclerview.setLayoutParams(layoutParams);
 
             mCommentRecyclerview.setLayoutManager(new LinearLayoutManager(context){
                 @Override
@@ -87,13 +90,13 @@ public class OrderCommentActivity extends DemoMVPActivity<OrderCommentView, Orde
                 ReqCommentInfo.ReqComment comment;
                 for (int i = 0; i < shopInfoBeanList.size(); i++) {
                     OrderDetailInfoShopInfoBean shopInfoBean = shopInfoBeanList.get(i);
-                    if (shopInfoBean.getCommentText() == null || shopInfoBean.getCommentText().equals("")) {
+                    if (TextUtils.isEmpty(mCommentContext.getText().toString().trim())) {
                         ToastUtil2.showToast(context,shopInfoBean.getGoodsName() + "未添加评价信息");
                         return;
                     }
                     comment = new ReqCommentInfo.ReqComment();
                     comment.setGoodsId(shopInfoBean.getGoodsId()+"");
-                    comment.setContent(shopInfoBean.getCommentText());
+                    comment.setContent(mCommentContext.getText().toString().trim());
                     commentList.add(comment);
                 }
                 commentInfo.setComments(commentList);

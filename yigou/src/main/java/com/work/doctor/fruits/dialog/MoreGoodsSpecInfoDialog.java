@@ -294,8 +294,18 @@ public class MoreGoodsSpecInfoDialog extends BaseDialog implements View.OnClickL
                 if (goodsDetailInfoBean.getGoodsType() == 3 && goodsDetailInfoBean.getPresell() != null) {
                     //预售商品
                     goodsStock = goodsDetailInfoBean.getStock();
-                    goodsLimitStock = goodsDetailInfoBean.getPresell().getLimitNum();
+                    if(goodsDetailInfoBean.getPresell().getLimitNum()==0){
+                        goodsLimitStock = goodsDetailInfoBean.getPresell().getLimitNum();
+                    }else{
+                        goodsLimitStock = goodsDetailInfoBean.getPresell().getLimitNum() - goodsDetailInfoBean.getPresell().getBuyNum();
+                    }
+                    if(goodsLimitStock==0){
+                        goodsLimitStock = goodsStock;
+                    }
                     //判断库存
+                    if(goodsLimitStock == 0){
+
+                    }
                     if (goodsStock < goodsLimitStock) {
                         goodsLimitStock = goodsStock;
                     }

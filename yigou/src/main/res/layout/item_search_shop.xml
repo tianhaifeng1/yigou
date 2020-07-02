@@ -61,7 +61,7 @@
             android:paddingLeft="@dimen/dp20"
             android:gravity="bottom"
             android:text="￥0"
-            android:textSize="@dimen/dp14"
+            android:textSize="@dimen/dp16"
             android:textColor="@color/textcolor_point"
             android:layout_below="@id/item_shop_name"
             android:layout_toRightOf="@id/item_shop_icon"

@@ -14,6 +14,7 @@ import com.trjx.tbase.module.recyclermodule.TRecyclerAdapter;
 import com.work.doctor.fruits.R;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class OrderListAllAdapter extends TRecyclerAdapter<OrderListInfoBean> {
@@ -35,8 +36,21 @@ public class OrderListAllAdapter extends TRecyclerAdapter<OrderListInfoBean> {
 
     @Override
     protected void convert(BaseViewHolder helper, OrderListInfoBean item) {
-
         helper.setText(R.id.item_orderlist_shopname, item.getShopName());
+        helper.setText(R.id.item_orderlist_date, getDateToString(item.getAddTime())+"下单");
+        if(item.getPayWay()==2){
+            helper.setText(R.id.item_orderlist_paytype, "(微信支付)");
+        }else if(item.getPayWay()==4){
+            helper.setText(R.id.item_orderlist_paytype, "(余额支付)");
+        }else if(item.getPayWay()==5){
+            helper.setText(R.id.item_orderlist_paytype, "(货到付款)");
+        }
+
+        if(item.getExpressType().equals("0")){
+            helper.setText(R.id.item_orderlist_type, "[配送]");
+        }else if(item.getExpressType().equals("1")){
+            helper.setText(R.id.item_orderlist_type, "[自提]");
+        }
 
         int orderType = item.getOrderType();
         if(orderType == 3){
@@ -86,7 +100,11 @@ public class OrderListAllAdapter extends TRecyclerAdapter<OrderListInfoBean> {
 
             helper.getView(R.id.item_orderlist_bottom_rl).setVisibility(View.VISIBLE);
             helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.GONE);
-            helper.getView(R.id.item_orderlist_btnmiddle).setVisibility(View.VISIBLE);
+            if(item.getPayWay()==5){
+                helper.getView(R.id.item_orderlist_btnmiddle).setVisibility(View.GONE);
+            }else{
+                helper.getView(R.id.item_orderlist_btnmiddle).setVisibility(View.VISIBLE);
+            }
             helper.getView(R.id.item_orderlist_btnright).setVisibility(View.GONE);
             helper.setText(R.id.item_orderlist_btnmiddle, "申请退款");
 
@@ -96,14 +114,25 @@ public class OrderListAllAdapter extends TRecyclerAdapter<OrderListInfoBean> {
 //            helper.setText(R.id.item_orderlist_btnright, "申请退款");
 
         } else if (status == 2) {
+            if(item.getExpressType().equals("0")){
+                helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.VISIBLE);
+            }else if(item.getExpressType().equals("1")){
+                helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.GONE);
+            }
+
+            if(item.getPayWay()==5){
+                helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.GONE);
+            }else{
+                helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.VISIBLE);
+            }
+
             helper.setText(R.id.item_orderlist_orderstatus, "待收货");
 
             helper.getView(R.id.item_orderlist_bottom_rl).setVisibility(View.VISIBLE);
-            helper.getView(R.id.item_orderlist_btnleft).setVisibility(View.VISIBLE);
             helper.getView(R.id.item_orderlist_btnmiddle).setVisibility(View.VISIBLE);
             helper.getView(R.id.item_orderlist_btnright).setVisibility(View.VISIBLE);
-            helper.setText(R.id.item_orderlist_btnleft, "查看物流");
-            helper.setText(R.id.item_orderlist_btnmiddle, "申请退款");
+            helper.setText(R.id.item_orderlist_btnleft, "申请退款");
+            helper.setText(R.id.item_orderlist_btnmiddle, "查看物流");
             helper.setText(R.id.item_orderlist_btnright, "确认收货");
 
         } else if (status == 3) {
@@ -152,6 +181,12 @@ public class OrderListAllAdapter extends TRecyclerAdapter<OrderListInfoBean> {
             helper.setText(R.id.item_orderlist_orderstatus, "未知");
             helper.getView(R.id.item_orderlist_bottom_rl).setVisibility(View.GONE);
         }
+
+
+    }
+    public static String getDateToString(long milSecond) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return format.format(milSecond);
     }
 
 }

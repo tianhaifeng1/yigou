@@ -6,6 +6,17 @@
     android:orientation="vertical">
 
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp180"
+            android:scaleType="fitXY"
+            android:src="@mipmap/goodscart_bg" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,37 +24,45 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp200"
-            android:background="@mipmap/ic_mine_bg"
-            android:paddingTop="@dimen/dp25">
+            android:layout_height="@dimen/dp140">
 
             <LinearLayout
+                android:layout_marginLeft="@dimen/dp12"
                 android:id="@+id/fm_main_four_login_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/dp100"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dp40"
                 android:layout_marginBottom="@dimen/dp10"
                 android:gravity="center"
-                android:orientation="vertical">
-
+                android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:background="@drawable/login_prot_bg">
                 <ImageView
+                    android:layout_centerInParent="true"
                     android:id="@+id/fm_main_four_head"
                     android:layout_width="@dimen/dp60"
                     android:layout_height="@dimen/dp60"
+                    android:layout_centerVertical="true"
                     android:src="@mipmap/t_head" />
+            </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/fm_main_four_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:minWidth="@dimen/dp60"
-                    android:text="立即登陆"
-                    android:paddingLeft="@dimen/dp10"
-                    android:paddingRight="@dimen/dp10"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp8"
-                    android:textColor="@color/colorwhite" />
+            <TextView
+                android:layout_marginLeft="@dimen/dp10"
+                android:id="@+id/fm_main_four_name"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="立即登陆"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/fm_main_four_head"
+                android:paddingLeft="@dimen/dp10"
+                android:paddingRight="@dimen/dp10"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:textSize="@dimen/sp18"
+                android:textColor="@color/colorwhite" />
+
             </LinearLayout>
 
             <ImageView
@@ -51,14 +70,19 @@
                 android:layout_width="@dimen/dp60"
                 android:layout_height="@dimen/dp60"
                 android:layout_marginLeft="@dimen/dp10"
+                android:visibility="gone"
                 android:src="@mipmap/t_member_no" />
 
             <TextView
+                android:layout_marginTop="@dimen/dp75"
                 android:id="@+id/fm_main_four_member_text"
                 android:layout_width="80dp"
-                android:layout_height="30dp"
-                android:layout_below="@id/fm_main_four_member"
+                android:layout_height="@dimen/dp20"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/dp30"
                 android:gravity="center"
+                android:textColor="@color/color_white"
+                android:background="@drawable/login_state_bg"
                 android:text="游客"
                 android:textSize="@dimen/sp12" />
         </RelativeLayout>
@@ -66,7 +90,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:background="@color/color_white"
+            android:background="@drawable/waikuang_r6_top_white"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:paddingLeft="@dimen/dp12"
             android:paddingRight="@dimen/dp12">
 
@@ -74,7 +100,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="全部订单"
+                android:text="我的订单"
+                android:textStyle="bold"
                 android:textColor="@color/color_name" />
 
             <ImageView
@@ -100,10 +127,12 @@
         </RelativeLayout>
 
         <LinearLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp80"
             android:layout_marginTop="@dimen/dp1"
-            android:background="@color/color_white"
+            android:background="@drawable/waikuang_r6_white"
             android:baselineAligned="false"
             android:gravity="center"
             android:orientation="horizontal"
@@ -117,8 +146,8 @@
 
                 <ImageView
                     android:id="@+id/img1"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dp45"
+                    android:layout_height="@dimen/dp45"
                     android:layout_marginBottom="@dimen/dp20"
                     android:paddingTop="@dimen/dp16"
                     android:paddingBottom="@dimen/dp8"
@@ -158,8 +187,8 @@
 
                 <ImageView
                     android:id="@+id/img2"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dp45"
+                    android:layout_height="@dimen/dp45"
                     android:layout_marginBottom="@dimen/dp20"
                     android:paddingTop="@dimen/dp16"
                     android:paddingBottom="@dimen/dp8"
@@ -199,8 +228,8 @@
 
                 <ImageView
                     android:id="@+id/img3"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dp45"
+                    android:layout_height="@dimen/dp45"
                     android:layout_marginBottom="@dimen/dp20"
                     android:paddingTop="@dimen/dp16"
                     android:paddingBottom="@dimen/dp8"
@@ -240,8 +269,8 @@
 
                 <ImageView
                     android:id="@+id/img4"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dp45"
+                    android:layout_height="@dimen/dp45"
                     android:layout_marginBottom="@dimen/dp20"
                     android:paddingTop="@dimen/dp16"
                     android:paddingBottom="@dimen/dp8"
@@ -281,11 +310,11 @@
 
                 <ImageView
                     android:id="@+id/img5"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_width="@dimen/dp45"
+                    android:layout_height="@dimen/dp45"
                     android:layout_marginBottom="@dimen/dp20"
                     android:paddingTop="@dimen/dp16"
-                    android:paddingBottom="@dimen/dp6"
+                    android:paddingBottom="@dimen/dp8"
                     android:layout_centerHorizontal="true"
                     android:src="@mipmap/my_order_tk" />
 
@@ -315,6 +344,8 @@
             </RelativeLayout>
         </LinearLayout>
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_signin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp90"
@@ -323,12 +354,27 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:layout_marginTop="@dimen/dp8"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp40"
+            android:paddingLeft="@dimen/dp12"
+            android:gravity="center_vertical"
+            android:text="我的工具"
+            android:textColor="@color/color_name"
+            android:textStyle="bold"
+            android:background="@drawable/waikuang_r6_top_white"/>
+
         <!--收货地址-->
         <RelativeLayout
+            android:layout_marginTop="@dimen/dp1"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_address"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
-            android:layout_marginTop="@dimen/dp8"
             android:background="@color/color_white">
 
             <ImageView
@@ -356,6 +402,8 @@
         </RelativeLayout>
         <!--会员中心-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_vip"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -387,6 +435,8 @@
         </RelativeLayout>
         <!--邀请有礼-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_yaoqing"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -404,7 +454,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dp45"
-                android:text="邀请有礼"
+                android:text="邀请好友"
                 android:textColor="@color/color_name"
                 android:textSize="@dimen/sp14" />
 
@@ -418,6 +468,8 @@
         </RelativeLayout>
         <!--我的粉丝-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_fens"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -450,6 +502,8 @@
         </RelativeLayout>
         <!--我的收益-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_shouyi"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -482,6 +536,8 @@
         </RelativeLayout>
         <!--收益排名-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_shouyi_sort"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -514,6 +570,8 @@
         </RelativeLayout>
         <!--我的优惠券-->
         <RelativeLayout
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_yhj"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
@@ -545,11 +603,14 @@
         </RelativeLayout>
         <!--设置-->
         <RelativeLayout
+            android:layout_marginBottom="@dimen/dp10"
+            android:layout_marginLeft="@dimen/dp12"
+            android:layout_marginRight="@dimen/dp12"
             android:id="@+id/fm_main_four_rl_setting"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp45"
             android:layout_marginTop="@dimen/dp1"
-            android:background="@color/color_white">
+            android:background="@drawable/waikuang_r6_white">
 
             <ImageView
                 android:layout_width="@dimen/dp45"
@@ -575,4 +636,6 @@
                 />
         </RelativeLayout>
     </LinearLayout>
+
+    </RelativeLayout>
 </ScrollView>

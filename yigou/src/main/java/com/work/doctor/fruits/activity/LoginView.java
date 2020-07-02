@@ -5,7 +5,7 @@ import com.trjx.tbase.mvp.TView;
 
 public interface LoginView extends TView {
 
-    void eventDjs();
+    void eventDjs(String data);
 
     void loginSuccess(LoginInfoBean infoBean);
 

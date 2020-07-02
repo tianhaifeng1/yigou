@@ -8,9 +8,9 @@
     android:background="@drawable/item_signin_background">
 
     <RelativeLayout
-        android:layout_marginLeft="@dimen/dp10"
-        android:layout_marginRight="@dimen/dp10"
-        android:layout_marginTop="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp6"
+        android:layout_marginRight="@dimen/dp6"
+        android:layout_marginTop="@dimen/dp6"
         android:id="@+id/item_signin_rel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,9 +30,10 @@
         android:layout_marginRight="@dimen/dp10"
         android:id="@+id/item_signin_name"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp35"
+        android:layout_height="@dimen/dp30"
         android:maxLines="1"
         android:gravity="center"
+        android:textSize="@dimen/sp12"
         tools:text="名称"
         android:textColor="@color/color_white"
         android:layout_below="@id/item_signin_rel"
@@ -41,10 +42,11 @@
 
         android:id="@+id/item_signin_day"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp25"
+        android:layout_height="@dimen/dp20"
         android:gravity="center"
         android:textColor="@color/color_name"
         tools:text="1天"
+        android:textSize="@dimen/sp12"
         android:background="@drawable/item_signin_text_ackground"
         android:layout_below="@id/item_signin_name"
         />
@@ -52,7 +54,7 @@
     <ImageView
         android:id="@+id/signin_item_image"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp150"
+        android:layout_height="136dp"
         android:src="@mipmap/signin_res"
         android:scaleType="center"
         android:background="@color/colorsignin"

@@ -21,6 +21,7 @@ import com.t.httplib.yigou.bean.resp.EvaluateInfoBean;
 import com.t.httplib.yigou.bean.resp.ExpressPsInfoBean;
 import com.t.httplib.yigou.bean.resp.FensInfoBean;
 import com.t.httplib.yigou.bean.resp.GmrOutInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsAffirmBean;
 import com.t.httplib.yigou.bean.resp.GoodsDetailInfoBean;
 import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
 import com.t.httplib.yigou.bean.resp.GoodsListInfoBean;
@@ -133,6 +134,10 @@ public interface DemoAPI {
     Observable<DemoRespBean<List<CategoryGoodsBean>>> postCategoryGoodsList(@Header("extend") String headInfoModelToString,
                                                                             @Body RequestBody body);
 
+    //批发商注册
+    @POST("login/wholeSaleAppLogin")
+    Observable<DemoRespBean<LoginInfoBean>> postRegister(@Header("extend") String headInfoModelToString,
+                                                      @Body RequestBody body);
 
 
     @POST("login/app/signout")
@@ -286,8 +291,8 @@ public interface DemoAPI {
 
     // 支付订单
     @POST("order/payInfoOrder")
-    Observable<DemoRespBean<OrderDetailInfoBean>> postPayInfoOrder(@Header("extend") String headInfoModelToString,
-                                                                   @Body RequestBody body);
+    Observable<DemoRespBean<GoodsAffirmBean>> postPayInfoOrder(@Header("extend") String headInfoModelToString,
+                                                               @Body RequestBody body);
 
     // 配送费列表
     @POST("order/distribution")

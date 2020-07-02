@@ -5,16 +5,16 @@
     android:background="@color/transparent"
     >
 
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/dp40"-->
-        <!--android:text="微信回调页面"-->
-        <!--android:gravity="center"-->
-        <!--/>-->
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="@dimen/dp40"-->
+<!--        android:text="微信回调页面"-->
+<!--        android:gravity="center"-->
+<!--        />-->
 
-    <!--<ImageView-->
-        <!--android:id="@+id/imageview"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent" />-->
+<!--    <ImageView-->
+<!--        android:id="@+id/imageview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
 </LinearLayout>

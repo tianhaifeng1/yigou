@@ -4,16 +4,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@mipmap/ic_bg_login"
+    android:background="@color/color_white"
     android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="@dimen/dp80"
-        android:layout_height="@dimen/dp80"
-        android:layout_gravity="center"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/dp55"
+        android:text="您好，\n欢迎来到儒龙易购。"
+        android:textSize="@dimen/dp20"
+        android:textColor="@color/color_name"
+        android:textStyle="bold"
         android:layout_marginTop="@dimen/dp90"
-        android:layout_centerHorizontal="true"
-        android:src="@mipmap/ic_loginlog" />
+        android:layout_centerHorizontal="true"/>
+
+    <!--    <ImageView-->
+<!--        android:layout_width="@dimen/dp80"-->
+<!--        android:layout_height="@dimen/dp80"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="@dimen/dp90"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:src="@mipmap/ic_loginlog" />-->
 
     <include
         layout="@layout/ttitle"
@@ -83,7 +94,8 @@
                     android:layout_marginBottom="@dimen/dp3"
                     android:gravity="center"
                     android:text="发送验证码"
-                    android:textColor="@color/color_zhuse"
+                    android:background="@drawable/selector_longin"
+                    android:textColor="@color/color_white"
                     android:textSize="@dimen/sp12" />
             </LinearLayout>
 
@@ -108,22 +120,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp5"
-            android:layout_marginLeft="@dimen/dp40"
-            android:layout_marginRight="@dimen/dp40"
+            android:layout_marginLeft="@dimen/dp15"
+            android:layout_marginRight="@dimen/dp15"
             android:orientation="horizontal"
+            android:gravity="center"
             >
 
-            <CheckBox
-                android:id="@+id/login_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/dp5"
-                android:checked="true" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="我已阅读并同意"
+                android:text="登录表示您已阅读并同意"
                 android:textColor="@color/color_content"
                 android:textSize="@dimen/sp12" />
 
@@ -134,7 +141,24 @@
                 android:gravity="center_vertical"
                 android:maxLines="2"
                 android:lineHeight="@dimen/dp15"
-                android:text="《儒龙易购用户协议》"
+                android:text="《用户协议》"
+                android:textColor="@color/color_zhuse"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/sp12" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="及"
+                android:textColor="@color/color_content"
+                android:textSize="@dimen/sp12"/>
+            <TextView
+                android:id="@+id/login_yszc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:lineHeight="@dimen/dp15"
+                android:text="《隐私政策》"
                 android:textColor="@color/color_zhuse"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/sp12" />

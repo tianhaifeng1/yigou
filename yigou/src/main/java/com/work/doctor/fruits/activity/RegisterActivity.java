@@ -6,7 +6,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -38,8 +37,8 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
     private EditText mLoginPsw;
     private TextView mLoginSendsms;
     private Button mLogin;
-    private CheckBox mLoginCheckbox;
     private TextView mLoginYhxy;
+    private TextView mLoginYszc;
 
     private WechatUserInfo info;
 
@@ -62,12 +61,13 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
         mLoginPsw = findViewById(R.id.login_psw);
         mLoginSendsms = findViewById(R.id.login_sendsms);
         mLogin = findViewById(R.id.login);
-        mLoginCheckbox = findViewById(R.id.login_checkbox);
         mLoginYhxy = findViewById(R.id.login_yhxy);
+        mLoginYszc = findViewById(R.id.login_yszc);
 
         mLoginYhxy.setOnClickListener(this);
         mLoginSendsms.setOnClickListener(this);
         mLogin.setOnClickListener(this);
+        mLoginYszc.setOnClickListener(this);
 
         info = (WechatUserInfo) getIntent().getSerializableExtra("info");
 
@@ -99,8 +99,12 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
             case R.id.login:
                 String phoneNumber2 = mLoginPhone.getText().toString().trim();
                 String psw2 = mLoginPsw.getText().toString().trim();
-                boolean isAgree = mLoginCheckbox.isChecked();
-                getPresenter().loginBindWx(phoneNumber2, psw2, isAgree, info);
+                getPresenter().loginBindWx(phoneNumber2, psw2, true, info);
+                break;
+            case R.id.login_yszc:
+                Intent intent2 = new Intent(context, DemoWebActivity.class);
+                intent2.putExtra("code", 5);
+                skipActivity(intent2);
                 break;
         }
     }
@@ -131,7 +135,7 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
     private int djs = 60;
 
     @Override
-    public void eventDjs() {
+    public void eventDjs(String data) {
         mLoginSendsms.setEnabled(false);
         djs = 60;
         timer = new Timer();
@@ -160,11 +164,13 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
         DemoConstant.balance = infoBean.getBalance();
         DemoConstant.userId = infoBean.getUserId();
         DemoConstant.userStatus = infoBean.getStatus();
+        DemoConstant.userApprove = infoBean.getApprove();
 
         SharedPreferencesUtils.setParam(context, DemoConstant.user_token, infoBean.getToken());
         SharedPreferencesUtils.setParam(context, DemoConstant.user_id, infoBean.getUserId());
         SharedPreferencesUtils.setParam(context, DemoConstant.user_status, infoBean.getStatus());
         SharedPreferencesUtils.setParam(context, DemoConstant.user_phone, infoBean.getPhone());
+        SharedPreferencesUtils.setParam(context, DemoConstant.user_approve, infoBean.getApprove());
 
         List<DatabaseGoodsInfo> shopInfoList = greenDaoAssist.queryAllGoods();
         if (shopInfoList != null && shopInfoList.size() > 0) {
@@ -179,7 +185,11 @@ public class RegisterActivity extends DemoMVPActivity<LoginView, LoginPresenter>
             }
             infoOut.setGoods(list);
             // 同步本地数据
-            getPresenter().synchorShoppingCartData(infoOut);
+            if(infoBean.getStatus()!=3){
+                getPresenter().synchorShoppingCartData(infoOut);
+            } else {
+                synchorShoppingCartDataSuccess();
+            }
         }else{
 //            DemoConstant.isExit = false;
             synchorShoppingCartDataSuccess();

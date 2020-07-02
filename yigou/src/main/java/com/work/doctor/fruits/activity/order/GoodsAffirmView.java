@@ -3,14 +3,14 @@ package com.work.doctor.fruits.activity.order;
 import com.t.httplib.yigou.bean.WechetPayInfo;
 import com.t.httplib.yigou.bean.resp.AddressInfoBean;
 import com.t.httplib.yigou.bean.resp.DistributionInfoBean;
-import com.t.httplib.yigou.bean.resp.OrderDetailInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsAffirmBean;
 import com.trjx.tbase.mvp.TView;
 
 import java.util.List;
 
 public interface GoodsAffirmView extends TView {
 
-    void getInfoSuccess(OrderDetailInfoBean infoBean);
+    void getInfoSuccess(GoodsAffirmBean infoBean);
 
     void getInfoFail(String msg);
 

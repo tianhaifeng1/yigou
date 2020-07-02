@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     android:orientation="vertical">
 
     <include layout="@layout/ttitle" />
@@ -40,6 +41,7 @@
         android:layout_height="@dimen/dp50"
         android:gravity="center"
         android:text="提现规则"
+        android:textColor="@color/color_white"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
@@ -56,7 +58,7 @@
             android:layout_height="@dimen/dp50"
             tools:text="00.00元"
             android:gravity="center_horizontal|bottom"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/dp26"
             android:layout_centerHorizontal="true"
             />
@@ -66,7 +68,7 @@
             android:layout_centerHorizontal="true"
             android:text="当前收益"
             android:textSize="@dimen/dp12"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:layout_below="@id/ame_money"
             />
         <TextView
@@ -94,7 +96,7 @@
             android:layout_height="@dimen/dp50"
             tools:text="00.00元"
             android:gravity="center_horizontal|bottom"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/dp16"
             android:paddingBottom="@dimen/dp6"
             android:layout_centerHorizontal="true"
@@ -105,7 +107,7 @@
             android:layout_centerHorizontal="true"
             android:text="累积收益"
             android:textSize="@dimen/dp12"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:layout_below="@id/ame_money_total"
             />
         <TextView
@@ -198,7 +200,7 @@
         <ImageView
             android:layout_width="@dimen/dp160"
             android:layout_height="@dimen/dp160"
-            android:src="@mipmap/default_moneylist"
+            android:src="@mipmap/default_moneyto"
             />
         <TextView
             android:layout_width="wrap_content"

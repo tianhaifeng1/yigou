@@ -47,7 +47,7 @@ public class TkOrderActivity extends DemoMVPActivity<TkOrderView,TkOrderPresente
                 .setPageSize(20)
                 .creat(rootView);
         recyclerModule.setRefreshing(true);
-        recyclerModule.setDefImg(R.mipmap.default_addresslist);
+        recyclerModule.setDefImg(R.mipmap.default_orderlist);
         recyclerModule.setDefText("暂无退款订单");
         recyclerModule.getOView().setPadding(0, 0, 0, context.getResources().getDimensionPixelOffset(R.dimen.dp300));
 

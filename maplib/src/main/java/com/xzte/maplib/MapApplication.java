@@ -10,10 +10,10 @@ import com.xzte.maplib.baidu.BaiduMapApplicationAssist;
 public class MapApplication extends InitApplication {
 
     public BaiduMapApplicationAssist applicationAssist;
-
     public DatabaseApplicationAssist databaseAssist;
 
     public void initBaidu() {
+
         applicationAssist = new BaiduMapApplicationAssist();
         applicationAssist.initBaidu(this);
 

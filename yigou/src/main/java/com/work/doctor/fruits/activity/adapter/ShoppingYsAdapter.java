@@ -40,7 +40,12 @@ public abstract class ShoppingYsAdapter extends TRecyclerAdapter<GoodsInfoBean> 
     protected void convert(BaseViewHolder helper, GoodsInfoBean item) {
 //        boolean isNull = helper.getUnmodifiedPayloads().isEmpty();
 
-        String ygouStr = "(每人限购" + item.getLimitNum() + "份)";
+        String ygouStr = "";
+        if(item.getLimitNum()==0){
+            ygouStr = "(不限购)";
+        }else{
+            ygouStr = "(每人限购" + item.getLimitNum() + "份)";
+        }
         String string = "已售" + item.getSellTotalNum() + "份/限量" + item.getStock() + "份" + ygouStr;
         helper.setText(R.id.item_shop_remark,
                 new TextStyleHelper(string)
@@ -48,7 +53,6 @@ public abstract class ShoppingYsAdapter extends TRecyclerAdapter<GoodsInfoBean> 
                                 string.length() - ygouStr.length(),
                                 string.length()
                         ).show());
-
         helper.setText(R.id.item_shop_name, item.getGoodsName());
         String startTimeStr = dateFormat.format(new Date(item.getStartTime()));
         helper.setText(R.id.item_shop_time, "预售时间：" + startTimeStr
@@ -65,25 +69,32 @@ public abstract class ShoppingYsAdapter extends TRecyclerAdapter<GoodsInfoBean> 
         List<GmrRecordInfoBean> gmrList = item.getSpecialSaleList();
         Logger.t("gmrList = " + (gmrList == null ? "null" : ("" + gmrList.size())));
         if (gmrList != null && gmrList.size() > 0) {
+            helper.getView(R.id.item_shop_gmr_ll).setVisibility(View.VISIBLE);
             switch (gmrList.size()) {
                 case 5:
-                    GlideUtile.bindImageViewRound(mContext, gmrList.get(4).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr5));
+                    helper.getView(R.id.item_shop_gmr1).setVisibility(View.VISIBLE);
+                    GlideUtile.bindImageViewRound(mContext, gmrList.get(4).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr1));
                 case 4:
-                    GlideUtile.bindImageViewRound(mContext, gmrList.get(3).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr4));
+                    helper.getView(R.id.item_shop_gmr2).setVisibility(View.VISIBLE);
+                    GlideUtile.bindImageViewRound(mContext, gmrList.get(3).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr2));
                 case 3:
+                    helper.getView(R.id.item_shop_gmr3).setVisibility(View.VISIBLE);
                     GlideUtile.bindImageViewRound(mContext, gmrList.get(2).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr3));
                 case 2:
-                    GlideUtile.bindImageViewRound(mContext, gmrList.get(1).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr2));
+                    helper.getView(R.id.item_shop_gmr4).setVisibility(View.VISIBLE);
+                    GlideUtile.bindImageViewRound(mContext, gmrList.get(1).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr4));
                 case 1:
-                    GlideUtile.bindImageViewRound(mContext, gmrList.get(0).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr1));
+                    helper.getView(R.id.item_shop_gmr5).setVisibility(View.VISIBLE);
+                    GlideUtile.bindImageViewRound(mContext, gmrList.get(0).getAvatarUrl(), R.mipmap.default_img, helper.getView(R.id.item_shop_gmr5));
                     break;
             }
         }else{
-            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr5));
-            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr4));
-            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr3));
-            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr2));
-            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr1));
+              helper.getView(R.id.item_shop_gmr_ll).setVisibility(View.GONE);
+//            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr5));
+//            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr4));
+//            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr3));
+//            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr2));
+//            GlideUtile.bindImageViewRound(mContext, R.mipmap.default_img, helper.getView(R.id.item_shop_gmr1));
         }
 
 
@@ -113,11 +124,10 @@ public abstract class ShoppingYsAdapter extends TRecyclerAdapter<GoodsInfoBean> 
                 Logger.t("-------------------2");
                 time = cha2;
 //            预售时间
-                if (item.getStock() <= item.getSellTotalNum() || item.getLimitNum() - item.getSpecialSale() <= 0) {
+                if (item.getStock() <= item.getSellTotalNum()) {
                     //抢光了
                     helper.setText(R.id.item_shop_cart, "抢光了");
                     helper.setText(R.id.item_shop_masking, "抢光了");
-
                     int tint = Color.parseColor("#d7d7d7");
                     helper.getView(R.id.item_shop_cart).getBackground().setColorFilter(tint, PorterDuff.Mode.SRC_IN);
 

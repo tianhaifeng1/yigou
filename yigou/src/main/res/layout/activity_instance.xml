@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp10"
-            android:background="@drawable/shape_add"
+            android:background="@drawable/signin_record_backround"
             android:orientation="vertical"
             android:padding="@dimen/dp15">
 
@@ -146,6 +146,7 @@
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
                             android:text="姓名"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -177,6 +178,7 @@
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
                             android:text="电话"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -213,6 +215,7 @@
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
                             android:text="发票抬头"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -244,6 +247,7 @@
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
                             android:text="识别号"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -273,7 +277,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
-                            android:text="地址"
+                            android:text="公司地址"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -282,7 +287,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@color/color_white"
-                            android:hint="请输入地址"
+                            android:hint="请输入公司地址"
                             android:lineSpacingExtra="5dp"
                             android:textSize="14dp" />
                     </LinearLayout>
@@ -305,7 +310,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
-                            android:text="电话"
+                            android:text="公司电话"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -314,7 +320,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/color_white"
-                            android:hint="请输入电话"
+                            android:hint="请输入电话号码"
                             android:inputType="phone"
                             android:maxLength="11"
                             android:textSize="14dp" />
@@ -331,14 +337,18 @@
                         android:background="@color/color_white"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:padding="@dimen/dp10">
+                        android:paddingRight="@dimen/dp10"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp10"
+                        android:paddingLeft="@dimen/dp5">
 
                         <TextView
-                            android:layout_width="@dimen/dp70"
+                            android:layout_width="75dp"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
-                            android:text="开户行"
+                            android:text="开户行名称"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -347,7 +357,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/color_white"
-                            android:hint="请输入开户行"
+                            android:hint="请输入开户行名称"
                             android:textSize="14dp" />
                     </LinearLayout>
 
@@ -369,7 +379,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/dp10"
                             android:gravity="center"
-                            android:text="账号"
+                            android:text="开户账号"
+                            android:textColor="@color/color_name"
                             android:textSize="14dp" />
 
                         <EditText
@@ -378,7 +389,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/color_white"
-                            android:hint="请输入账号"
+                            android:hint="请输入开户账号"
                             android:textSize="14dp" />
                     </LinearLayout>
 
@@ -407,7 +418,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp10"
                     android:gravity="center"
-                    android:text="邮箱"
+                    android:text="邮箱地址"
+                    android:textColor="@color/color_name"
                     android:textSize="14dp" />
 
                 <EditText
@@ -416,7 +428,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@color/color_white"
-                    android:hint="请输入邮箱"
+                    android:hint="请输入邮箱地址"
                     android:textSize="14dp" />
             </LinearLayout>
 

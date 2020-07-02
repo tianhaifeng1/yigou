@@ -37,6 +37,7 @@
             />
 
         <TextView
+            android:layout_marginTop="@dimen/dp10"
             android:id="@+id/item_shop_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +63,7 @@
             />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/item_shop_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +85,7 @@
             android:textSize="@dimen/dp14"
             android:textColor="@color/textcolor_point"
             android:layout_below="@id/item_shop_time"
-            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp25"
             android:layout_toRightOf="@id/item_shop_icon"
             />
 
@@ -97,7 +99,7 @@
             android:textSize="@dimen/dp12"
             android:textColor="@color/color_content"
             android:layout_below="@id/item_shop_time"
-            android:layout_marginTop="@dimen/dp5"
+            android:layout_marginTop="@dimen/dp25"
             android:layout_toRightOf="@id/item_shop_price"
             android:layout_toLeftOf="@id/item_shop_cart"
             />
@@ -109,7 +111,7 @@
             android:layout_height="@dimen/dp30"
             android:layout_alignParentRight="true"
             android:layout_below="@id/item_shop_time"
-            android:layout_marginTop="@dimen/dp10"
+            android:layout_marginTop="@dimen/dp30"
             android:paddingLeft="@dimen/dp16"
             android:paddingRight="@dimen/dp16"
             android:background="@drawable/shape_c_jiesuan"
@@ -133,61 +135,65 @@
         <LinearLayout
             android:id="@+id/item_shop_gmr_ll"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp20"
+            android:layout_height="@dimen/dp25"
             android:layout_below="@id/item_view"
             android:layout_marginTop="@dimen/dp10"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/item_shop_gmr5"
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_img"
                 android:scaleType="fitXY"/>
             <ImageView
                 android:id="@+id/item_shop_gmr4"
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_img"
                 android:scaleType="fitXY"
+                android:visibility="gone"
                 android:layout_marginLeft="-6dp"/>
             <ImageView
                 android:id="@+id/item_shop_gmr3"
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_img"
                 android:scaleType="fitXY"
+                android:visibility="gone"
                 android:layout_marginLeft="-6dp"/>
             <ImageView
                 android:id="@+id/item_shop_gmr2"
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_img"
                 android:scaleType="fitXY"
+                android:visibility="gone"
                 android:layout_marginLeft="-6dp"/>
             <ImageView
                 android:id="@+id/item_shop_gmr1"
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_img"
                 android:scaleType="fitXY"
+                android:visibility="gone"
                 android:layout_marginLeft="-6dp"/>
             <ImageView
-                android:layout_width="@dimen/dp20"
-                android:layout_height="@dimen/dp20"
+                android:layout_width="@dimen/dp25"
+                android:layout_height="@dimen/dp25"
                 android:src="@mipmap/default_more"
                 android:scaleType="fitXY"
                 android:layout_marginLeft="-6dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/dp20"
+                android:layout_height="@dimen/dp25"
                 android:layout_weight="1"
                 android:text="购买了此商品"
                 android:gravity="center_vertical"
                 android:paddingLeft="@dimen/dp10"
                 android:textColor="@color/color_content"
-                android:textSize="@dimen/dp10"
+                android:textSize="@dimen/dp12"
                 />
 
             <ImageView

@@ -32,6 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="拉萨市"
+            android:textColor="@color/color_name"
             android:gravity="center_vertical"
             />
         <ImageView
@@ -134,9 +135,9 @@
                     android:layout_marginTop="@dimen/dp30"
                     android:layout_marginRight="@dimen/dp100"
                     android:hint="定位中..."
+                    android:textStyle="bold"
                     android:textColorHint="@color/color_content"
                     android:gravity="center_vertical"
-                    android:textSize="@dimen/dp16"
                     android:textColor="@color/color_name"
                     />
 

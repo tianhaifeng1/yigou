@@ -114,6 +114,7 @@ public abstract class DemoMVPActivity<V extends TView, P extends TPresenter<V, D
         SharedPreferencesUtils.setParam(context, DemoConstant.user_token, "");
         SharedPreferencesUtils.setParam(context, DemoConstant.user_id, -1);
         SharedPreferencesUtils.setParam(context, DemoConstant.user_status, 0);
+        SharedPreferencesUtils.setParam(context, DemoConstant.user_approve, 0);
         skipActivity(LoginActivity.class);
     }
 

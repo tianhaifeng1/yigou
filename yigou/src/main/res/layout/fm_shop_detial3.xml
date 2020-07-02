@@ -32,7 +32,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp60"
-            android:background="@color/textcolor_point">
+            android:background="@drawable/main_bottom_title_bg">
 
             <TextView
                 android:id="@+id/fm_shop_detial_price_vip"
@@ -45,6 +45,7 @@
                 android:maxLines="1"
                 android:paddingLeft="@dimen/dp12"
                 android:textColor="@color/textcolor_white"
+                android:textStyle="bold"
                 android:textSize="@dimen/dp26"
                 tools:text="￥0.8" />
 
@@ -73,6 +74,7 @@
                 android:paddingRight="@dimen/dp12">
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/jstext"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,6 +83,7 @@
                     android:textColor="@color/textcolor_white" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/fm_shop_detial_djs_time"
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/dp20"
@@ -126,6 +129,7 @@
             tools:text="备注" />
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/fm_shop_detial_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

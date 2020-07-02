@@ -1,7 +1,5 @@
 package com.work.doctor.fruits.activity;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.t.httplib.yigou.bean.DemoRespBean;
@@ -40,8 +38,7 @@ public class LoginPresenter extends DemoPresenter<LoginView> {
                         //请求获取验证码
                         //倒计时
                         if (isViewAttach()) {
-                            Log.d("222222",bean.getData()+"");
-                            getView().eventDjs();
+                            getView().eventDjs(bean.getData()+"");
                         }
                     }
                 }

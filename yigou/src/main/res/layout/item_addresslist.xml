@@ -2,27 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:layout_marginBottom="@dimen/dp6">
 
     <View
         android:id="@+id/item_address_viewtop"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp10" />
 
-    <ImageView
-        android:id="@+id/item_address_icon"
-        android:layout_width="@dimen/dp40"
-        android:layout_height="@dimen/dp40"
-        android:layout_below="@id/item_address_viewtop"
-        android:layout_marginLeft="@dimen/dp10"
-        android:src="@mipmap/ic_address" />
 
     <TextView
         android:id="@+id/item_address_name"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_below="@id/item_address_viewtop"
-        android:layout_toRightOf="@id/item_address_icon"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp10"
         android:textColor="@color/color_name"
@@ -36,24 +30,24 @@
         android:layout_below="@id/item_address_viewtop"
         android:layout_toRightOf="@id/item_address_name"
         android:gravity="center_vertical"
-        android:paddingLeft="@dimen/dp20"
-        android:textColor="@color/color_content"
+        android:paddingLeft="@dimen/dp40"
+        android:textColor="@color/color_name"
         android:textSize="14dp"
         tools:text="15333611256" />
 
     <LinearLayout
         android:id="@+id/item_address_ll"
+        android:layout_marginTop="@dimen/dp5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/item_address_name"
         android:layout_toLeftOf="@id/item_address_editor"
-        android:layout_toRightOf="@id/item_address_icon"
         android:paddingLeft="@dimen/dp10">
 
         <TextView
-            android:id="@+id/item_address_status"
+            android:id="@+id/item_address_event_default"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:paddingRight="@dimen/dp10"
             android:text="[默认地址]"
@@ -77,15 +71,13 @@
 
     <TextView
         android:id="@+id/item_address_editor"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/dp50"
+        android:layout_width="@dimen/dp20"
+        android:layout_height="@dimen/dp20"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:gravity="center"
-        android:paddingLeft="@dimen/dp6"
-        android:paddingRight="@dimen/dp10"
-        android:text="编辑"
-        android:textSize="14dp"
+        android:layout_marginRight="@dimen/dp10"
+        android:layout_marginLeft="@dimen/dp10"
+        android:background="@mipmap/item_address_editor_bg"
         android:textColor="@color/color_content"/>
 
     <View
@@ -115,16 +107,6 @@
             android:textColor="@color/color_name"
             android:textSize="12dp" />
 
-        <TextView
-            android:id="@+id/item_address_event_default"
-            android:layout_width="@dimen/dp60"
-            android:layout_height="60dp"
-            android:layout_marginLeft="@dimen/dp20"
-            android:background="@drawable/shape_oval_r_yellow"
-            android:gravity="center"
-            android:text="设为\n默认"
-            android:textColor="@color/color_white"
-            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/item_address_event_delete"

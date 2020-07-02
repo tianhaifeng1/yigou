@@ -36,6 +36,7 @@
         android:layout_marginTop="5dp"
         android:text="time"
         android:paddingRight="@dimen/dp10"
+        android:textSize="@dimen/dp12"
         android:layout_below="@id/item_record_sy_title"
         android:layout_toLeftOf="@id/item_record_sy_money"
         />

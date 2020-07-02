@@ -209,6 +209,7 @@ public class SettingActivity extends DemoMVPActivity<TView, DemoPresenter<TView>
                         SharedPreferencesUtils.setParam(context, DemoConstant.user_token, "");
                         SharedPreferencesUtils.setParam(context, DemoConstant.user_id, -1);
                         SharedPreferencesUtils.setParam(context, DemoConstant.user_status, 0);
+                        SharedPreferencesUtils.setParam(context, DemoConstant.user_approve, 0);
 
                         //清除数据库数据
                         new GreenDaoAssist(((DemoApplication)getApplication()).databaseAssist).clearDatabase();

@@ -45,6 +45,7 @@
             android:maxLines="2"
             android:ellipsize="end"
             tools:text="商品名称"
+            android:textStyle="bold"
             android:textColor="@color/color_name"
             android:layout_toRightOf="@id/item_orderlist_item_shop_icon"
             android:layout_toLeftOf="@+id/item_orderlist_item_shop_price"

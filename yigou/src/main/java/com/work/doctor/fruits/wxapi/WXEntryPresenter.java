@@ -63,7 +63,6 @@ public class WXEntryPresenter extends DemoPresenter<WXEntryView> {
         String path = String.format("https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s",
                 access_token,
                 openId);
-
         model.requestWxUserInfo(path, new TObserver<WechatUserInfo>() {
             @Override
             public void onNext(WechatUserInfo bean) {

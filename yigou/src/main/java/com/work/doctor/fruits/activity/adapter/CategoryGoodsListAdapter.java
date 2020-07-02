@@ -15,25 +15,30 @@ import com.trjx.tlibs.uils.GlideUtile;
 import com.work.doctor.fruits.R;
 import com.work.doctor.fruits.activity.Goods.GoodsDetial2Activity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryGoodsListAdapter extends TRecyclerAdapter<CategoryGoodsBean> {
 
-    public ShoppingJrtmAdapter adapterJrtm;
+    private ArrayList<ShoppingJrtmAdapter> adapterlist = new ArrayList<>();
 
     public CategoryGoodsListAdapter(@Nullable List<CategoryGoodsBean> data) {
         super(data);
+    }
+
+    public ArrayList<ShoppingJrtmAdapter> getAdapterlist() {
+        return adapterlist;
     }
 
     @Override
     protected void convert(BaseViewHolder helper, CategoryGoodsBean item) {
         GlideUtile.bindImageView(mContext, item.getCategoryIcon(), helper.getView(R.id.item_activity_image));
 
-        helper.getView(R.id.item_activity_text).setVisibility(View.VISIBLE);
+        helper.getView(R.id.category_footview).setVisibility(View.VISIBLE);
         helper.setText(R.id.item_activity_text,item.getCnname());
         helper.addOnClickListener(R.id.category_footview);
 
-        adapterJrtm = new ShoppingJrtmAdapter(item.getGoods(), false);
+        ShoppingJrtmAdapter adapterJrtm = new ShoppingJrtmAdapter(item.getGoods(), false);
         RecyclerView recyclerView = helper.getView(R.id.item_activity_recycler);
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 3) {
             @Override
@@ -52,6 +57,7 @@ public class CategoryGoodsListAdapter extends TRecyclerAdapter<CategoryGoodsBean
         });
 
         recyclerView.setAdapter(adapterJrtm);
+        adapterlist.add(helper.getPosition(),adapterJrtm);
 
     }
 

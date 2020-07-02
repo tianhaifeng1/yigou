@@ -4,21 +4,115 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     android:orientation="vertical">
 
     <include layout="@layout/ttitle" />
 
-    <ScrollView
+    <RelativeLayout
+        android:id="@+id/int_register_rel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp45"
+            android:text="邀请批发商注册儒龙易购"
+            android:textSize="@dimen/dp20"
+            android:textColor="@color/color_name"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/dp60"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp40"
+            android:layout_marginTop="@dimen/dp170"
+            android:layout_marginRight="@dimen/dp40"
+            android:layout_marginBottom="@dimen/dp70"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/int_register_phone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:background="@color/transparent"
+                android:hint="请输入手机号码"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textSize="@dimen/sp14"
+                android:layout_marginTop="@dimen/dp20"
+                android:textColor="@color/color_name" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/int_register_psw"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dp10"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="请输入验证码"
+                    tools:text="7342"
+                    android:textSize="@dimen/sp14"
+                    android:inputType="number"
+                    android:maxLength="15"
+                    android:textColor="@color/color_name"
+                    />
+
+                <TextView
+                    android:id="@+id/int_register_sendsms"
+                    android:layout_width="115dp"
+                    android:layout_height="@dimen/dp30"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/dp3"
+                    android:gravity="center"
+                    android:text="发送验证码"
+                    android:background="@drawable/selector_longin"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/sp12" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/color_line" />
+
+            <Button
+                android:id="@+id/int_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp40"
+                android:layout_marginTop="@dimen/dp25"
+                android:background="@drawable/selector_longin"
+                android:text="注册"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/sp16" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
 
         <RelativeLayout
+            android:id="@+id/share_page_scr"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="1400dp"
+                android:layout_height="match_parent"
                 android:background="@mipmap/share_bg_v2">
 
                 <TextView
@@ -31,11 +125,16 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="@dimen/dp55"
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
-                    android:layout_marginBottom="86dp"
+                    android:layout_marginBottom="95dp"
+                    android:paddingTop="@dimen/dp12"
+                    android:text="立即邀请"
+                    android:textSize="@dimen/dp20"
+                    android:gravity="center_horizontal"
+                    android:background="@mipmap/share_btn_bg1"
                     android:onClick="onShareEvent" />
 
                 <TextView
@@ -44,113 +143,15 @@
                     android:layout_gravity="bottom"
                     android:layout_marginLeft="40dp"
                     android:layout_marginRight="40dp"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="@dimen/dp25"
+                    android:text="面对面邀请"
+                    android:textSize="@dimen/dp20"
+                    android:textColor="#ffcb79"
+                    android:gravity="center"
+                    android:background="@drawable/share_btn_bg2"
                     android:onClick="onFaceToFaceShareEvent" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="760dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp">
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="20dp"
-                            android:layout_centerHorizontal="true"
-                            android:text="累计获得"
-                            android:gravity="center"
-                            android:textColor="@color/color_name"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            />
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_centerHorizontal="true">
-
-                            <TextView
-                                android:id="@+id/share_page_money"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:text="0"
-                                android:textColor="@color/textcolor_point"
-                                android:textSize="26sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:paddingBottom="6dp"
-                                android:text="收益"
-                                android:textColor="@color/textcolor_point" />
-
-                        </LinearLayout>
-
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="40dp"
-                        android:layout_weight="1"
-                        android:gravity="center">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="20dp"
-                            android:layout_centerHorizontal="true"
-                            android:text="成功邀请"
-                            android:gravity="center"
-                            android:textColor="@color/color_name"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_centerHorizontal="true">
-
-                            <TextView
-                                android:id="@+id/share_page_num"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:text="0"
-                                android:textColor="@color/textcolor_point"
-                                android:textSize="26sp" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:paddingBottom="6dp"
-                                android:text="人"
-                                android:textColor="@color/textcolor_point" />
-
-                        </LinearLayout>
-
-
-                    </RelativeLayout>
-                </LinearLayout>
 
             </FrameLayout>
         </RelativeLayout>
-
-
-    </ScrollView>
 
 </LinearLayout>

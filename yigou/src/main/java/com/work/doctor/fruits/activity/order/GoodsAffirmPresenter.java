@@ -1,5 +1,7 @@
 package com.work.doctor.fruits.activity.order;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.t.databaselib.DatabaseGoodsInfo;
@@ -12,10 +14,10 @@ import com.t.httplib.yigou.bean.req.ReqInvoiceInfo;
 import com.t.httplib.yigou.bean.req.ReqOrderSubmitInfo;
 import com.t.httplib.yigou.bean.req.ReqPaymentInfo;
 import com.t.httplib.yigou.bean.req.ReqShopInfo2;
-import com.t.httplib.yigou.bean.req.ReqShopInfo3;
+import com.t.httplib.yigou.bean.req.ReqShopInfo4;
 import com.t.httplib.yigou.bean.resp.AddressInfoBean;
 import com.t.httplib.yigou.bean.resp.DistributionInfoBean;
-import com.t.httplib.yigou.bean.resp.OrderDetailInfoBean;
+import com.t.httplib.yigou.bean.resp.GoodsAffirmBean;
 import com.trjx.tbase.http.HttpBase;
 import com.trjx.tlibs.uils.Logger;
 import com.trjx.tlibs.uils.TUtils;
@@ -48,13 +50,14 @@ public class GoodsAffirmPresenter extends DemoPresenter<GoodsAffirmView> {
             }
             info.setGoods(goods);
 
-            model.requestPayInfoOrder(info, new TObserver<DemoRespBean<OrderDetailInfoBean>>() {
+            model.requestPayInfoOrder(info, new TObserver<DemoRespBean<GoodsAffirmBean>>() {
                 @Override
-                public void onNext(DemoRespBean<OrderDetailInfoBean> bean) {
+                public void onNext(DemoRespBean<GoodsAffirmBean> bean) {
                     int state = bean.getResultState();
                     if (state == HttpBase.POST_SUCCESS) {
-                        if (isViewAttach())
+                        if (isViewAttach()){
                             getView().getInfoSuccess(bean.getData());
+                        }
                     } else if (state == 202) {
                         if (isViewAttach())
                             getView().getInfoFail(bean.getRemindMessage());
@@ -63,6 +66,12 @@ public class GoodsAffirmPresenter extends DemoPresenter<GoodsAffirmView> {
                             getView().getInfoFail("数据异常");
                         }
                     }
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    Log.d("错误信息",""+e.getMessage());
+                    super.onError(e);
                 }
             });
         } else {
@@ -115,15 +124,17 @@ public class GoodsAffirmPresenter extends DemoPresenter<GoodsAffirmView> {
     /**
      * 获取配送费信息列表数据
      */
-    protected void getDataDistribution() {
+    protected void getDataDistribution(int distype) {
         if (DemoConstant.shopInfoBean == null) {
             Logger.t("店铺信息不能为空");
             return;
         }
-        ReqShopInfo3 info3 = new ReqShopInfo3();
-        info3.setShopId(DemoConstant.shopInfoBean.getShopId()+"");
-        info3.setDistype("0");
-        model.requestDistribution(info3,new TObserver<DemoRespBean<DistributionInfoBean>>() {
+        ReqShopInfo4 info4 = new ReqShopInfo4();
+        info4.setShopId(DemoConstant.shopInfoBean.getShopId()+"");
+        info4.setDistype(distype+"");
+
+
+        model.requestDistribution(info4,new TObserver<DemoRespBean<DistributionInfoBean>>() {
             @Override
             public void onNext(DemoRespBean<DistributionInfoBean> bean) {
                 if (responseState(bean))
@@ -138,10 +149,6 @@ public class GoodsAffirmPresenter extends DemoPresenter<GoodsAffirmView> {
      * 提交
      */
     protected void submitOrder(ReqOrderSubmitInfo submitInfo) {
-        if (submitInfo.getAddressId()==null||submitInfo.getAddressId().equals("")) {
-            getView().tRemind("请选择地址");
-            return;
-        }else {
             showDialog("生成订单中...");
             submitInfo.setGoods(goods);
             model.requestOrderSubmit(submitInfo, new TObserver<DemoRespBean<String>>() {
@@ -153,8 +160,6 @@ public class GoodsAffirmPresenter extends DemoPresenter<GoodsAffirmView> {
                     }
                 }
             });
-        }
-
     }
 
     protected void payMent(String systemOrderNo,int payWay){

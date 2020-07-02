@@ -7,4 +7,8 @@ public interface SharePageView extends TView {
 
     void getDataInfoSuccess(BalanceStatInfoBean infoBean);
 
+    void eventDjs(String data);
+
+    void registerSuccess();
+
 }

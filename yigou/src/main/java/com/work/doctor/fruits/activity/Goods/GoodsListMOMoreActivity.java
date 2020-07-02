@@ -3,9 +3,14 @@ package com.work.doctor.fruits.activity.Goods;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.t.databaselib.DatabaseGoodsInfo;
@@ -14,15 +19,16 @@ import com.t.httplib.yigou.YigouConstant;
 import com.t.httplib.yigou.bean.req.ReqCartAddInfo;
 import com.t.httplib.yigou.bean.resp.GoodsInfoBean;
 import com.t.httplib.yigou.bean.resp.GoodsSpecInfoBean;
-import com.trjx.tbase.module.recyclermodule.TRecyclerModule;
-import com.trjx.tbase.module.recyclermodule.TRecyclerViewListenter;
+import com.trjx.tlibs.uils.GlideUtile;
 import com.trjx.tlibs.uils.SnackbarUtil;
 import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.activity.MainNavActivity;
 import com.work.doctor.fruits.activity.adapter.ShoppingAdapter;
 import com.work.doctor.fruits.activity.adapter.ShoppingJrtmAdapter;
 import com.work.doctor.fruits.assist.DemoConstant;
 import com.work.doctor.fruits.base.DemoApplication;
 import com.work.doctor.fruits.base.DemoMVPActivity;
+import com.work.doctor.fruits.dialog.AddBorderFab;
 import com.work.doctor.fruits.dialog.MoreGoodsSpecInfoDialog2;
 import com.work.doctor.fruits.dialog.RemindDialog;
 
@@ -42,17 +48,35 @@ import java.util.List;
 public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView, GoodsListMOMorePresenter>
         implements BaseQuickAdapter.OnItemClickListener,
         BaseQuickAdapter.OnItemChildClickListener,
-        TRecyclerViewListenter,
         GoodsListMOMoreView,
-        MoreGoodsSpecInfoDialog2.OnMoreGoodsListSpecInfoListener {
+        MoreGoodsSpecInfoDialog2.OnMoreGoodsListSpecInfoListener, View.OnClickListener {
 
     private int code = -1;
 
-    private TRecyclerModule recyclerModule;
+//    private TRecyclerModule recyclerModule;
+
+    private RecyclerView recyclerview;
 
     private GreenDaoAssist greenDaoAssist;
 
     private RelativeLayout relativeLayout;
+
+    private LinearLayout mGoodslistBg;
+
+    private ImageView mGoodslistTitleBg;
+
+    private NestedScrollView mGoodslistScrollView;
+
+    private TextView mGoodslistTxt;
+
+    private ShoppingAdapter shoppingAdapter;
+    private ShoppingJrtmAdapter jrtmAdapter;
+
+    private RelativeLayout mLayoutDefaultAll;
+
+    private AddBorderFab mGoodslistGwc;
+
+    private int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,44 +91,88 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
         greenDaoAssist = new GreenDaoAssist(((DemoApplication) getApplication()).databaseAssist);
 
         relativeLayout = findViewById(R.id.agm_rl);
+        mGoodslistTitleBg = findViewById(R.id.goodslist_title_bg);
+        mGoodslistBg =findViewById(R.id.goodslist_bg);
+        mGoodslistScrollView =findViewById(R.id.goodslist_scrollView);
+        recyclerview = findViewById(R.id.recyclerview);
+        mLayoutDefaultAll = findViewById(R.id.goodslist_null);
+        mGoodslistTxt = findViewById(R.id.goodslist_txt);
+        mGoodslistGwc = findViewById(R.id.goodslist_gwc);
+
+        mGoodslistGwc.setOnClickListener(this);
+        mLayoutDefaultAll.setVisibility(View.GONE);
+
+        mGoodslistScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                    page++;
+//                    recyclerModule.setPage(page);
+                    getPresenter().getListData(code, page, 24);
+                }
+            }
+        });
 
         Intent intent = getIntent();
         code = intent.getIntExtra("code", -1);
 
         titleModule.initTitle("", true);
         String titleStr = "";
+
+        recyclerview.setLayoutManager(new GridLayoutManager(context,3){
+            @Override
+            public boolean canScrollVertically() {
+                return false;//禁止垂直滚动
+            }
+        });
+
+
 //            今日特卖
         if (code == 0) {
             titleStr = "今日特卖";
+            GlideUtile.bindImageView(context, R.mipmap.goodslist_title_bg_tm, mGoodslistTitleBg);
+            mGoodslistScrollView.setBackgroundResource(R.color.goodslist_bg_tm);
             relativeLayout.setVisibility(View.VISIBLE);
-            ShoppingJrtmAdapter jrtmAdapter = new ShoppingJrtmAdapter(null,false);
+            jrtmAdapter = new ShoppingJrtmAdapter(null,false);
             //初始化Module
-            recyclerModule = new TRecyclerModule.Builder(context)
-                    .setLayoutManager(new GridLayoutManager(context, 3))
-                    .createAdapter(jrtmAdapter)
-                    .setPageSize(24)
-                    .setTRecyclerViewListenter(this)
-                    .creat(rootView);
-            recyclerModule.setRefreshing(true);
-            recyclerModule.setDefImg(R.mipmap.default_goodslist);
-            recyclerModule.setDefText("暂无商品");
+//            recyclerModule = new TRecyclerModule.Builder(context)
+//                    .setLayoutManager(new GridLayoutManager(context, 3))
+//                    .createAdapter(jrtmAdapter)
+//                    .setPageSize(24)
+//                    .creat(rootView);
+//            recyclerModule.setRefreshing(true);
+//            recyclerModule.setDefImg(R.mipmap.default_goodslist);
+//            recyclerModule.setDefText("暂无商品");
+
+
 //            recyclerModule.getRecyclerView().setBackground(getResources().getDrawable(R.drawable.waikuang_r5_white,null));
+
+
+            recyclerview.setAdapter(jrtmAdapter);
+
             jrtmAdapter.setOnItemClickListener(this);
             jrtmAdapter.setOnItemChildClickListener(this);
         } else if (code == 1) {
             titleStr = "推荐商品";
+            GlideUtile.bindImageView(context, R.mipmap.goodslist_title_bg_xp, mGoodslistTitleBg);
+            mGoodslistScrollView.setBackgroundResource(R.color.goodslist_bg_xp);
             relativeLayout.setVisibility(View.GONE);
-            ShoppingAdapter shoppingAdapter = new ShoppingAdapter(null);
+            shoppingAdapter = new ShoppingAdapter(null);
             //初始化Module
-            recyclerModule = new TRecyclerModule.Builder(context)
-                    .setLayoutManager(new GridLayoutManager(context, 3))
-                    .createAdapter(shoppingAdapter)
-                    .setPageSize(24)
-                    .setTRecyclerViewListenter(this)
-                    .creat(rootView);
-            recyclerModule.setRefreshing(true);
-            recyclerModule.setDefImg(R.mipmap.default_goodslist);
-            recyclerModule.setDefText("暂无商品");
+//            recyclerModule = new TRecyclerModule.Builder(context)
+//                    .setLayoutManager(new GridLayoutManager(context, 3){
+//                        @Override
+//                        public boolean canScrollVertically() {
+//                            return false;//禁止垂直滚动
+//                        }
+//                    })
+//                    .createAdapter(shoppingAdapter)
+//                    .setPageSize(24)
+//                    .creat(rootView);
+//            recyclerModule.setRefreshing(true);
+//            recyclerModule.setDefImg(R.mipmap.default_goodslist);
+//            recyclerModule.setDefText("暂无商品");
+            recyclerview.setAdapter(shoppingAdapter);
 //            recyclerModule.getRecyclerView().setBackground(getResources().getDrawable(R.drawable.waikuang_r5_white,null));
             shoppingAdapter.setOnItemClickListener(this);
             shoppingAdapter.setOnItemChildClickListener(this);
@@ -112,9 +180,7 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
         //设置标题
         titleModule.setTitleText(titleStr);
 
-        if (recyclerModule != null) {
-            getRecyclerListData();
-        }
+        getPresenter().getListData(code, page, 24);
 
     }
 
@@ -126,6 +192,13 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
     //======================  获取不同列表的数据  ====================
     @Override
     public void getListDataSuccess(List<GoodsInfoBean> list) {
+        if(list==null || list.size()==0){
+            if(page == 1) {
+                mLayoutDefaultAll.setVisibility(View.VISIBLE);
+            }
+            return;
+        }
+
         //今日特卖更改库存
         if (code == 0 && list != null && list.size() > 0) {
             for (int i = 0, size = list.size(); i < size; i++) {
@@ -141,10 +214,31 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
 
             }
         }
+        if(code == 0){
+            if(page == 1){
+                jrtmAdapter.setNewData(list);
+            }else{
+                if (list.size() < 24) {
+                    mGoodslistTxt.setVisibility(View.VISIBLE);
+                }
+                jrtmAdapter.addData(list);
+            }
 
-        recyclerModule.setRefreshing(false);
-        recyclerModule.bindListData(list);
+        }else if(code == 1){
+            if(page == 1){
+                shoppingAdapter.setNewData(list);
+            }else{
+                if (list.size() < 24) {
+                    mGoodslistTxt.setVisibility(View.VISIBLE);
+                }
+                shoppingAdapter.addData(list);
+            }
+        }
+
+//        recyclerModule.setRefreshing(false);
+//        recyclerModule.bindListData(list);
     }
+
 
     @Override
     public void getGoodsSpecSuccess(GoodsSpecInfoBean infoBean) {
@@ -227,16 +321,6 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
     }
 
 
-    @Override
-    public void onClickRecyclerExceptionPageEvent() {
-
-    }
-
-    @Override
-    public void getRecyclerListData() {
-        getPresenter().getListData(code, recyclerModule.getPage(), recyclerModule.getPageSize());
-    }
-
 
     //弹框
     private void goodsItemDialog(GoodsSpecInfoBean specListBeanList) {
@@ -278,6 +362,18 @@ public class GoodsListMOMoreActivity extends DemoMVPActivity<GoodsListMOMoreView
             SnackbarUtil.showToast(rootView, "添加成功");
         } else {
             getPresenter().addGoodsToShoppingCart(addInfo);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        int ids = v.getId();
+        switch (ids) {
+            case R.id.goodslist_gwc:
+                Intent intent_shopcart = new Intent(context, MainNavActivity.class);
+                intent_shopcart.putExtra("position", 2);
+                startActivity(intent_shopcart);
+                break;
         }
     }
 }

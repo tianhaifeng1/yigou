@@ -4,11 +4,13 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Outline;
 import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -51,6 +53,7 @@ import com.work.doctor.fruits.activity.Goods.GoodsListMOMoreActivity;
 import com.work.doctor.fruits.activity.Goods.GoodsListYsActivity;
 import com.work.doctor.fruits.activity.Goods.GoodsTypeAndListActivity;
 import com.work.doctor.fruits.activity.MainNavActivity;
+import com.work.doctor.fruits.activity.SigninActivity;
 import com.work.doctor.fruits.activity.adapter.GoodListAdapter;
 import com.work.doctor.fruits.activity.adapter.ShopTypeAdapter;
 import com.work.doctor.fruits.activity.adapter.ShoppingAdapter;
@@ -62,7 +65,6 @@ import com.work.doctor.fruits.assist.DemoConstant;
 import com.work.doctor.fruits.assist.DemoUtils;
 import com.work.doctor.fruits.base.DemoApplication;
 import com.work.doctor.fruits.base.DemoMVPFragment;
-import com.work.doctor.fruits.base.DemoWebActivity;
 import com.work.doctor.fruits.dialog.CommonPopupWindow;
 import com.work.doctor.fruits.dialog.KefuDialog;
 import com.work.doctor.fruits.dialog.LocationDialog;
@@ -102,9 +104,7 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
     private ConvenientBanner banner;
 
     private LinearLayout mFmOneMoreJrtmTitleLl;
-    private TextView mFmOneMoreJrtm;
     private RecyclerView mFmOneRecyclerviewJrtm;
-    private TextView mFmOneMoreJrtj;
     private RecyclerView mFmOneRecyclerviewJrtj;
 
     private RecyclerView mFmOneRecyclerviewType;
@@ -114,6 +114,8 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
     private LinearLayout mFmOneYslayout;
     private RecyclerView mFmOneRecyclerviewYs;
     private TextView mFmOneMoreYs;
+    private LinearLayout mFmOneLinGoodlist;
+    private LinearLayout mFmoneBottomTitleXinpin;
 
     private GoodsInfoBean goodsInfoBean;
     private DatabaseGoodsInfo databaseGoodsInfo;
@@ -149,9 +151,7 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
         banner = view.findViewById(R.id.fm_one_banner);
 
         mFmOneMoreJrtmTitleLl = view.findViewById(R.id.main_frist_jrtm_title_ll);
-        mFmOneMoreJrtm = view.findViewById(R.id.fm_one_more_jrtm);
         mFmOneRecyclerviewJrtm = view.findViewById(R.id.fm_one_recyclerview_jrtm);
-        mFmOneMoreJrtj = view.findViewById(R.id.fm_one_more_jrtj);
         mFmOneRecyclerviewJrtj = view.findViewById(R.id.fm_one_recyclerview_jrtj);
 
         mFmOneRecyclerviewType = view.findViewById(R.id.fm_one_recyclerview_type);
@@ -161,6 +161,8 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
         mFmOneMoreYs = view.findViewById(R.id.fm_one_more_ys);
 
         mFmOneRecyclerviewGoodlist = view.findViewById(R.id.fm_one_recyclerview_goodlist);
+        mFmOneLinGoodlist = view.findViewById(R.id.fm_one_lin_goodlist);
+        mFmoneBottomTitleXinpin = view.findViewById(R.id.main_bottom_title_xinpin);
 
         topLocationImg.setVisibility(View.VISIBLE);
         topLocationView.setVisibility(View.VISIBLE);
@@ -171,9 +173,9 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
         topLocationImg.setOnClickListener(this);
         topLocationView.setOnClickListener(this);
         topSearchRl.setOnClickListener(this);
-        mFmOneMoreJrtm.setOnClickListener(this);
-        mFmOneMoreJrtj.setOnClickListener(this);
+        mFmOneMoreJrtmTitleLl.setOnClickListener(this);
         mFmOneMoreYs.setOnClickListener(this);
+        mFmoneBottomTitleXinpin.setOnClickListener(this);
 
         initAdapter();
 
@@ -388,7 +390,7 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
                 case R.id.item_activity_image:
                     GoodsListInfoBean infoBean = (GoodsListInfoBean) adapter.getData().get(position);
                     if(infoBean.getActivityCategoryNum()==0){
-                        SnackbarUtil.showToast(rootView, "没有更多");
+                        SnackbarUtil.showToast(rootView, "该分类没有更多");
                         break;
                     }
                     Intent intent2 = new Intent(activity, CategoryGoodsListActivity.class);
@@ -429,13 +431,13 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
                 //搜索
                 activity.skipActivity(SearchGoodsActivity.class);
                 break;
-            case R.id.fm_one_more_jrtm:
+            case R.id.main_frist_jrtm_title_ll:
                 //今日特卖
                 Intent intent_jrtm = new Intent(activity.context, GoodsListMOMoreActivity.class);
                 intent_jrtm.putExtra("code", 0);
                 activity.startActivity(intent_jrtm);
                 break;
-            case R.id.fm_one_more_jrtj:
+            case R.id.main_bottom_title_xinpin:
                 //今日推荐
                 Intent intent_jrtj = new Intent(activity.context, GoodsListMOMoreActivity.class);
                 intent_jrtj.putExtra("code", 1);
@@ -518,15 +520,17 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
         }
 
 
-        //如果是批发用户，不用提示框
-        if (DemoUtils.isPfUser()) {
-            return;
-        }
+//        //如果是批发用户，不用提示框
+//        if (DemoUtils.isPfUser()) {
+//            return;
+//        }
 
         if(DemoConstant.isSignin==false&&infoBean.getSignin()==0){
             DemoConstant.isSignin=true;
             showPopwSignin();
+            return;
         }else{
+
             showLocationDialog();
         }
     }
@@ -599,21 +603,27 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
             if(goodsInfoBean.getGoodsType() == 3){
 //                预售商品
                 int goodsNumber = goodsInfoBean.getSpecialSale();
-                if (goodsInfoBean.getLimitNum() <= 0 || goodsNumber >= goodsInfoBean.getLimitNum()) {
+                if (goodsInfoBean.getLimitNum()!=0 && goodsNumber >= goodsInfoBean.getLimitNum()) {
                     SnackbarUtil.showToast(rootView, "此商品限购" + goodsInfoBean.getLimitNum() + "份");
                     return;
                 }
-                if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsInfoBean.getLimitNum()) {
+                if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsInfoBean.getLimitNum() && goodsInfoBean.getLimitNum()!=0) {
                     SnackbarUtil.showToast(rootView, "添加成功");
                     return;
                 }
+                if(databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() > goodsInfoBean.getStock()){
+                    SnackbarUtil.showToast(rootView, "添加成功");
+                    return;
+                }
+//                if(databaseGoodsInfo.get)
+
             }else{
 //                普通商品
                 if (goodsInfoBean.getStock() <= 0) {
                     SnackbarUtil.showToast(rootView, "暂无库存");
                     return;
                 }
-                if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() >= goodsInfoBean.getStock()) {
+                if (databaseGoodsInfo != null && databaseGoodsInfo.getGoodsNumber() > goodsInfoBean.getStock()) {
                     SnackbarUtil.showToast(rootView, "添加成功");
                     return;
                 }
@@ -649,9 +659,9 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
             }else{
                 goodsInfo.setGoodsTotal(goodsInfoBean.getStock());
             }
+            goodsInfo.setStock(goodsInfoBean.getStock());
 
             mainNavActivity.greenDaoAssist.insertGoods(DemoConstant.shopInfoBean.getShopId() + "", goodsInfo, isChange -> DemoConstant.isChangeDatabase = isChange);
-
 
             ReqCartAddInfo addInfo = new ReqCartAddInfo();
             ReqCartAddInfo.ReqCartAddInfoBean infoBean2 = new ReqCartAddInfo.ReqCartAddInfoBean();
@@ -667,7 +677,6 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
             } else {
                 getPresenter().addGoodsToShoppingCart(addInfo);
             }
-
         }
     }
 
@@ -679,7 +688,16 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
 
     @Override
     public void getActivityGoodsListSuccess(List<GoodsListInfoBean> list) {
-        adapterActivityList.setNewData(list);
+
+        if(list!=null){
+            mFmOneRecyclerviewGoodlist.setVisibility(View.VISIBLE);
+            mFmOneLinGoodlist.setVisibility(View.VISIBLE);
+            adapterActivityList.setNewData(list);
+        }else{
+            mFmOneRecyclerviewGoodlist.setVisibility(View.GONE);
+            mFmOneLinGoodlist.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
@@ -700,6 +718,7 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
                 }
             }
         }
+
         Logger.t("Jrtm_row = " + row);
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) mFmOneRecyclerviewJrtm.getLayoutParams();
         layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -766,22 +785,22 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
         }, list)
                 .setCanLoop(true)//默认循环
                 .setOnItemClickListener(position -> {
-                    BannerInfoBean infoBean = list.get(position);
-                    String goodsId = infoBean.getGoodId();
-                    if (goodsId != null && !goodsId.equals("")) {
-                        Intent intent = new Intent(activity.context, GoodsDetial2Activity.class);
-                        intent.putExtra("id", Integer.parseInt(goodsId));
-                        activity.skipActivity(intent);
-                    } else {
-                        String path = infoBean.getLink();
-                        if (path != null && !path.equals("") && path.startsWith("http")) {
-                            Intent intent = new Intent(activity.context, DemoWebActivity.class);
-                            intent.putExtra("code", 0);
-                            intent.putExtra("path", path);
-                            intent.putExtra("title", "儒龙易购");
-                            activity.skipActivity(intent);
-                        }
-                    }
+//                    BannerInfoBean infoBean = list.get(position);
+//                    String goodsId = infoBean.getGoodId();
+//                    if (goodsId != null && !goodsId.equals("")) {
+//                        Intent intent = new Intent(activity.context, GoodsDetial2Activity.class);
+//                        intent.putExtra("id", Integer.parseInt(goodsId));
+//                        activity.skipActivity(intent);
+//                    } else {
+//                        String path = infoBean.getLink();
+//                        if (path != null && !path.equals("") && path.startsWith("http")) {
+//                            Intent intent = new Intent(activity.context, DemoWebActivity.class);
+//                            intent.putExtra("code", 0);
+//                            intent.putExtra("path", path);
+//                            intent.putExtra("title", "儒龙易购");
+//                            activity.skipActivity(intent);
+//                        }
+//                    }
                 }).setFirstItemPos(0)
 //                .setCurrentItem(0,false)
                 .setPageIndicator(new int[]{R.mipmap.dian_, R.mipmap.dian})
@@ -802,6 +821,13 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
 
                     }
                 });
+        banner.setOutlineProvider(new ViewOutlineProvider() {
+            @Override
+            public void getOutline(View view, Outline outline) {
+                outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), 20);
+            }
+        });
+        banner.setClipToOutline(true);
     }
 
     private LocationDialog locationDialog;
@@ -939,7 +965,19 @@ public class MainOneFragment extends DemoMVPFragment<MainOneView, MainOnePresent
                         popupWindow.dismiss();
                     }
                 });
+                LinearLayout toSignin = view.findViewById(R.id.popw_rule_lin);
+                toSignin.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent2 = new Intent(activity, SigninActivity.class);
+                        activity.skipActivity(intent2);
+                        showLocationDialog();
+                        popupWindow.dismiss();
+                    }
+                });
+
                 break;
+
         }
 
     }

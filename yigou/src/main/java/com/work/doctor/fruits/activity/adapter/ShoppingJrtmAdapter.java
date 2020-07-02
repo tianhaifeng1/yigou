@@ -43,14 +43,14 @@ public class ShoppingJrtmAdapter extends TRecyclerAdapter<GoodsInfoBean> {
             helper.getView(R.id.item_shop_tm).setVisibility(View.GONE);
         }
 
-        if (item.getStock() <= 0) {
-            GlideUtile.bindImageView(mContext, R.mipmap.shopping_cart_, helper.getView(R.id.item_shop_cart));
-            helper.getView(R.id.item_shop_masking).setVisibility(View.VISIBLE);
-        }else{
+//        if (item.getStock() <= 0) {
+//            GlideUtile.bindImageView(mContext, R.mipmap.shopping_cart_, helper.getView(R.id.item_shop_cart));
+//            helper.getView(R.id.item_shop_masking).setVisibility(View.VISIBLE);
+//        }else{
             GlideUtile.bindImageView(mContext, R.mipmap.shopping_cart, helper.getView(R.id.item_shop_cart));
             helper.getView(R.id.item_shop_masking).setVisibility(View.GONE);
             helper.addOnClickListener(R.id.item_shop_cart);
-        }
+//        }
 
 
 

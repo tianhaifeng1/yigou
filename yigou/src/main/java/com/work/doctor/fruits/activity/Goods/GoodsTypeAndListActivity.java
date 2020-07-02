@@ -2,6 +2,7 @@ package com.work.doctor.fruits.activity.Goods;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -15,6 +16,7 @@ import com.trjx.tbase.fragment.TFragment;
 import com.trjx.tbase.mvp.TPresenter;
 import com.trjx.tbase.mvp.TView;
 import com.work.doctor.fruits.R;
+import com.work.doctor.fruits.activity.MainNavActivity;
 import com.work.doctor.fruits.activity.search.SearchGoodsActivity;
 import com.work.doctor.fruits.base.DemoMVPActivity;
 
@@ -27,6 +29,7 @@ public class GoodsTypeAndListActivity extends DemoMVPActivity<TView, TPresenter<
     private RelativeLayout mTitleSearch;
     private TabLayout mGtalTablayout;
     private ViewPager mGtalViewpager;
+    private ImageView titleGwc;
 
     public static int index;
 
@@ -49,11 +52,21 @@ public class GoodsTypeAndListActivity extends DemoMVPActivity<TView, TPresenter<
         mTitleSearch = findViewById(R.id.title_search);
         mGtalTablayout = findViewById(R.id.gtal_tablayout);
         mGtalViewpager = findViewById(R.id.gtal_viewpager);
+        titleGwc =findViewById(R.id.title_gwc);
 
         //返回
         mTitleBack.setOnClickListener(v -> finish());
         //搜索
         mTitleSearch.setOnClickListener(v -> skipActivity(SearchGoodsActivity.class));
+        //购物车跳转
+        titleGwc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent_shopcart = new Intent(context, MainNavActivity.class);
+                intent_shopcart.putExtra("position", 2);
+                startActivity(intent_shopcart);
+            }
+        });
 
         Intent intent = getIntent();
         List<GoodsTypeInfoBean> infoBeanArrayList = (List<GoodsTypeInfoBean>) intent.getSerializableExtra("list");

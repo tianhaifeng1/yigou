@@ -167,7 +167,6 @@ public class WXEntryActivity extends DemoMVPActivity<WXEntryView, WXEntryPresent
                 DemoConstant.refershOne = true;
                 DemoConstant.refershTwo = true;
                 DemoConstant.refershThree = true;
-
                 DemoConstant.isRefershShopInfo = true;
             }
 
@@ -175,11 +174,13 @@ public class WXEntryActivity extends DemoMVPActivity<WXEntryView, WXEntryPresent
             DemoConstant.balance = infoBean.getBalance();
             DemoConstant.userId = infoBean.getUserId();
             DemoConstant.userStatus = infoBean.getStatus();
+            DemoConstant.userApprove = infoBean.getApprove();
 
             SharedPreferencesUtils.setParam(this, DemoConstant.user_token, infoBean.getToken());
             SharedPreferencesUtils.setParam(this, DemoConstant.user_phone, infoBean.getPhone());
             SharedPreferencesUtils.setParam(this, DemoConstant.user_id, infoBean.getUserId());
             SharedPreferencesUtils.setParam(this, DemoConstant.user_status, infoBean.getStatus());
+            SharedPreferencesUtils.setParam(this, DemoConstant.user_approve, infoBean.getApprove());
 
             greenDaoAssist = new GreenDaoAssist(((DemoApplication)getApplication()).databaseAssist);
             List<DatabaseGoodsInfo> shopInfoList = greenDaoAssist.queryAllGoods();
@@ -195,7 +196,11 @@ public class WXEntryActivity extends DemoMVPActivity<WXEntryView, WXEntryPresent
                 }
                 infoOut.setGoods(list);
                 // 同步本地数据
-                getPresenter().synchorShoppingCartData(infoOut);
+                if(infoBean.getStatus()!=3){
+                    getPresenter().synchorShoppingCartData(infoOut);
+                }else{
+                    synchorShoppingCartDataSuccess();
+                }
             }else{
 //            DemoConstant.isExit = false;
                 synchorShoppingCartDataSuccess();

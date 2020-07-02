@@ -87,6 +87,7 @@ public abstract class DemoMVPFragment<V extends TView, P extends TPresenter<V, D
         SharedPreferencesUtils.setParam(activity.context, DemoConstant.user_token, "");
         SharedPreferencesUtils.setParam(activity.context, DemoConstant.user_id, -1);
         SharedPreferencesUtils.setParam(activity.context, DemoConstant.user_status, 0);
+        SharedPreferencesUtils.setParam(activity.context, DemoConstant.user_approve, 0);
         activity.skipActivity(LoginActivity.class);
     }
 

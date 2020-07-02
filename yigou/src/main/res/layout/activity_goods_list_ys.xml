@@ -38,7 +38,7 @@
                 android:paddingTop="@dimen/item_recyclerview_space_v"
                 android:paddingBottom="@dimen/item_recyclerview_space_v"
                 android:scrollbars="vertical"
-                android:background="@color/textcolor_point"
+                android:background="@color/goods_list_ys"
                 ></androidx.recyclerview.widget.RecyclerView>
 
             <include layout="@layout/layout_defaultpage" />

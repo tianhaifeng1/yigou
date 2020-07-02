@@ -11,6 +11,7 @@ public class ReqRuleInfo extends ReqTimeInfo {
     // GYWM:关于我们
     // CZGZ:会员充值规则
     // YQGZ:邀请活动规则
+    // YSZC:隐私政策
     private String catype;
 
     public String getCatype() {

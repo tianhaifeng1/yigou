@@ -38,7 +38,6 @@
                 android:layout_height="@dimen/dp80"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:visibility="gone"
                 android:background="@mipmap/bg_txsq" >
 
                 <TextView
@@ -47,7 +46,7 @@
                     android:layout_height="wrap_content"
                     tools:text="已申请退款"
                     android:textStyle="bold"
-                    android:textColor="@color/color_name"
+                    android:textColor="@color/color_white"
                     android:textSize="@dimen/dp20"
                     />
 

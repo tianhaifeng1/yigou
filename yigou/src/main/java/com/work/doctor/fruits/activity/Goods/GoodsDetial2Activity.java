@@ -1,6 +1,7 @@
 package com.work.doctor.fruits.activity.Goods;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -282,7 +283,8 @@ public class GoodsDetial2Activity extends DemoMVPActivity<GoodsDetialView, Goods
 
             mFmShopDetialName.setText(infoBean.getGoodsName());
             mFmShopDetialPriceVip.setText("￥" + BigDecimalUtil.roundOffString(infoBean.getSellPriceDiscount(),2));
-
+            mFmShopDetialPrice.setText(BigDecimalUtil.roundOffString(infoBean.getSellPrice(),2));
+            mFmShopDetialPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
             showGoodsDetail();
 
         }

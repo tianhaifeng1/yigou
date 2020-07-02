@@ -24,7 +24,7 @@ public class SigninRecordAdapter extends TRecyclerAdapter<SigninRecordBean> {
         helper.setText(R.id.item_record_xq,item.getGoodsName());
         helper.setText(R.id.item_record_date,getDateToString(item.getSigninTime()));
         if(item.getSigninGift()==0){
-            helper.setText(R.id.item_record_status,"已失效");
+            helper.setText(R.id.item_record_status,"未领取");
         }else{
             helper.setText(R.id.item_record_status,"已领取");
         }

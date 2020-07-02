@@ -57,7 +57,7 @@ public class MVipActivity extends DemoMVPActivity<MVipView, MVipPresenter>
                 .creat(rootView);
         recyclerModule.setRefreshing(true);
         recyclerModule.setDefImg(R.mipmap.default_moneylist);
-        recyclerModule.setDefText("暂无记录");
+        recyclerModule.setDefText("您还没有余额记录哦");
         getRecyclerListData();
 
     }

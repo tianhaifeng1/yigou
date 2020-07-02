@@ -113,6 +113,51 @@
 
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/color_line"
+        android:layout_marginLeft="@dimen/dp16"
+        android:layout_marginRight="@dimen/dp16"
+        />
+
+    <LinearLayout
+        android:id="@+id/dialog_payway_hdfk_lin"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp60"
+        android:layout_gravity="center_horizontal"
+        >
+
+
+        <ImageView
+            android:layout_width="@dimen/dp30"
+            android:layout_height="match_parent"
+            android:src="@mipmap/t_hdfk"
+            android:layout_marginLeft="@dimen/dp16"
+            android:layout_marginRight="@dimen/dp4"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="货到付款"
+            android:textSize="16dp"
+            android:textColor="@color/color_name"
+            android:paddingLeft="@dimen/dp10"
+            />
+
+        <ImageView
+            android:id="@+id/dialog_payway_select_hdfk"
+            android:layout_width="@dimen/dp50"
+            android:layout_height="@dimen/dp60"
+            android:src="@mipmap/payway_select_no"
+            android:padding="@dimen/dp16"
+            />
+
+    </LinearLayout>
+
+
     <TextView
         android:id="@+id/dialog_payway_affirm"
         android:layout_width="match_parent"

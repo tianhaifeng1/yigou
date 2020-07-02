@@ -3,12 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="5dp"
     android:background="@color/color_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="174dp"
         android:padding="@dimen/dp5"
         >
 
@@ -42,10 +41,8 @@
         <TextView
             android:id="@+id/item_shop_name"
             android:layout_width="match_parent"
-            android:layout_height="26dp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:gravity="center_vertical"
+            android:layout_height="30dp"
+            android:textStyle="bold"
             tools:text="名称"
             android:textSize="12dp"
             android:textColor="@color/color_name"

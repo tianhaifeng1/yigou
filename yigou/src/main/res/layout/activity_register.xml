@@ -63,8 +63,9 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="@dimen/dp3"
             android:gravity="center"
+            android:background="@drawable/selector_longin"
             android:text="发送验证码"
-            android:textColor="@color/color_zhuse"
+            android:textColor="@color/color_white"
             android:textSize="@dimen/sp12" />
     </LinearLayout>
 
@@ -94,23 +95,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:gravity="center"
         android:layout_marginTop="@dimen/dp5"
         android:orientation="horizontal"
         android:layout_marginLeft="@dimen/dp20"
         android:layout_marginRight="@dimen/dp20"
         >
 
-        <CheckBox
-            android:id="@+id/login_checkbox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dp5"
-            android:checked="true" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我已阅读并同意"
+            android:text="登录表示您已阅读并同意"
             android:textColor="@color/color_content"
             android:textSize="@dimen/sp12" />
 
@@ -119,7 +114,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:lines="1"
-            android:text="《儒龙易购用户协议》"
+            android:text="《用户协议》"
+            android:textColor="@color/color_zhuse"
+            android:textSize="@dimen/sp12" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="及"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/sp12"/>
+        <TextView
+            android:id="@+id/login_yszc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="《隐私政策》"
             android:textColor="@color/color_zhuse"
             android:textSize="@dimen/sp12" />
     </LinearLayout>

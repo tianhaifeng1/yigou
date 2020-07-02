@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_white"
     android:orientation="vertical"
     tools:context=".activity.vip.MVipActivity">
 
@@ -22,7 +23,7 @@
             android:layout_width="@dimen/dp100"
             android:layout_height="@dimen/dp40"
             android:text="会员规则"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:gravity="center"
             />
         <TextView
@@ -30,7 +31,7 @@
             android:layout_width="@dimen/dp100"
             android:layout_height="@dimen/dp40"
             android:text="充值记录"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:gravity="center"
             android:layout_alignParentRight="true"
             />
@@ -43,7 +44,8 @@
             android:textSize="24sp"
             android:maxLines="1"
             android:gravity="center"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
+            android:textStyle="bold"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/vip_guize"
             />
@@ -53,17 +55,17 @@
             android:layout_height="30dp"
             android:text="余额"
             android:textSize="14sp"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_white"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/vip_yue"
             />
 
         <TextView
             android:id="@+id/vip_chongzhi"
-            android:layout_width="@dimen/dp100"
-            android:layout_height="@dimen/dp30"
+            android:layout_width="@dimen/dp120"
+            android:layout_height="@dimen/dp35"
             android:text="充值"
-            android:textColor="@color/color_name"
+            android:textColor="@color/color_red"
             android:layout_below="@id/vip_yue_"
             android:gravity="center"
             android:layout_centerHorizontal="true"

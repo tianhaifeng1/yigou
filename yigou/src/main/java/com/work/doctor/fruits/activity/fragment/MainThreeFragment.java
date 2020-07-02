@@ -297,6 +297,7 @@ public class MainThreeFragment extends DemoMVPFragment<MainThreeView, MainThreeP
         }
     }
 
+//  结算
     private void panduanSubmit(ArrayList<DatabaseShopInfo> infoList, int position) {
         ArrayList<DatabaseGoodsInfo> goodsInfoAll = new ArrayList<>();
         DatabaseShopInfo databaseShopInfo = infoList.get(position);
@@ -319,7 +320,12 @@ public class MainThreeFragment extends DemoMVPFragment<MainThreeView, MainThreeP
             DemoConstant.jgPurchaseBeanList.clear();
             for (int i = 0; i < size; i++) {
                 DatabaseGoodsInfo goodsInfo = goodsInfoAll.get(i);
-                if (goodsInfo.getGoodsTotal() < goodsInfo.getGoodsNumber()) {
+                if (goodsInfo.getGoodsTotal() < goodsInfo.getGoodsNumber() && goodsInfo.getGoodsTotal()!=0) {
+                    SnackbarUtil.showToast(rootView, goodsInfo.getGoodsName() + "  库存不足");
+                    return;
+                }
+                if(goodsInfo.getGoodsNumber()>goodsInfo.getStock()){
+                    //库存小于当前选择的数量时
                     SnackbarUtil.showToast(rootView, goodsInfo.getGoodsName() + "  库存不足");
                     return;
                 }

@@ -157,7 +157,12 @@ public class GoodsDetialInfo3Fragment extends DemoMVPFragment<TView, DemoPresent
 //            textRemark.setText("已售" + presellInfoBean.getSellTotalNum() + "份/限量"
 //                    + presellInfoBean.getStock() + "份(每人限购" + presellInfoBean.getLimitNum() + "份)");
 
-            String ygouStr = "(每人限购" + presellInfoBean.getLimitNum() + "份)";
+            String ygouStr = "";
+            if(presellInfoBean.getLimitNum()==0){
+                ygouStr = "(不限购)";
+            }else{
+                ygouStr = "(每人限购" + presellInfoBean.getLimitNum() + "份)";
+            }
             String string = "已售" + presellInfoBean.getSellTotalNum() + "份/限量" + presellInfoBean.getStock() + "份" + ygouStr;
             textRemark.setText(new TextStyleHelper(string)
                     .addForeColorSpan(activity.getResources().getColor(R.color.ys_color_two),

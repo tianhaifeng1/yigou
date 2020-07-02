@@ -28,21 +28,23 @@ public class ShopCartAdapter extends TRecyclerAdapter<DatabaseGoodsInfo> {
 
         helper.addOnClickListener(R.id.item_shopcart_select, R.id.item_shopcart_add, R.id.item_shopcart_minus);
 
+        helper.setText(R.id.item_shopcart_num, item.getGoodsNumber() + "");
 
         helper.setText(R.id.item_shopcart_guige, item.getSpecName());
-        helper.setText(R.id.item_shopcart_num, item.getGoodsNumber() + "");
         helper.setText(R.id.item_shopcart_price, "￥" + BigDecimalUtil.roundOffString(item.getGoodsPrice(), 2));
         helper.setText(R.id.item_shopcart_price_vip, "￥" + BigDecimalUtil.roundOffString(item.getGoodsPriceVip(), 2));
         TextView textView = helper.getView(R.id.item_shopcart_price);
         textView.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        if (item.getGoodsTotal() <= item.getGoodsNumber()) {
+        if (item.getGoodsTotal() <= item.getGoodsNumber() && item.getGoodsTotal()!=0) {
             helper.getView(R.id.item_shopcart_remind).setVisibility(View.VISIBLE);
 
             String str = "";
             int goodsType = item.getGoodsType();
             if (goodsType == 3) {
-                str = "此商品限购 " + item.getGoodsTotal() + " 件";
+                if(item.getGoodsTotal() != 0){
+                    str = "此商品限购 " + item.getGoodsTotal() + " 件";
+                }
             } else if (item.getIsTemai() == 0) {
                 //特卖商品
                 if (item.getSpecialSale() == 1) {
@@ -58,8 +60,17 @@ public class ShopCartAdapter extends TRecyclerAdapter<DatabaseGoodsInfo> {
                     str = "当前库存仅剩 " + item.getGoodsTotal() + " 件";
                 }
             }
-
-
+            helper.setText(R.id.item_shopcart_remind, str);
+            helper.getView(R.id.item_shopcart_add).setEnabled(false);
+            GlideUtile.bindImageView(mContext, R.mipmap.goodscart_jia_default, helper.getView(R.id.item_shopcart_add));
+        } else if(item.getStock()<=item.getGoodsNumber()) {
+            helper.getView(R.id.item_shopcart_remind).setVisibility(View.VISIBLE);
+            String str = "";
+            if (item.getStock() == 0) {
+                str = "此商品暂无库存";
+            } else {
+                str = "当前库存仅剩 " + item.getStock() + " 件";
+            }
             helper.setText(R.id.item_shopcart_remind, str);
             helper.getView(R.id.item_shopcart_add).setEnabled(false);
             GlideUtile.bindImageView(mContext, R.mipmap.goodscart_jia_default, helper.getView(R.id.item_shopcart_add));
@@ -87,7 +98,12 @@ public class ShopCartAdapter extends TRecyclerAdapter<DatabaseGoodsInfo> {
 
 
         if (item.getGoodsType() == 3) {
-            helper.setText(R.id.item_shopcart_tm, "预售商品(限购" + item.getGoodsTotal() + ")");
+            if(item.getGoodsTotal()==0){
+                helper.setText(R.id.item_shopcart_tm, "预售商品");
+            }else{
+                helper.setText(R.id.item_shopcart_tm, "预售商品(限购" + item.getGoodsTotal() + ")");
+            }
+
             helper.getView(R.id.item_shopcart_tm).setVisibility(View.VISIBLE);
 //            helper.setText(R.id.item_shopcart_name, "【预售】" + item.getGoodsName());
             String strName = "【预售】" + item.getGoodsName();

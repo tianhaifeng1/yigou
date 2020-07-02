@@ -22,6 +22,7 @@
             android:layout_alignParentLeft="true"
             android:visibility="visible"
             app:srcCompat="@mipmap/ic_back"
+            android:layout_weight="1"
             android:paddingLeft="12dp"
             android:paddingRight="6dp"/>
 
@@ -29,6 +30,7 @@
             android:id="@+id/title_search"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp30"
+            android:layout_weight="8"
             android:background="@drawable/shape_c_f6">
 
             <ImageView
@@ -46,6 +48,15 @@
                 android:textColor="@color/textcolor_tishi" />
 
         </RelativeLayout>
+        <ImageView
+            android:id="@+id/title_gwc"
+            android:layout_width="@dimen/ttitle_h"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/t_cart"
+            android:paddingLeft="12dp"
+            android:paddingRight="6dp"/>
 
     </LinearLayout>
     <View

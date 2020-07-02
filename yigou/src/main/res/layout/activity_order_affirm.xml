@@ -21,13 +21,172 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- dizhi -->
+
             <LinearLayout
+                android:layout_marginTop="@dimen/dp10"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:id="@+id/oa_fenlei_rel"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp50"
+                android:orientation="horizontal"
+                android:background="@drawable/affirm_btn">
+
+                <TextView
+                    android:id="@+id/oa_distribution_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="配送到家"
+                    android:textSize="@dimen/dp16"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/oa_tostore_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/dp16"
+                    android:textStyle="bold"
+                    android:text="到店自提"/>
+
+
+            </LinearLayout>
+            <!-- ziti -->
+            <LinearLayout
+                android:id="@+id/oa_ziti_rel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp10"
                 android:layout_marginRight="@dimen/dp10"
-                android:background="@drawable/waikuang_r5_white"
+                android:background="@drawable/waikuang_r6_white"
+                android:minHeight="@dimen/dp100"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:padding="@dimen/dp10">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp10"
+                        android:paddingBottom="@dimen/dp10"
+                        >
+
+                        <TextView
+                            android:id="@+id/oa_ziti_shop_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_name"
+                            android:text="111"/>
+
+                        <TextView
+                            android:id="@+id/oa_ziti_shop_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textColor="@color/color_name"
+                            android:text="旗舰店"/>
+
+                        <TextView
+                            android:id="@+id/oa_ziti_shop_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dp5"
+                            android:textColor="@color/color_content"
+                            android:layout_below="@id/oa_ziti_shop_name"
+                            android:text="地址"/>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp5"
+                        android:paddingBottom="@dimen/dp5">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="提货人"
+                            android:lineHeight="@dimen/dp20"
+                            android:paddingTop="@dimen/dp10"
+                            android:paddingBottom="@dimen/dp10"
+                            android:textColor="@color/color_name" />
+
+                        <EditText
+                            android:id="@+id/oa_ziti_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp40"
+                            android:layout_marginLeft="@dimen/dp80"
+                            android:background="@drawable/shape_c_f6"
+                            android:hint="姓名"
+                            android:maxLines="1"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="@dimen/dp20"
+                            android:paddingRight="@dimen/dp20"
+                            android:textColor="@color/color_content"
+                            android:textSize="14dp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/dp5"
+                        android:paddingBottom="@dimen/dp5">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="手机号码"
+                            android:lineHeight="@dimen/dp20"
+                            android:paddingTop="@dimen/dp10"
+                            android:paddingBottom="@dimen/dp10"
+                            android:textColor="@color/color_name" />
+
+                        <EditText
+                            android:id="@+id/oa_ziti_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="@dimen/dp80"
+                            android:background="@drawable/shape_c_f6"
+                            android:hint="手机号码"
+                            android:maxLines="1"
+                            android:layout_centerVertical="true"
+                            android:paddingLeft="@dimen/dp20"
+                            android:paddingRight="@dimen/dp20"
+                            android:inputType="phone"
+                            android:maxLength="11"
+                            android:textColor="@color/color_content"
+                            android:textSize="14dp" />
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <!-- dizhi -->
+            <LinearLayout
+                android:id="@+id/oa_distribution_rel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/waikuang_r6_white"
                 android:minHeight="@dimen/dp100"
                 android:orientation="vertical"
                 android:padding="@dimen/dp10">
@@ -35,7 +194,6 @@
                 <RelativeLayout
                     android:id="@+id/oa_select_address_rl"
                     android:layout_width="match_parent"
-                    android:visibility="gone"
                     android:layout_height="@dimen/dp30">
 
                     <TextView
@@ -50,8 +208,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:drawableRight="@mipmap/right_small_"
-                        android:gravity="center_vertical"
+                        android:drawableRight="@mipmap/t_right2"
+                        android:textColor="@color/color_red"
+                        android:gravity="center"
                         tools:text="共2个" />
 
                 </RelativeLayout>
@@ -73,11 +232,11 @@
 
                     <ImageView
                         android:id="@+id/oa_show_address_edit"
-                        android:layout_width="@dimen/dp10"
+                        android:layout_width="@dimen/dp15"
                         android:layout_height="match_parent"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:src="@mipmap/goodscart_right" />
+                        android:src="@mipmap/t_right" />
 
                     <TextView
                         android:id="@+id/oa_show_address_name"
@@ -281,7 +440,7 @@
                     <TextView
                         android:id="@+id/oa_edit_save"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/dp40"
+                        android:layout_height="@dimen/dp30"
                         android:layout_marginTop="@dimen/dp10"
                         android:paddingLeft="@dimen/dp20"
                         android:paddingRight="@dimen/dp20"
@@ -291,21 +450,35 @@
                         android:background="@drawable/shape_c_red_line"
                         android:layout_gravity="center_horizontal"
                         />
+                    <TextView
+                        android:id="@+id/oa_edit_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp40"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:paddingRight="@dimen/dp20"
+                        android:text="当前位置不在配送范围内，请重新选择"
+                        android:textColor="#fa2f49"
+                        android:gravity="center"
+                        android:visibility="gone"
+                        />
                 </LinearLayout>
 
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp36"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp10"
                 android:layout_marginRight="@dimen/dp10"
                 android:background="@drawable/waikuang_r5_white"
+                android:padding="@dimen/dp10"
                 android:layout_marginTop="@dimen/dp10">
 
                 <TextView
+                    android:id="@+id/oa_show_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:textColor="@color/color_name"
                     android:text="期望送达时间" />
 
                 <TextView
@@ -315,11 +488,11 @@
                     android:layout_centerVertical="true"
                     android:drawableRight="@mipmap/order_right"
                     android:id="@+id/oa_text_date"
-                    android:gravity="center_vertical"
-                    android:paddingRight="@dimen/dp10"
-                    android:textColor="@color/yigou_color_red"
+                    android:gravity="center"
+                    android:textColor="@color/color_red"
                     android:text="尽快送达 | 1小时内送达" />
             </RelativeLayout>
+
 
             <!-- 商品 -->
             <RelativeLayout
@@ -482,7 +655,7 @@
                     android:id="@+id/oa_fpxx"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp36"
-                    android:layout_marginTop="72dp">
+                    android:layout_below="@+id/oa_yf">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -545,11 +718,25 @@
                  />
 
             <TextView
+                android:id="@+id/oa_payhdfk"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp45"
+                android:layout_marginLeft="@dimen/dp10"
+                android:layout_marginTop="@dimen/dp15"
+                android:layout_marginRight="@dimen/dp10"
+                android:background="@drawable/shape_order_affirm_hdfk_btn"
+                android:gravity="center"
+                android:visibility="gone"
+                android:padding="@dimen/dp10"
+                android:text="货到付款"
+                android:textColor="@color/color_white" />
+
+            <TextView
                 android:id="@+id/oa_paywx"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
+                android:layout_height="@dimen/dp45"
                 android:layout_marginLeft="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp30"
+                android:layout_marginTop="@dimen/dp15"
                 android:layout_marginRight="@dimen/dp10"
                 android:background="@drawable/shape_order_affirm_wx_btn"
                 android:gravity="center"
@@ -560,9 +747,9 @@
             <TextView
                 android:id="@+id/oa_payye"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp40"
+                android:layout_height="@dimen/dp45"
                 android:layout_marginLeft="@dimen/dp10"
-                android:layout_marginTop="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp15"
                 android:layout_marginRight="@dimen/dp10"
                 android:layout_marginBottom="@dimen/dp20"
                 android:background="@drawable/shape_order_affirm_ye_btn"

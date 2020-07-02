@@ -27,6 +27,16 @@ public class CartShopInfoBean {
     private double shopLongitude;
     private String shopAddress;
     private String shopLogo;
+    private int stock;
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
     private List<ListBean> list;
 
     public String getShopAddress() {
